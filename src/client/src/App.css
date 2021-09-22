@@ -68,14 +68,6 @@ div[id='root']{
   font-size: 3em;
 }
 
-.dropdowns{
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 1vh;
-  grid-template-rows: 15% 15% auto;
-  
-}
-
 .day-km-config{
   display: grid;
   grid-template-columns: auto auto;
