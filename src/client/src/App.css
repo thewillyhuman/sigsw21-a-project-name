@@ -78,18 +78,35 @@ div[id='root']{
 }
 
 .planificate-body{
+  display: grid;
+  height: 100%;
+  padding: 10vh;
+}
+
+.planificate-body-col2{
+  display: grid;
   height: 100%;
 }
 
 .days-panel{
-  background-color: red;
+  border: 1px solid #222;
   height: 100%;
 }
-.info-day-panel-row{
-  background-color: blue;
+
+.day-container{
+  border: 1px solid #222;
+  height: 100%;
+  display: grid;
+}
+
+.info-day-panel{
+  border: 1px solid #222;
 }
 
 .map-panel{
-  background-color: green;
+  display: grid;
+  justify-content: center;
+  align-items: center;
   height: 100%;
+  border-top: 1px solid #222 ;
 }
