@@ -57,14 +57,14 @@ div[id='root']{
   height: 100%;
 }
 
-.landingBody{
+.landing-body{
   display: grid;
   padding: 10vh;
   justify-content: center;
   grid-template-rows: 15% auto;
 }
 
-.landingBody h1{
+.landing-body h1{
   font-size: 3em;
 }
 
@@ -75,4 +75,21 @@ div[id='root']{
 
 .btnPlanificar{
   width: 100%;
+}
+
+.planificate-body{
+  height: 100%;
+}
+
+.days-panel{
+  background-color: red;
+  height: 100%;
+}
+.info-day-panel-row{
+  background-color: blue;
+}
+
+.map-panel{
+  background-color: green;
+  height: 100%;
 }
