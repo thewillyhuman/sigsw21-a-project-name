@@ -1,23 +1,56 @@
 import { useHistory } from "react-router-dom";
 import {Row,Col,Form,Button} from 'react-bootstrap';
+import { useEffect,useState } from "react";
+import background from '../resoruces/fondo.jpg';
+import senderismo from '../resoruces/senderismo.jpg';
+import bici from '../resoruces/bici.jpg';
+import horse from '../resoruces/horse.jpg';
 
 function LandingPage(){
 
     const history = useHistory();
+    const [style,setStyle] = useState(styles);
 
-    function handleSubmit() {
-        console.log('click')
-        history.push("/planificate");
+    function handleSenderismo() {
+        setStyle({
+            backgroundImage: `url(${senderismo})`
+        })
     }
-    
+
+    function handleBici() {
+        setStyle({
+            backgroundImage: `url(${bici})`
+        })
+    }
+
+    function handleCaballo() {
+        setStyle({
+            backgroundImage: `url(${horse})`
+        })
+    }
 
     return (
         <div className="landing">
-            <div className="black-container">
-
+            <div className="landing-body  menu">
+                <ul>
+                    <li onMouseEnter={handleSenderismo}>A pie</li>
+                    <li onMouseEnter={handleBici}>Bicicleta</li>
+                    <li onMouseEnter={handleCaballo}>Caballo</li>
+                    <li id="bg" className="bg"style={style} ></li>                    
+                </ul>
             </div>
-            <div className="landing-body  animated bounceInDown">
-                <h1>Planifica tu Viaje</h1>
+        </div>
+    );
+}
+
+export default LandingPage;
+
+
+var styles = {
+    backgroundImage: `url(${background})`
+}
+/**
+ * <h1>Planifica tu Viaje</h1>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
                             <Form.Select aria-label="Default select example">
@@ -53,9 +86,4 @@ function LandingPage(){
                         Planificar
                     </Button>
                 </Form>
-            </div>
-        </div>
-    );
-}
-
-export default LandingPage;
+ */
