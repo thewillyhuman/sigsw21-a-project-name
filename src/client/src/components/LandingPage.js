@@ -12,6 +12,10 @@ function LandingPage(){
     
 
     return (
+        <div className="landing">
+            <div className="black-container">
+
+            </div>
             <div className="landing-body">
                 <h1>Planifica tu Viaje</h1>
                 <Form onSubmit={handleSubmit}>
@@ -35,11 +39,11 @@ function LandingPage(){
                     <Form.Group className="mb-3">
                        <Row>
                             <Col>
-                                <Form.Label>Nº Días</Form.Label>
+                                <Form.Label className="label">Nº Días</Form.Label>
                                 <Form.Control type="input" placeholder="24" />
                             </Col>
                             <Col>
-                                <Form.Label>KM</Form.Label>
+                                <Form.Label className="label">KM</Form.Label>
                                 <Form.Control type="input" placeholder="150Km" />
                             </Col>
                         </Row> 
@@ -50,6 +54,7 @@ function LandingPage(){
                     </Button>
                 </Form>
             </div>
+        </div>
     );
 }
 
