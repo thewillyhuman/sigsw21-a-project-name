@@ -15,6 +15,10 @@ dependencies {
     implementation 'io.quarkus:quarkus-arc'
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.rest-assured:rest-assured'
+
+    // Google Maps
+    implementation 'com.google.maps:google-maps-services:1.0.0'
+    implementation 'org.slf4j:slf4j-simple:1.7.25'
 }
 
 group 'com.santiagoapp'
