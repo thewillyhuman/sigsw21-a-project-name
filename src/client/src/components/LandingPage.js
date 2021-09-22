@@ -1,17 +1,20 @@
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
-import PlanificatePage from './PlanificatePage'
-import {Dropdown,Form,Button} from 'react-bootstrap';
+import { useHistory } from "react-router-dom";
+import {Row,Col,Form,Button} from 'react-bootstrap';
+
 function LandingPage(){
+
+    const history = useHistory();
+
+    function handleSubmit() {
+        console.log('click')
+        history.push("/planificate");
+    }
+    
+
     return (
-        <Router>
             <div className="landingBody">
                 <h1>Planifica tu Viaje</h1>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
                             <Form.Select aria-label="Default select example">
                                 <option>Medio de transporte</option>
@@ -30,29 +33,23 @@ function LandingPage(){
                       
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <div className="day-km-config">
-                            <Form.Label>Nº Días</Form.Label>
-                            <Form.Control type="input" placeholder="24" />
-                            <Form.Label>KM</Form.Label>
-                            <Form.Control type="input" placeholder="150Km" />
-                        </div>   
+                       <Row>
+                            <Col>
+                                <Form.Label>Nº Días</Form.Label>
+                                <Form.Control type="input" placeholder="24" />
+                            </Col>
+                            <Col>
+                                <Form.Label>KM</Form.Label>
+                                <Form.Control type="input" placeholder="150Km" />
+                            </Col>
+                        </Row> 
                     </Form.Group>
 
                     <Button className="btnPlanificar" variant="primary" type="submit">
                         Planificar
                     </Button>
                 </Form>
-               
             </div>
-                {/* A <Switch> looks through its children <Route>s and
-                    renders the first one that matches the current URL. */}
-                <Switch>
-                    <Route path="/planificate">
-                        <PlanificatePage />
-                    </Route>
-                </Switch>
-           
-      </Router>
     );
 }
 
