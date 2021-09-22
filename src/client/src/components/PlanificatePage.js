@@ -2,9 +2,9 @@ import {Row,Col,Container} from 'react-bootstrap';
 
 function PlanificatePage(){
     return(
-        <Container  className="planificate-body">
+        <Container className="planificate-body">
             <Row>
-                <Col md={3}>
+                <Col md={4}>
                     <div className="days-panel"><p>Days Panel</p></div>
                 </Col>
                 <Col md>

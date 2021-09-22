@@ -16,7 +16,7 @@ function LandingPage(){
             <div className="black-container">
 
             </div>
-            <div className="landing-body">
+            <div className="landing-body  animated bounceInDown">
                 <h1>Planifica tu Viaje</h1>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
