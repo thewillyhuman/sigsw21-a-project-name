@@ -1,3 +1,13 @@
+html {
+  height: 100% 
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +45,42 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+ul {
+  list-style-type: none;
+}
+
+div[id='root']{
+  display: grid;
+  height: 100%;
+}
+
+.landingBody{
+  display: grid;
+  padding: 10vh;
+  justify-content: center;
+  grid-template-rows: 15% auto;
+}
+
+.landingBody h1{
+  font-size: 3em;
+}
+
+.dropdowns{
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1vh;
+  grid-template-rows: 15% 15% auto;
+  
+}
+
+.day-km-config{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.btnPlanificar{
+  width: 100%;
 }
