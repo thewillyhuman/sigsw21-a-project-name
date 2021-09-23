@@ -27,9 +27,12 @@ public class Route {
     @JsonProperty("route_stages")
     private List<Route> routeStages;
 
+    @JsonProperty("route_locations")
+    private List<String> routeLocations;
+
     protected Route(String originPlace, String destinationPlace, double distance, double duration,
-                 List<RoutePlace> interestPlaces, List<RoutePlace> accommodations, List<Route> routeStages)
-    {
+                 List<RoutePlace> interestPlaces, List<RoutePlace> accommodations, List<Route> routeStages,
+                 List<String> routeLocations) {
         this.originPlace = originPlace;
         this.destinationPlace = destinationPlace;
         this.distance = distance;
@@ -37,6 +40,7 @@ public class Route {
         this.interestPlaces = interestPlaces;
         this.accommodations = accommodations;
         this.routeStages = routeStages;
+        this.routeLocations = routeLocations;
     }
 
     public String getOriginPlace() {
@@ -67,16 +71,7 @@ public class Route {
         return routeStages;
     }
 
-    @Override
-    public String toString() {
-        return "Route{" +
-                "originPlace='" + originPlace + '\'' +
-                ", destinationPlace='" + destinationPlace + '\'' +
-                ", distance=" + distance +
-                ", duration=" + duration +
-                ", interestPlaces=" + interestPlaces +
-                ", accommodations=" + accommodations +
-                ", routeStages=" + routeStages +
-                '}';
+    public List<String> getRouteLocations() {
+        return routeLocations;
     }
 }

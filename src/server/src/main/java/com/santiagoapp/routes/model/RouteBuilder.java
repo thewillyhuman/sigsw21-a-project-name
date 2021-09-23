@@ -10,6 +10,7 @@ public final class RouteBuilder {
     private List<RoutePlace> interestPlaces;
     private List<RoutePlace> accommodations;
     private List<Route> routeStages;
+    private List<String> routeLocations;
 
     private RouteBuilder() {
     }
@@ -53,7 +54,12 @@ public final class RouteBuilder {
         return this;
     }
 
+    public RouteBuilder withRouteLocations(List<String> routeLocations) {
+        this.routeLocations = routeLocations;
+        return this;
+    }
+
     public Route build() {
-        return new Route(originPlace, destinationPlace, distance, duration, interestPlaces, accommodations, routeStages);
+        return new Route(originPlace, destinationPlace, distance, duration, interestPlaces, accommodations, routeStages, routeLocations);
     }
 }
