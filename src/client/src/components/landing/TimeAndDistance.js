@@ -16,7 +16,8 @@ function TimeAndDistance(){
                 </Col>
             </Row>
             <Row>
-                <a href='#'>{/*={handlePlanify}*/}Planificar</a>
+                {/*<a onClick={scroll}>Planificar</a>*/}
+                <a className="planificatBtn" href="#">Planificar</a>
             </Row>
         </div>
     )

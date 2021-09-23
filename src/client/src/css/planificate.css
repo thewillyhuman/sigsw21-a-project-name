@@ -1,9 +1,9 @@
 
 .planificate-bg{
-    display: grid;
-    height: 100%;
-    width: 100%;
-    background-image: url("/src/resoruces/fondo.jpg");
+    display: grid !important;
+    height: 100% !important;
+    width: 100% !important;
+
   }
   
   .planificate-body{

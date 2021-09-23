@@ -1,32 +1,40 @@
 import { useHistory } from "react-router-dom";
 import Transport from './landing/Transport';
 import Way from './landing/Way';
+import PlanificatePage from './PlanificatePage';
 import TimeAndDistance from './landing/TimeAndDistance';
-
-import {animateScroll as scroll } from 'react-scroll'
+import { Element, Events, scrollSpy } from 'react-scroll'
 import '../css/landing.css';
+import { useEffect } from "react";
 
 function LandingPage(){
 
     const history = useHistory();
    
-    const scrollTo = function() {
-        scroll.scrollMore(1000,{ 
-            duration: 100,
-            delay: 0,
-            smooth: 'easeInOutQuart'
-        });
-      }
-
-
     const handlePlanify= () => history.push('/planificate');
 
+    useEffect(()=>{
+        Events.scrollEvent.register('begin', function(to, element) {
+            console.log('begin', arguments);
+          });
+      
+          Events.scrollEvent.register('end', function(to, element) {
+            console.log('end', arguments);
+          });
+        scrollSpy.update();
+    },[])
 
     return (
     <>
-        <Transport scroll={scrollTo}/>
-        <Way scroll={scrollTo}/>
-        <TimeAndDistance/>
+        <Transport/>
+        <Element name="way" className="element">
+            <Way/>
+        </Element>
+        <Element name="time-distance" className="element">
+            <TimeAndDistance />
+        </Element>
+        <PlanificatePage/>
+
     </>
     );
 }

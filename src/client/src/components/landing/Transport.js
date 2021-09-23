@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHorse,faBicycle,faWalking, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-scroll';
 import background from '../../resoruces/fondo.jpg';
 import senderismo from '../../resoruces/senderismo.jpg';
 import bici from '../../resoruces/bici.jpg';
 import horse from '../../resoruces/horse.jpg';
+
 
 function Transport(props){
 
@@ -37,7 +39,6 @@ function Transport(props){
          setBicyStyle(iconStyle);
          setHorseStyle(iconStyle);
          callback({color:'#d7b94b'});
-         scroll()
      }
 
     return(
@@ -46,9 +47,15 @@ function Transport(props){
             <div className="opactity-bg"/>
             <div className="landing-transport">
                 <ul>
-                    <li onClick={()=>handleTransportClick(setWalkStyle)} onMouseEnter={handleSenderismo}><FontAwesomeIcon icon={faWalking} size="lg" style={walkStyle} /></li>
-                    <li onClick={()=>handleTransportClick(setBicyStyle)} onMouseEnter={handleBici}> <FontAwesomeIcon icon={faBicycle} size="lg" style={bicyStyle} /></li>
-                    <li onClick={()=>handleTransportClick(setHorseStyle)} onMouseEnter={handleCaballo}> <FontAwesomeIcon icon={faHorse} size="lg" style={horseStyle}/></li>
+                    <Link  to="way" spy={true} smooth={true} offset={50} duration={100} >
+                        <li onClick={()=>handleTransportClick(setWalkStyle)} onMouseEnter={handleSenderismo}><FontAwesomeIcon icon={faWalking} size="lg" style={walkStyle} /></li>
+                    </Link>
+                    <Link  to="way" spy={true} smooth={true} offset={50} duration={100} >
+                        <li onClick={()=>handleTransportClick(setBicyStyle)} onMouseEnter={handleBici}><FontAwesomeIcon icon={faBicycle} size="lg" style={bicyStyle} /></li>
+                    </Link>
+                    <Link  to="way" spy={true} smooth={true} offset={50} duration={100} >
+                        <li onClick={()=>handleTransportClick(setHorseStyle)} onMouseEnter={handleCaballo}> <FontAwesomeIcon icon={faHorse} size="lg" style={horseStyle}/></li>
+                    </Link>
                     <li id="bg" className="bg"style={style} ></li>                    
                 </ul>
             </div>

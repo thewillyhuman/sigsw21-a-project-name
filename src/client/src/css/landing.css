@@ -3,7 +3,7 @@
     height: 100%;
     display: grid;
     justify-content: center;
-    grid-template-rows: 10% 90%;
+    grid-template-rows: 10% 40%;
     text-align: center;
     padding-top: 10vh;
   }
@@ -19,7 +19,7 @@
     height: 100%;
     display: grid;
     justify-content: center;
-    grid-template-rows: 25% auto;
+    grid-template-rows: 16% auto;
     text-align: center;
     padding-top: 15vh;
   }
@@ -28,9 +28,9 @@
     height: 100%;
     display: grid;
     justify-content: center;
-    grid-template-rows: 25% 30% 5%;
+    grid-template-rows: 16% 20% 5%;
     text-align: center;
-    padding-top: 25vh;
+    padding-top: 24vh;
   }
 
  ul li{
@@ -75,18 +75,19 @@ svg:hover{
   }
   
 
-  
+  @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Noto+Sans+JP:wght@100&family=PT+Serif:wght@700&family=Roboto:wght@100&family=Yaldevi:wght@600&family=Yanone+Kaffeesatz&display=swap');
 div h1{
     color:white;
-    font-size: 4em;
-    text-shadow: 3px 3px #222;
+    font-size: 7em;
+    text-shadow: 2px 2px #222;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
 /* Planificate button */
 
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 
-a {
+.planificatBtn {
   transform: translate(0%, 0%);
   color: #ffff !important;
   text-decoration: none !important;
@@ -99,7 +100,7 @@ a {
   border: 2px solid #ffff;
   transition: 0.02s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
 }
-a::before {
+.planificatBtn::before {
   content: "";
   display: inline-block;
   position: absolute;
@@ -111,7 +112,7 @@ a::before {
   transition: 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1), left 0.3s cubic-bezier(0.1, 0, 0.1, 1);
   z-index: -1;
 }
-a::after {
+.planificatBtn::after {
   content: "";
   display: inline-block;
   background-image: url("https://image.flaticon.com/icons/png/128/109/109617.png");
@@ -125,15 +126,15 @@ a::after {
   background-position: center;
   transition: right 0.3s cubic-bezier(0.1, 0, 0.1, 1);
 }
-a:hover {
+.planificatBtn:hover {
   padding: 0.5em 3.5em 0.5em 0.5em;
 }
-a:hover::before {
+.planificatBtn:hover::before {
   left: calc(100% - 3em);
   right: 0;
   transition: 0.3s cubic-bezier(0.1, 0, 0.1, 1), left 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
 }
-a:hover::after {
+.planificatBtn:hover::after {
   right: 0;
   transition: right 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
 }
