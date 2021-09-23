@@ -18,7 +18,7 @@ function App() {
         >
           Learn React
         </a>
-        <Map route="camino_frances" style="cs.frances" />
+        <Map route="camino_frances" route_style="cs.frances" />
       </header>
     </div>
   );
