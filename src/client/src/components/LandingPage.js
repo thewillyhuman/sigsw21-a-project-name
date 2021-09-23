@@ -1,11 +1,13 @@
 import { useHistory } from "react-router-dom";
-import {Row,Col,Card,Button} from 'react-bootstrap';
+import {Row,Col,Card,Form,Button} from 'react-bootstrap';
 import { useEffect,useState } from "react";
 import background from '../resoruces/fondo.jpg';
 import senderismo from '../resoruces/senderismo.jpg';
 import bici from '../resoruces/bici.jpg';
 import horse from '../resoruces/horse.jpg';
 import cFrances from '../resoruces/camino_frances.jpg';
+import cPrimitivo from '../resoruces/camino_primitivo.jpg';
+import cInvierno from '../resoruces/camino_invierno.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHorse,faBicycle,faWalking, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
 import { Link,  Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
@@ -18,6 +20,7 @@ function LandingPage(){
     const [walkStyle,setWalkStyle] = useState(iconStyle);
     const [bicyStyle,setBicyStyle] = useState(iconStyle);
     const [horseStyle,setHorseStyle] = useState(iconStyle);
+    const [isLoading, setLoading] = useState(false);
 
     function handleSenderismo() {
         setStyle({
@@ -45,8 +48,8 @@ function LandingPage(){
         scrollTo()
     }
 
+
     const scrollTo = function(to) {
-        console.log('ee')
         scroll.scrollMore(1000,{ 
             duration: 100,
             delay: 0,
@@ -54,6 +57,16 @@ function LandingPage(){
         });
       }
 
+
+    const handlePlanify= () => setLoading(true);
+
+      useEffect(() => {
+        if (isLoading) {
+          setTimeout(()=>{
+            setLoading(false);
+          },2000)
+        }
+      }, [isLoading]);
 
     return (
         <>
@@ -75,44 +88,54 @@ function LandingPage(){
             <h1>Escoge un camino</h1>
             <Row>
             <Col>
-            <Card style={{ width: '18rem' }}>
+            <Card onClick={scrollTo} style={{ width: '18rem', height:'25rem'}}>
                 <Card.Img variant="top" src={cFrances} />
                 <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
+                    <Card.Title>Camino Francés</Card.Title>
                     <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
+                    El Camino Francés es el itinerario jacobeo con mayor tradición histórica y el más reconocido internacionalmente.
                     </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
                 </Card.Body>
             </Card>
             </Col>
             <Col>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={cFrances} />
+            <Card onClick={scrollTo} style={{ width: '18rem',height:'25rem' }}>
+                <Card.Img variant="top" src={cPrimitivo} />
                 <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
+                    <Card.Title>Camino Primitivo</Card.Title>
                     <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
+                    El Camino Primitivo de peregrinación a Compostela fue el utilizado por los primeros devotos, llegados del naciente reino asturiano. Se trata, por lo tanto, del primer itinerario jacobeo
                     </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
                 </Card.Body>
             </Card>
             </Col>
             <Col>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={cFrances} />
+            <Card onClick={scrollTo} style={{ width: '18rem', height:'25rem' }}>
+                <Card.Img variant="top" src={cInvierno} />
                 <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
+                    <Card.Title>Camino de Invierno</Card.Title>
                     <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
+                    El Camino de Invierno es la entrada natural a Galicia desde la meseta, un acceso ya usado por los romanos. Pudo ser una alternativa en época invernal a la dura subida a las cumbres nevadas de O Cebreiro.
                     </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
                 </Card.Body>
             </Card>
             </Col>
+            </Row>
+        </div>
+        <div className="landing-config-time">
+            <h1>Planifica tu viaje</h1>
+            <Row>
+                <Col>
+                    <Form.Label>Días</Form.Label>
+                    <Form.Control size="lg" type="input" placeholder="24" />
+                </Col>
+                <Col>
+                    <Form.Label>Km/Día</Form.Label>
+                    <Form.Control size="lg" type="input" placeholder="50" />
+                </Col>
+            </Row>
+            <Row>
+                <a href="#">Planificar</a>
             </Row>
         </div>
       </>

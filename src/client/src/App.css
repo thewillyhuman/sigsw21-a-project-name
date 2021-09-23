@@ -15,7 +15,7 @@ ul {
 
 .black-container{
   background-color: black;
-  opacity: 0.4;
+  opacity: 0.45;
   position: absolute; 
   top:0; 
   bottom: 0; 
@@ -44,10 +44,18 @@ ul {
   height: 100%;
   display: grid;
   justify-content: center;
-  align-items: center;
-  grid-template-rows: 3% 90%;
+  grid-template-rows: 25% auto;
   text-align: center;
-  padding-top: 10vh;
+  padding-top: 15vh;
+}
+
+.landing-config-time{
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  grid-template-rows: 25% 30% 5%;
+  text-align: center;
+  padding-top: 25vh;
 }
 
 
@@ -65,6 +73,12 @@ ul {
 }
 
 .landing-config-way h1{
+  color:white;
+  font-size: 4em;
+  text-shadow: 3px 3px #222;
+}
+
+.landing-config-time h1{
   color:white;
   font-size: 4em;
   text-shadow: 3px 3px #222;
@@ -177,3 +191,78 @@ svg:hover{
   top:0;
   left: 40px;
 }
+
+.card img{
+  height: 12rem;
+}
+
+.card{
+  cursor: pointer;
+  transition: 0.5s;
+  margin: 3vh;
+}
+
+.card:hover{
+  transform: scale(1.2,1.2);
+}
+
+label{
+  color:white;
+  font-size: 2em;;
+}
+
+
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+
+a {
+  transform: translate(0%, 0%);
+  color: #ffff !important;
+  text-decoration: none !important;;
+  font-size: 2em;
+  display: inline-block;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  padding: 0.5em 2em;
+  border: 2px solid #ffff;
+  transition: 0.02s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+}
+a::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  background: #ffff;
+  transition: 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1), left 0.3s cubic-bezier(0.1, 0, 0.1, 1);
+  z-index: -1;
+}
+a::after {
+  content: "";
+  display: inline-block;
+  background-image: url("https://image.flaticon.com/icons/png/128/109/109617.png");
+  position: absolute;
+  top: 0;
+  left: calc(100% - 3em);
+  right: 3em;
+  bottom: 0;
+  background-size: 1.5em;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: right 0.3s cubic-bezier(0.1, 0, 0.1, 1);
+}
+a:hover {
+  padding: 0.5em 3.5em 0.5em 0.5em;
+}
+a:hover::before {
+  left: calc(100% - 3em);
+  right: 0;
+  transition: 0.3s cubic-bezier(0.1, 0, 0.1, 1), left 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+}
+a:hover::after {
+  right: 0;
+  transition: right 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
+}
+
