@@ -2,6 +2,7 @@ import {Row,Col,Container} from 'react-bootstrap';
 
 function PlanificatePage(){
     return(
+        <div className="planificate-bg">
         <Container className="planificate-body">
             <Row>
                 <Col md={4}>
@@ -27,6 +28,7 @@ function PlanificatePage(){
                 </Col>
             </Row> 
         </Container>
+        </div>
     )
 }
 

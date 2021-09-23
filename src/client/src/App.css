@@ -9,13 +9,9 @@ body {
   overflow: hidden;
 }
 
-ul {
-  list-style-type: none;
-}
-
-.black-container{
+.opactity-bg{
   background-color: black;
-  opacity: 0.45;
+  opacity: 0.5;
   position: absolute; 
   top:0; 
   bottom: 0; 
@@ -24,245 +20,18 @@ ul {
   z-index: -1;
 }
 
-
-
 #root{
   height: 100% !important;
 }
 
-
-.landing{
-  height: 100%;
-  display: grid;
-  justify-content: center;
-  grid-template-rows: 10% 90%;
-  text-align: center;
-  padding-top: 10vh;
-}
-
-.landing-config-way{
-  height: 100%;
-  display: grid;
-  justify-content: center;
-  grid-template-rows: 25% auto;
-  text-align: center;
-  padding-top: 15vh;
-}
-
-.landing-config-time{
-  height: 100%;
-  display: grid;
-  justify-content: center;
-  grid-template-rows: 25% 30% 5%;
-  text-align: center;
-  padding-top: 25vh;
-}
-
-
-.landing-body{
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  
-}
-
-.landing h1{
-  color:white;
-  font-size: 4em;
-  text-shadow: 3px 3px #222;
-}
-
-.landing-config-way h1{
-  color:white;
-  font-size: 4em;
-  text-shadow: 3px 3px #222;
-}
-
-.landing-config-time h1{
-  color:white;
-  font-size: 4em;
-  text-shadow: 3px 3px #222;
-}
-
-.label{
-  color:white;
-  text-shadow: 2px 2px 4px #000000;
-}
-
-
-
-.day-km-config{
-  display: grid;
-  grid-template-columns: auto auto;
-}
-
-.btnPlanificar{
-  width: 100%;
-}
-
-.planificate-body{
-  display: grid;
-  height: 100%;
-  padding: 10vh;
-}
-
-.planificate-body-col2{
-  display: grid;
-  height: 100%;
-}
-
-.days-panel{
-  border: 1px solid #222;
-  height: 100%;
-  background: white;
-}
-
-.day-container{
-  border: 1px solid #222;
-  height: 100%;
-  display: grid;
-  background: white;
-}
-
-.info-day-panel{
-  border: 1px solid #222;
-}
-
-.map-panel{
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  border-top: 1px solid #222 ;
-}
-
-
-
-ul li{
-  color:#ffff;
-  font-size: 3em;
-  display: inline;
-  margin: 10vh;
-}
-
-
-@font-face {
-  font-family:'HeydingsCommonIconsRegular';
-  src: url('http://ianfarb.com/random/heydings_icons-webfont.eot');
-  src: url('http://ianfarb.com/random/heydings_icons-webfont.eot?#iefix') format('embedded-opentype'),
-       url('http://ianfarb.com/random/heydings_icons-webfont.woff') format('woff'),
-       url('http://ianfarb.com/random/heydings_icons-webfont.ttf') format('truetype'),
-       url('http://ianfarb.com/random/heydings_icons-webfont.svg#HeydingsCommonIconsRegular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-
-}
-
-
 .bg {
-position: fixed;
-z-index: -2;
-top: 0;
-right: 0;
-bottom: 0;
-left: 0;
-transition: .25s;
-pointer-events: none;
-margin: 0;
-}
-
-
-
-li:hover  {
-    cursor: pointer;
-}
-
-svg:hover{
-  color: #d7b94b !important;
-}
-  
-
-.way-container{
-  height: 100%;
-}
-
-#backArrow{
-  position: absolute;
-  top:0;
-  left: 40px;
-}
-
-.card img{
-  height: 12rem;
-}
-
-.card{
-  cursor: pointer;
-  transition: 0.5s;
-  margin: 3vh;
-}
-
-.card:hover{
-  transform: scale(1.2,1.2);
-}
-
-label{
-  color:white;
-  font-size: 2em;;
-}
-
-
-
-@import url("https://fonts.googleapis.com/css?family=Montserrat");
-
-a {
-  transform: translate(0%, 0%);
-  color: #ffff !important;
-  text-decoration: none !important;;
-  font-size: 2em;
-  display: inline-block;
-  font-family: Montserrat;
-  text-transform: uppercase;
-  padding: 0.5em 2em;
-  border: 2px solid #ffff;
-  transition: 0.02s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
-}
-a::before {
-  content: "";
-  display: inline-block;
-  position: absolute;
+  position: fixed;
+  z-index: -2;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  right: 100%;
-  bottom: 0;
-  background: #ffff;
-  transition: 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1), left 0.3s cubic-bezier(0.1, 0, 0.1, 1);
-  z-index: -1;
+  transition: .25s;
+  pointer-events: none;
+  margin: 0;
 }
-a::after {
-  content: "";
-  display: inline-block;
-  background-image: url("https://image.flaticon.com/icons/png/128/109/109617.png");
-  position: absolute;
-  top: 0;
-  left: calc(100% - 3em);
-  right: 3em;
-  bottom: 0;
-  background-size: 1.5em;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: right 0.3s cubic-bezier(0.1, 0, 0.1, 1);
-}
-a:hover {
-  padding: 0.5em 3.5em 0.5em 0.5em;
-}
-a:hover::before {
-  left: calc(100% - 3em);
-  right: 0;
-  transition: 0.3s cubic-bezier(0.1, 0, 0.1, 1), left 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
-}
-a:hover::after {
-  right: 0;
-  transition: right 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
-}
-

@@ -1,0 +1,43 @@
+
+.planificate-bg{
+    display: grid;
+    height: 100%;
+    width: 100%;
+    background-image: url("/src/resoruces/fondo.jpg");
+  }
+  
+  .planificate-body{
+    display: grid;
+    height: 100%;
+    padding: 10vh;
+  }
+  
+  .planificate-body-col2{
+    display: grid;
+    height: 100%;
+  }
+  
+  .days-panel{
+    border: 1px solid #222;
+    height: 100%;
+    background: white;
+  }
+  
+  .day-container{
+    border: 1px solid #222;
+    height: 100%;
+    display: grid;
+    background: white;
+  }
+  
+  .info-day-panel{
+    border: 1px solid #222;
+  }
+  
+  .map-panel{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border-top: 1px solid #222 ;
+  }
