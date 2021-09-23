@@ -32,7 +32,8 @@ public class Route {
 
     protected Route(String originPlace, String destinationPlace, double distance, double duration,
                  List<RoutePlace> interestPlaces, List<RoutePlace> accommodations, List<Route> routeStages,
-                 List<String> routeLocations) {
+                 List<String> routeLocations)
+    {
         this.originPlace = originPlace;
         this.destinationPlace = destinationPlace;
         this.distance = distance;
