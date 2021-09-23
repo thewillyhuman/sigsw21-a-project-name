@@ -1,23 +1,25 @@
 import React, { useEffect } from "react";
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import WMSLoader from "./WMSLoader";
+import { WMSLayer, PointsLayer, PolyLineLayer } from "./Layers";
+import styles from "./map_styles.json";
 import "./map.sass";
 
 const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 const GOOGLE_MAPS_ENDPOINT = process.env.REACT_APP_GOOGLE_MAPS_API_ENDPOINT;
-const SUPPORTED_ROUTES = ['camino_frances', 'caminos_galicia', 'caminos_turonensis'];
-const STYLES = ['cs.frances', 'cs.galicia', 'cs.turonensis']
 
 const helmetContext = {};
 
-function Map() {
+let routeLayer, pointsOfInterestLayer, accomodationsLayer;
+let santiagoWMS, elevationWMS;
+
+function Map(props) {
     let map;
 
     useEffect(() => {
 
     });
 
-    const loadDayRoute = function(day) {
+    const loadDayRoute = function(_) {
         // TODO: functionality of loading the route of a given day
     };
 
@@ -27,38 +29,46 @@ function Map() {
         map = new window.google.maps.Map(
             document.getElementById("google-map"),
             {
-            center: new window.google.maps.LatLng(latitude, longitude),
-            zoom: 6,
-            mapTypeId: window.google.maps.MapTypeId.TERRAIN,
-            zoomControl: true,
-            mapTypeControl: false,
-            scaleControl: false,
-            streetViewControl: false,
-            rotateControl: false,
-            fullscreenControl: false,
-            scrollwheel: false,
-            draggable: true,
-            gestureHandling: "cooperative"
+                center: new window.google.maps.LatLng(latitude, longitude),
+                zoom: 6,
+                mapTypeId: window.google.maps.MapTypeId.ROADMAP,
+                zoomControl: true,
+                mapTypeControl: false,
+                scaleControl: false,
+                streetViewControl: false,
+                rotateControl: false,
+                fullscreenControl: false,
+                draggable: true,
+                gestureHandling: "cooperative",
+                styles: styles
             }
         );
 
-        console.log(process.env);
-        let santiagoWMS = new WMSLoader(process.env.REACT_APP_SANTIAGO_WMS_ENDPOINT, SUPPORTED_ROUTES, STYLES, 'image/png', map);
-        
-      	let overlayOptions = {
-            getTileUrl: santiagoWMS.getTile.bind(santiagoWMS),
-            tileSize: new window.google.maps.Size(256, 256)
-        };
-        
-        let overlayWMS = new window.google.maps.ImageMapType(overlayOptions);
-        map.overlayMapTypes.push(overlayWMS);
+        // carga de los WMS. el orden es importante para la superposición de capas
+        elevationWMS = new WMSLayer(process.env.REACT_APP_ELEVACIONES_WMS_ENDPOINT, 'EL.GridCoverage',
+            'EL.GridCoverage.Default', 'image/png', map, 0.35, true);
+        santiagoWMS = new WMSLayer(process.env.REACT_APP_SANTIAGO_WMS_ENDPOINT, props.route,
+            props.style, 'image/png', map, 1.0, true);
     };
+
     window.initMap = initMap;
 
     return (
         <HelmetProvider context={helmetContext}>
             <section id="map-wrapper">
                 <div id="google-map"></div>
+                <ul id="layer-buttons">
+                    <li>
+                        <input type="checkbox"></input>
+                        <p>Elevaciones</p>
+                        <img src="" />
+                    </li>
+                    <li>
+                        <input type="checkbox"></input>
+                        <p>Camino</p>
+                        <img src="" />
+                    </li>
+                </ul>
 
                 <Helmet>
                     <script
