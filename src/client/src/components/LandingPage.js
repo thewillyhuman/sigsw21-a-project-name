@@ -3,15 +3,27 @@ import Transport from './landing/Transport';
 import Way from './landing/Way';
 import PlanificatePage from './PlanificatePage';
 import TimeAndDistance from './landing/TimeAndDistance';
-import { Element, Events, scrollSpy } from 'react-scroll'
+import { Element, Events, scrollSpy, scroller } from 'react-scroll'
 import '../css/landing.css';
-import { useEffect } from "react";
+import React , { useEffect,useState,createContext, useContext} from "react";
+
+export const LandingContext = React.createContext();
 
 function LandingPage(){
 
     const history = useHistory();
    
     const handlePlanify= () => history.push('/planificate');
+
+
+    function scrollToActive(to) {
+        scroller.scrollTo(to, {
+          duration: 100,
+          delay: 0,
+          smooth: 'easeInOutQuart'
+        })
+      }
+    
 
     useEffect(()=>{
         Events.scrollEvent.register('begin', function(to, element) {
@@ -23,22 +35,29 @@ function LandingPage(){
           });
         scrollSpy.update();
     },[])
+    
 
     return (
-    <>
-        <Transport/>
+    <LandingContext.Provider
+        value={
+          {
+          scrollToActive:scrollToActive
+        }}>
+        <Element name="transport" className="element">
+            <Transport />
+        </Element>
         <Element name="way" className="element">
-            <Way/>
+            <Way />
         </Element>
         <Element name="time-distance" className="element">
-            <TimeAndDistance />
+            <TimeAndDistance  />
         </Element>
         <Element name="planificate" className="element">
-            <PlanificatePage/>
+            <PlanificatePage />
         </Element>
         
 
-    </>
+        </LandingContext.Provider>
     );
 }
 

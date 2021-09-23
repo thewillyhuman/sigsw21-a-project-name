@@ -1,7 +1,16 @@
+import { useContext } from "react";
 import {Row,Col,Form} from 'react-bootstrap';
 import { Link } from 'react-scroll';
+import {LandingContext} from '../LandingPage';
 
 function TimeAndDistance(){
+
+    const context = useContext(LandingContext);
+
+    const handleClick = function(){
+        window.removeEventListener("resize", ()=>context.scrollToActive('planificate'));
+        window.addEventListener("resize",()=>context.scrollToActive('planificate'));
+    }
 
     return(
         <div className="landing-config-time">
@@ -18,8 +27,8 @@ function TimeAndDistance(){
             </Row>
             <Row>
                 {/*<a onClick={scroll}>Planificar</a>*/}
-                <Link  to="planificate" spy={true} smooth={true} offset={50} duration={100} >
-                    <a className="planificatBtn" href="#">Planificar</a>
+                <Link  to="planificate" spy={true} smooth={true} offset={50} duration={500} >
+                    <a className="planificatBtn" onClick={handleClick}>Planificar</a>
                 </Link>
             </Row>
         </div>

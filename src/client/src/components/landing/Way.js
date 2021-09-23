@@ -1,18 +1,27 @@
+import { useContext } from "react";
 import {Row,Col,Card,Form,Button} from 'react-bootstrap';
 import { Link } from 'react-scroll';
 import cFrances from '../../resoruces/camino_frances.jpg';
 import cPrimitivo from '../../resoruces/camino_primitivo.jpg';
 import cInvierno from '../../resoruces/camino_invierno.jpg';
+import {LandingContext} from '../LandingPage';
 
 function Way(){
+
+    const context = useContext(LandingContext);
+
+    const handleClick = function(){
+        window.removeEventListener("resize", ()=>context.scrollToActive('time-distance'));
+        window.addEventListener("resize",()=>context.scrollToActive('time-distance'));
+    }
 
     return(
     <div className="landing-config-way">
             <h1>Escoge un camino</h1>
             <Row>
             <Col>
-            <Link  to="time-distance" spy={true} smooth={true} offset={50} duration={100} >
-                <Card style={{ width: '18rem', height:'25rem'}}>
+            <Link  to="time-distance" spy={true} smooth={true} offset={50} duration={500} >
+                <Card onClick={handleClick} style={{ width: '18rem', height:'25rem'}}>
                     <Card.Img variant="top" src={cFrances} />
                     <Card.Body>
                         <Card.Title>Camino Francés</Card.Title>
@@ -24,8 +33,8 @@ function Way(){
             </Link>
             </Col>
             <Col>
-            <Link  to="time-distance" spy={true} smooth={true} offset={50} duration={100} >
-            <Card style={{ width: '18rem',height:'25rem' }}>
+            <Link  to="time-distance" spy={true} smooth={true} offset={50} duration={500} >
+            <Card onClick={handleClick}style={{ width: '18rem',height:'25rem' }}>
                 <Card.Img variant="top" src={cPrimitivo} />
                 <Card.Body>
                     <Card.Title>Camino Primitivo</Card.Title>
@@ -37,8 +46,8 @@ function Way(){
             </Link>
             </Col>
             <Col>
-            <Link  to="time-distance" spy={true} smooth={true} offset={50} duration={100} >
-            <Card style={{ width: '18rem', height:'25rem' }}>
+            <Link  to="time-distance" spy={true} smooth={true} offset={50} duration={500} >
+            <Card onClick={handleClick}style={{ width: '18rem', height:'25rem' }}>
                 <Card.Img variant="top" src={cInvierno} />
                 <Card.Body>
                     <Card.Title>Camino de Invierno</Card.Title>

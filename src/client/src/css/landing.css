@@ -33,6 +33,12 @@
     padding-top: 24vh;
   }
 
+  @media(max-width: 1000px){
+    .landing-config-time{
+      grid-template-rows: 10% 10% 5% !important
+    }
+  }
+
  ul li{
     color:#ffff;
     font-size: 3em;
