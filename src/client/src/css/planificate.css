@@ -1,15 +1,13 @@
 
 .planificate-bg{
     display: grid !important;
-    height: 100% !important;
-    width: 100% !important;
-
+    height: 100%;
+    padding: 8vh;
   }
   
   .planificate-body{
+    height: 50%;
     display: grid;
-    height: 100%;
-    padding: 10vh;
   }
   
   .planificate-body-col2{

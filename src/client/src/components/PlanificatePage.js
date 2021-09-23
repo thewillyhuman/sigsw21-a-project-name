@@ -1,4 +1,5 @@
 import {Row,Col,Container} from 'react-bootstrap';
+import '../css/planificate.css'
 
 function PlanificatePage(){
     return(

@@ -1,4 +1,5 @@
 import {Row,Col,Form} from 'react-bootstrap';
+import { Link } from 'react-scroll';
 
 function TimeAndDistance(){
 
@@ -17,7 +18,9 @@ function TimeAndDistance(){
             </Row>
             <Row>
                 {/*<a onClick={scroll}>Planificar</a>*/}
-                <a className="planificatBtn" href="#">Planificar</a>
+                <Link  to="planificate" spy={true} smooth={true} offset={50} duration={100} >
+                    <a className="planificatBtn" href="#">Planificar</a>
+                </Link>
             </Row>
         </div>
     )

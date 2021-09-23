@@ -33,7 +33,10 @@ function LandingPage(){
         <Element name="time-distance" className="element">
             <TimeAndDistance />
         </Element>
-        <PlanificatePage/>
+        <Element name="planificate" className="element">
+            <PlanificatePage/>
+        </Element>
+        
 
     </>
     );
