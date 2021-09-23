@@ -57,14 +57,17 @@ function PlanificatePage(){
                         <Row>
                             <Col>
                                 <div className="day-panel">
-                                    <p>Día 1</p>
+                                    <div className="day-panel-sub">
+                                       {/* <h2>Día 1 - Obreiro</h2> */}
+                                        
+                                    </div>
+                                    
                                 </div>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
                                 <div className="map-panel">
-                                    <p>Esto es un mapa</p>
                                 </div>
                             </Col>
                         </Row>
