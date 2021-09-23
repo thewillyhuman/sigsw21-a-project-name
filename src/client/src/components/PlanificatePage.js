@@ -6,8 +6,49 @@ function PlanificatePage(){
         <div className="planificate-bg">
         <Container className="planificate-body">
             <Row>
-                <Col md={4}>
-                    <div className="days-panel"><p>Days Panel</p></div>
+                <Col md={3}>
+                    <div className="days-panel">
+                        <div className="place">
+                            <div className="place-name">
+                                <ul>
+                                    <li>Ocebreiro</li>
+                                    <li>Liñares</li>
+                                    <li>Hospital</li>
+                                    <li>Padornelo</li>
+                                    <li>Fondría</li>
+                                </ul>
+                            </div>
+
+                            <div className="place-day">
+                                <ul>
+                                    <li>Dia 1</li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
+                            <div className="place-name">
+                                <ul>
+                                    <li>Ocebreiro</li>
+                                    <li>Liñares</li>
+                                    <li>Hospital</li>
+                                    <li>Padornelo</li>
+                                    <li>Fondría</li>
+                                </ul>
+                            </div>
+
+                            <div className="place-day">
+                                <ul>
+                                    <li>Dia 2</li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </Col>
                 <Col md>
                     <div className="day-container">
@@ -34,6 +75,16 @@ function PlanificatePage(){
 }
 
 export default PlanificatePage;
+
+/*
+
+<div className="place-dot">
+                                <div className="dot-line">
+                                    <div className="dot">
+                                    </div>
+                                    
+                                </div>
+                            </div>*/
 
 /*
  <Container  className="planificate-body">

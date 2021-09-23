@@ -2,11 +2,11 @@
 .planificate-bg{
     display: grid !important;
     height: 100%;
-    padding: 8vh;
+    padding-top: 15vh;
   }
   
   .planificate-body{
-    height: 50%;
+    height: 35%;
     display: grid;
   }
   
@@ -39,3 +39,59 @@
     height: 100%;
     border-top: 1px solid #222 ;
   }
+
+  .days-panel {
+    display: grid;
+    grid-template-columns: 100%;
+  }
+  
+.place{
+  display: grid;
+  grid-template-columns: 50% 50% ;
+  text-align: center;
+  grid-template-rows: 35% auto;
+}
+.place-name{
+}
+
+.place-name ul li{
+  font-size: 1.5em;
+  color:#222;
+  display: list-item;
+  margin: 0;
+  list-style-type: none;
+  margin-left: -4vh;
+}
+
+.place-day{
+  border-left: 1px solid #222;
+  display: grid;
+}
+
+
+.place-day ul li{
+  font-size: 1.5em;
+  color:#222;
+  display: list-item;
+  margin: 0;
+  
+}
+
+
+
+
+.place-day ul{
+  position: relative;
+  left:-14px;
+  content: '■';
+}
+
+.dot-line{
+  background: #222;
+}
+
+.dot{
+  height: 2vh;
+  object-fit: cover;
+}
+
