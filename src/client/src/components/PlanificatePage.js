@@ -30,17 +30,19 @@ function PlanificatePage(){
                             </div>
                             <div className="place-name">
                                 <ul>
-                                    <li>Ocebreiro</li>
-                                    <li>Liñares</li>
-                                    <li>Hospital</li>
-                                    <li>Padornelo</li>
-                                    <li>Fondría</li>
+                                    <li>Biduedo</li>
+                                    <li>Triacastela</li>
+                                    <li>San Xil</li>
+                                    <li>Aguiada</li>
+                                    <li>Sarria</li>
+                                    <li>Barbadelo</li>
                                 </ul>
                             </div>
 
                             <div className="place-day">
                                 <ul>
                                     <li>Dia 2</li>
+                                    <li></li>
                                     <li></li>
                                     <li></li>
                                     <li></li>

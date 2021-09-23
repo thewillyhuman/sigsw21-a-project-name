@@ -16,16 +16,12 @@
   }
   
   .days-panel{
-    border: 1px solid #222;
     height: 100%;
-    background: white;
   }
   
   .day-container{
-    border: 1px solid #222;
     height: 100%;
     display: grid;
-    background: white;
   }
   
   .info-day-panel{
@@ -37,7 +33,6 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    border-top: 1px solid #222 ;
   }
 
   .days-panel {
@@ -49,29 +44,33 @@
   display: grid;
   grid-template-columns: 50% 50% ;
   text-align: center;
-  grid-template-rows: 35% auto;
+  grid-template-rows: 45% auto;
 }
 .place-name{
 }
 
 .place-name ul li{
-  font-size: 1.5em;
-  color:#222;
+  font-size: 1.8em;
+  color:#ffff;
   display: list-item;
   margin: 0;
   list-style-type: none;
   margin-left: -4vh;
 }
 
+.place-name ul li:hover{
+  transform: scale(1.1);
+}
+
 .place-day{
-  border-left: 1px solid #222;
+  border-left: 1px solid #ffff;
   display: grid;
 }
 
 
 .place-day ul li{
-  font-size: 1.5em;
-  color:#222;
+  font-size: 1.8em;
+  color:#ffff;
   display: list-item;
   margin: 0;
   
@@ -82,7 +81,7 @@
 
 .place-day ul{
   position: relative;
-  left:-14px;
+  left:-10px;
   content: '■';
 }
 
