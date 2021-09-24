@@ -10,18 +10,19 @@ function Way(){
 
     const context = useContext(LandingContext);
 
-    const handleClick = function(){
-        window.removeEventListener("resize", ()=>context.scrollToActive('time-distance'));
-        window.addEventListener("resize",()=>context.scrollToActive('time-distance'));
+    const handleClick = function(way){
+        context.setTransport(way);
+        window.removeEventListener("resize", ()=>context.scrollToActive('planificate'));
+        window.addEventListener("resize",()=>context.scrollToActive('planificate'));
     }
 
     return(
     <div className="landing-config-way">
             <h1>Escoge un camino</h1>
+            <Link  to="planificate" spy={true} smooth={true} offset={50} duration={500} >
             <Row>
             <Col>
-            <Link  to="time-distance" spy={true} smooth={true} offset={50} duration={500} >
-                <Card onClick={handleClick} style={{ width: '18rem', height:'25rem'}}>
+                <Card onClick={()=>handleClick('francés')} style={{ width: '18rem', height:'25rem'}}>
                     <Card.Img variant="top" src={cFrances} />
                     <Card.Body>
                         <Card.Title>Camino Francés</Card.Title>
@@ -30,11 +31,9 @@ function Way(){
                         </Card.Text>
                     </Card.Body>
                 </Card>
-            </Link>
             </Col>
             <Col>
-            <Link  to="time-distance" spy={true} smooth={true} offset={50} duration={500} >
-            <Card onClick={handleClick}style={{ width: '18rem',height:'25rem' }}>
+            <Card onClick={()=>handleClick('primitivo')}style={{ width: '18rem',height:'25rem' }}>
                 <Card.Img variant="top" src={cPrimitivo} />
                 <Card.Body>
                     <Card.Title>Camino Primitivo</Card.Title>
@@ -43,11 +42,9 @@ function Way(){
                     </Card.Text>
                 </Card.Body>
             </Card>
-            </Link>
             </Col>
             <Col>
-            <Link  to="time-distance" spy={true} smooth={true} offset={50} duration={500} >
-            <Card onClick={handleClick}style={{ width: '18rem', height:'25rem' }}>
+            <Card onClick={()=>handleClick('invierno')}style={{ width: '18rem', height:'25rem' }}>
                 <Card.Img variant="top" src={cInvierno} />
                 <Card.Body>
                     <Card.Title>Camino de Invierno</Card.Title>
@@ -56,9 +53,9 @@ function Way(){
                     </Card.Text>
                 </Card.Body>
             </Card>
-            </Link>
             </Col>
             </Row>
+            </Link>
         </div>
     )
 }

@@ -1,10 +1,12 @@
 import {Row,Col,Container} from 'react-bootstrap';
-import '../css/planificate.css'
+import Map from '../map/Map';
+import '../../css/planificate.css'
 
-function PlanificatePage(){
+function RouteVisualizer(){
+
     return(
         <div className="planificate-bg">
-        <Container className="planificate-body">
+        <Container fluid className="planificate-body">
             <Row>
                 <Col md={3}>
                     <div className="days-panel">
@@ -54,20 +56,11 @@ function PlanificatePage(){
                 </Col>
                 <Col md>
                     <div className="day-container">
-                        <Row>
-                            <Col>
-                                <div className="day-panel">
-                                    <div className="day-panel-sub">
-                                       {/* <h2>Día 1 - Obreiro</h2> */}
-                                        
-                                    </div>
-                                    
-                                </div>
-                            </Col>
-                        </Row>
+          
                         <Row>
                             <Col>
                                 <div className="map-panel">
+                                    <Map route="camino_frances" route_style="cs.frances" />
                                 </div>
                             </Col>
                         </Row>
@@ -79,9 +72,22 @@ function PlanificatePage(){
     )
 }
 
-export default PlanificatePage;
+export default RouteVisualizer;
 
 /*
+
+
+              <Row>
+                            <Col>
+                                <div className="day-panel">
+                                    <div className="day-panel-sub">
+                                    <h2>Día 1 - Obreiro</h2> 
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </Col>
+                        </Row>
 
 <div className="place-dot">
                                 <div className="dot-line">

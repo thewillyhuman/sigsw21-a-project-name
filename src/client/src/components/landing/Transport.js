@@ -17,31 +17,36 @@ function Transport(props){
     const [bicyStyle,setBicyStyle] = useState(iconStyle);
     const [horseStyle,setHorseStyle] = useState(iconStyle);
 
-    function handleSenderismo() {
+    function handleWalk() {
         setStyle({
             backgroundImage: `url(${senderismo})`
         })
     }
 
-    function handleBici() {
+    function handleBicycle() {
         setStyle({
             backgroundImage: `url(${bici})`
         })
     }
 
-    function handleCaballo() {
+    function handleHorse() {
         setStyle({
             backgroundImage: `url(${horse})`
         })
     }
 
-    function handleTransportClick(callback){
-         setWalkStyle(iconStyle);
-         setBicyStyle(iconStyle);
-         setHorseStyle(iconStyle);
-         callback({color:'#d7b94b'});
-         window.removeEventListener("resize", ()=>context.scrollToActive('way'));
-         window.addEventListener("resize",()=>context.scrollToActive('way'));
+    function handleTransportClick(callback,transport){
+        removeStyles();
+        callback(pressedIcon);
+        context.setTransport(transport);
+        window.removeEventListener("resize", ()=>context.scrollToActive('way'));
+        window.addEventListener("resize",()=>context.scrollToActive('way'));
+     }
+
+     function removeStyles(){
+        setWalkStyle(iconStyle);
+        setBicyStyle(iconStyle);
+        setHorseStyle(iconStyle);
      }
 
     return(
@@ -51,13 +56,9 @@ function Transport(props){
             <div className="landing-transport">
                 <ul>
                     <Link  to="way" spy={true} smooth={true} offset={50} duration={500} >
-                        <li onClick={()=>handleTransportClick(setWalkStyle)} onMouseEnter={handleSenderismo}><FontAwesomeIcon icon={faWalking} size="lg" style={walkStyle} /></li>
-                    </Link>
-                    <Link  to="way" spy={true} smooth={true} offset={50} duration={500} >
-                        <li onClick={()=>handleTransportClick(setBicyStyle)} onMouseEnter={handleBici}><FontAwesomeIcon icon={faBicycle} size="lg" style={bicyStyle} /></li>
-                    </Link>
-                    <Link  to="way" spy={true} smooth={true} offset={50} duration={500} >
-                        <li onClick={()=>handleTransportClick(setHorseStyle)} onMouseEnter={handleCaballo}> <FontAwesomeIcon icon={faHorse} size="lg" style={horseStyle}/></li>
+                        <li onClick={()=>handleTransportClick(setWalkStyle,'walk')} onMouseEnter={handleWalk}><FontAwesomeIcon icon={faWalking} size="lg" style={walkStyle} /></li>
+                        <li onClick={()=>handleTransportClick(setBicyStyle,'bicycle')} onMouseEnter={handleBicycle}><FontAwesomeIcon icon={faBicycle} size="lg" style={bicyStyle} /></li>
+                        <li onClick={()=>handleTransportClick(setHorseStyle,'horse')} onMouseEnter={handleHorse}> <FontAwesomeIcon icon={faHorse} size="lg" style={horseStyle}/></li>
                     </Link>
                     <li id="bg" className="bg"style={style} ></li>                    
                 </ul>
@@ -72,6 +73,10 @@ var styles = {
 
 var iconStyle={
     color:'white'
+}
+
+var pressedIcon = {
+    color:'#d7b94b'
 }
 
 export default Transport;
