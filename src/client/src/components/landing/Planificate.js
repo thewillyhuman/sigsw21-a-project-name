@@ -11,33 +11,27 @@ function Planificate(){
     const context = useContext(LandingContext);
     const [days,setDays] = useState(10);
     const [km,setKm] = useState(sampleKm/10);
+    const [validated, setValidated] = useState(false);
 
-    const submit = function(planning){
+    const handleSubmit = (event) => {
+      const form = event.currentTarget;
+      event.preventDefault();
+      event.stopPropagation();
+
+      setValidated(true);
+      window.removeEventListener("resize", ()=>context.scrollTo('route-visualizer'));
+      window.addEventListener("resize",()=>context.scrollTo('route-visualizer'));
+
+      if (form.checkValidity() === true)
+        getRoute();
+    };
+
+    const getRoute = function(){
         context.setPlanning({
             days:days,
             km:km
         })
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        
-        var raw = JSON.stringify({
-          "road_name": "a",
-          "transportMethod": "pie",
-          "numberOfDays": 5
-        });
-        
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: raw,
-          redirect: 'follow'
-        };
-        
-        fetch("http://santiagoapp.wcr.es:8080/routes", requestOptions)
-          .then(response => response.text())
-          .then(result => console.log(result))
-          .catch(error => console.log('error', error));
-
+    
           var data = JSON.stringify({
             "road_name": "a",
             "transportMethod": "pie",
@@ -49,7 +43,8 @@ function Planificate(){
           
           xhr.addEventListener("readystatechange", function() {
             if(this.readyState === 4) {
-             // console.log(this.responseText);
+              console.log(this.responseText);
+              context.scrollTo('route-visualizer');
             }
           });
           
@@ -57,9 +52,6 @@ function Planificate(){
           xhr.setRequestHeader("Content-Type", "application/json");
           
           xhr.send(data);
-
-        window.removeEventListener("resize", ()=>context.scrollToActive('route-visualizer'));
-        window.addEventListener("resize",()=>context.scrollToActive('route-visualizer'));
     }
 
 
@@ -77,7 +69,7 @@ function Planificate(){
 
 
     return(
-       <>
+       <Form className="landing-config-time" noValidate validated={validated} onSubmit={handleSubmit}>
             <h1>Planifica tu viaje</h1>
       
             <Row>
@@ -91,9 +83,9 @@ function Planificate(){
                 </Col>
             </Row>
             <Row>
-                <button onClick={submit}className="planificatBtn">Planificar </button>
+                <button className="planificatBtn">Planificar </button>
             </Row>
-            </>
+            </Form>
     )
 }
 

@@ -39,8 +39,8 @@ function Transport(props){
         removeStyles();
         callback(pressedIcon);
         context.setTransport(transport);
-        window.removeEventListener("resize", ()=>context.scrollToActive('way'));
-        window.addEventListener("resize",()=>context.scrollToActive('way'));
+        window.removeEventListener("resize", ()=>context.scrollTo('way'));
+        window.addEventListener("resize",()=>context.scrollTo('way'));
      }
 
      function removeStyles(){

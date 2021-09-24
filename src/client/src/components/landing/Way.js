@@ -12,8 +12,8 @@ function Way(){
 
     const handleClick = function(way){
         context.setTransport(way);
-        window.removeEventListener("resize", ()=>context.scrollToActive('planificate'));
-        window.addEventListener("resize",()=>context.scrollToActive('planificate'));
+        window.removeEventListener("resize", ()=>context.scrollTo('planificate'));
+        window.addEventListener("resize",()=>context.scrollTo('planificate'));
     }
 
     return(

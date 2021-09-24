@@ -16,7 +16,7 @@ function LandingPage(){
     const [way,setWay] = useState('');
     const [planning,setPlanning] = useState({});
    
-    function scrollToActive(to) {
+    function scrollTo(to) {
         scroller.scrollTo(to, {
           duration: 100,
           delay: 0,
@@ -47,7 +47,7 @@ function LandingPage(){
           setTransport:setTransport,
           setWay:setWay,
           setPlanning:setPlanning,
-          scrollToActive:scrollToActive
+          scrollTo:scrollTo
         }}>
         <Element name="transport" className="element">
             <Transport />
