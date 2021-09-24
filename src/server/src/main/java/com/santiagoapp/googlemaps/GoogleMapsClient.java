@@ -6,6 +6,7 @@ import com.google.maps.DistanceMatrixApi;
 import com.google.maps.model.Distance;
 import com.google.maps.model.DistanceMatrix;
 import com.google.maps.model.TravelMode;
+import com.santiagoapp.routes.Ways;
 import com.santiagoapp.routes.model.Route;
 import com.santiagoapp.routes.model.RouteBuilder;
 
@@ -43,14 +44,12 @@ public class GoogleMapsClient {
             System.out.println(roadDistances[i]);
             sum = sum + roadDistances[i];
         }
-        System.out.println("Sum -------> " + sum);
+        System.out.println("Sum -------> " + sum / 1000 + " Kms.");
         Route route = RouteBuilder.newBuilder().build();
-
-
         return route;
     }
 
-    private double[] getDistancesForPlaces(String[] places) {
+    public double[] getDistancesForPlaces(String[] places) {
         double[] distances = new double[places.length];
         for(int i = 0; i < places.length; i++) {
 
@@ -78,14 +77,9 @@ public class GoogleMapsClient {
         return distances;
     }
 
-    private String[] getPointsForRoad(String roadName) {
-        List<String> result = new ArrayList<String>();
-        try (Stream<String> lines = Files.lines(Paths.get("/Users/thewillyhuman/Projects/thewillyhuman/sigsw21-a-project-name/src/server/src/main/resources/camino_frances.points"))) {
-            result = lines.collect(Collectors.toList());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+    public String[] getPointsForRoad(String roadName) {
+        //Stream<String> lines = Arrays.stream(Ways.CAMINO_FRANCES.split("\n"));
+        List<String> result = Arrays.stream(Ways.CAMINO_FRANCES.split("\n")).collect(Collectors.toList());
         String[] stringArray = result.toArray(new String[0]);
         return stringArray;
     }
