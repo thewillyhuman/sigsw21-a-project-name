@@ -95,6 +95,7 @@ div h1{
 
 .planificatBtn {
   transform: translate(0%, 0%);
+  background: transparent;
   color: #ffff !important;
   text-decoration: none !important;
   font-weight: 600;
