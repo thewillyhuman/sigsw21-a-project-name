@@ -43,7 +43,8 @@ function Planificate(){
           
           xhr.addEventListener("readystatechange", function() {
             if(this.readyState === 4) {
-              console.log(this.responseText);
+              console.log(JSON.parse(this.responseText));
+              context.setRoute(JSON.parse(this.responseText));
               context.scrollTo('route-visualizer');
             }
           });

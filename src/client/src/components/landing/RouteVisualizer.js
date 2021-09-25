@@ -1,62 +1,57 @@
+import { useEffect,useState,useContext} from "react";
 import {Row,Col,Container} from 'react-bootstrap';
 import Map from '../map/Map';
 import '../../css/planificate.css'
+import {LandingContext} from '../LandingPage';
 
 function RouteVisualizer(){
 
+
+    const context = useContext(LandingContext);
+    const [days,setDays] = useState(null);
+
+    useEffect(()=>{
+        console.log(context.route)
+        setDays(context.route?.route?.route_stages)
+    },context.route)
+    
     return(
-        <div className="planificate-bg">
         <Container fluid className="planificate-body">
             <Row>
                 <Col md={3}>
                     <div className="days-panel">
                         <div className="place">
-                            <div className="place-name">
-                                <ul>
-                                    <li>Ocebreiro</li>
-                                    <li>Liñares</li>
-                                    <li>Hospital</li>
-                                    <li>Padornelo</li>
-                                    <li>Fondría</li>
-                                </ul>
-                            </div>
-
-                            <div className="place-day">
-                                <ul>
-                                    <li>Dia 1</li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
-                            </div>
-                            <div className="place-name">
-                                <ul>
-                                    <li>Biduedo</li>
-                                    <li>Triacastela</li>
-                                    <li>San Xil</li>
-                                    <li>Aguiada</li>
-                                    <li>Sarria</li>
-                                    <li>Barbadelo</li>
-                                </ul>
-                            </div>
-
-                            <div className="place-day">
-                                <ul>
-                                    <li>Dia 2</li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
-                            </div>
+                        {
+                            context.route?.route?.route_stages.map(day =>{
+                                return(
+                                    <>
+                                        <div className="place-name">
+                                            <ul>
+                                                <li>Ocebreiro</li>
+                                                <li>Liñares</li>
+                                                <li>Hospital</li>
+                                                <li>Padornelo</li>
+                                                <li>Fondría</li>
+                                            </ul>
+                                        </div>
+                                        <div className="place-day">
+                                            <ul>
+                                                <li>Dia 1</li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                            </ul>
+                                        </div>
+                                    </>
+                                )
+                            })
+                        }
                         </div>
                     </div>
                 </Col>
                 <Col md>
                     <div className="day-container">
-          
                         <Row>
                             <Col>
                                 <div className="map-panel">
@@ -68,7 +63,6 @@ function RouteVisualizer(){
                 </Col>
             </Row> 
         </Container>
-        </div>
     )
 }
 

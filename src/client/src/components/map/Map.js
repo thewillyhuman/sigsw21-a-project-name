@@ -55,7 +55,7 @@ function Map(props) {
     */
     const initMap = function() {
         map = new window.google.maps.Map(document.getElementById("google-map"), {
-                center: new window.google.maps.LatLng(MAP_CENTER[0], MAP_CENTER[1]), zoom: 6,
+                center: new window.google.maps.LatLng(MAP_CENTER[0], MAP_CENTER[1]), zoom: 6.8,
                 mapTypeId: window.google.maps.MapTypeId.ROADMAP,  zoomControl: true,
                 mapTypeControl: false, scaleControl: false, streetViewControl: false,
                 rotateControl: false, fullscreenControl: false, draggable: true,
