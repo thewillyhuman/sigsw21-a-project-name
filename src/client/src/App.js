@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Map from './map/Map';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         >
           Learn React
         </a>
+        <Map route="camino_frances" route_style="cs.frances" />
       </header>
     </div>
   );
