@@ -153,6 +153,15 @@ public class GoogleMapsClient {
                                 .withName(individualResult.name)
                                 .withCoordinates(new double[] {individualResult.geometry.location.lat, individualResult.geometry.location.lng})
                                 .withRating(individualResult.rating)
+                                .withAddress(individualResult.formattedAddress)
+                                .withIcon(individualResult.icon.toString())
+                                .withOpeningHours(individualResult.openingHours)
+                                .withPhotos(individualResult.photos)
+                                .withPlaceId(individualResult.placeId)
+                                .withStatus(individualResult.businessStatus)
+                                .withTypes(individualResult.types)
+                                .withUserRatingTotal(individualResult.userRatingsTotal)
+                                .withVicinity(individualResult.vicinity)
                                 .build();
                     }
                 ).collect(Collectors.toList());
