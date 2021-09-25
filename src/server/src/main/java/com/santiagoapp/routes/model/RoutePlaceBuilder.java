@@ -3,7 +3,7 @@ package com.santiagoapp.routes.model;
 public final class RoutePlaceBuilder {
     private String name;
     private double[] coordinates;
-    private int rating;
+    private double rating;
 
     private RoutePlaceBuilder() {
     }
@@ -22,7 +22,7 @@ public final class RoutePlaceBuilder {
         return this;
     }
 
-    public RoutePlaceBuilder withRating(int rating) {
+    public RoutePlaceBuilder withRating(double rating) {
         this.rating = rating;
         return this;
     }

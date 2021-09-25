@@ -7,9 +7,10 @@ public class RoutePlace {
 
     private final String name;
     private final double[] coordinates;
-    private final int rating;
+    private final double rating;
 
-    protected RoutePlace(String name, double[] coordinates, int rating) {
+
+    public RoutePlace(String name, double[] coordinates, double rating) {
         this.name = name;
         this.coordinates = coordinates;
         this.rating = rating;
@@ -23,7 +24,7 @@ public class RoutePlace {
         return coordinates;
     }
 
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 
@@ -32,7 +33,7 @@ public class RoutePlace {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RoutePlace that = (RoutePlace) o;
-        return rating == that.rating && Objects.equals(name, that.name) && Arrays.equals(coordinates, that.coordinates);
+        return Double.compare(that.rating, rating) == 0 && Objects.equals(name, that.name) && Arrays.equals(coordinates, that.coordinates);
     }
 
     @Override
@@ -44,7 +45,7 @@ public class RoutePlace {
 
     @Override
     public String toString() {
-        return "RouteLocation{" +
+        return "RoutePlace{" +
                 "name='" + name + '\'' +
                 ", coordinates=" + Arrays.toString(coordinates) +
                 ", rating=" + rating +

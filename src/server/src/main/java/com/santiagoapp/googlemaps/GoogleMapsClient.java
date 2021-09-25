@@ -1,14 +1,13 @@
 package com.santiagoapp.googlemaps;
 
-import com.google.maps.DistanceMatrixApiRequest;
-import com.google.maps.GeoApiContext;
-import com.google.maps.DistanceMatrixApi;
-import com.google.maps.model.Distance;
-import com.google.maps.model.DistanceMatrix;
-import com.google.maps.model.TravelMode;
+import com.google.maps.*;
+import com.google.maps.errors.ApiException;
+import com.google.maps.model.*;
 import com.santiagoapp.routes.Ways;
 import com.santiagoapp.routes.model.Route;
 import com.santiagoapp.routes.model.RouteBuilder;
+import com.santiagoapp.routes.model.RoutePlace;
+import com.santiagoapp.routes.model.RoutePlaceBuilder;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -82,5 +81,80 @@ public class GoogleMapsClient {
         List<String> result = Arrays.stream(Ways.CAMINO_FRANCES.split("\n")).collect(Collectors.toList());
         String[] stringArray = result.toArray(new String[0]);
         return stringArray;
+    }
+
+    public Route getRouteFor(final String[] places) {
+        final String origin = places[0].split(",")[0];// + "," + places[0].split(",")[2];
+        final String destination = places[places.length - 1].split(",")[0];// + "," + places[places.length - 1].split(",")[2];
+
+        // Create the request object.
+        DirectionsApiRequest directionsRequest = DirectionsApi.getDirections(
+                context,
+                origin,
+                destination
+        );
+        // Configure the transport method and the alternative routes.
+        directionsRequest.mode(TravelMode.WALKING);
+        //directionsRequest.alternatives(false);
+
+        // For each intermediate place add a waypoint to the route.
+        LatLng[] waypointsList = new LatLng[25];
+        for( int i = 0; (i < places.length - 2 && i < 25); i++) {
+            final double latitude = Double.parseDouble(places[i].split(",")[1]);
+            final double longitude = Double.parseDouble(places[i].split(",")[2]);
+            waypointsList[i] = new LatLng(latitude, longitude);
+        }
+        // Add the waypoints.
+        //directionsRequest.waypoints(waypointsList);
+
+        // Execute the request.
+        DirectionsResult result = directionsRequest.awaitIgnoreError();
+
+        if(!Objects.isNull(result)) {
+            // Get the result and build the Route result object to return.
+            final String originName = places[0].split(",")[0];
+            final String destinationName = places[places.length - 1].split(",")[0];
+            final double distance = Arrays.stream(result.routes[0].legs).map(leg -> leg.distance.inMeters).reduce((l1, l2) -> l1 + l2).get();
+            final double duration = Arrays.stream(result.routes[0].legs).map(leg -> leg.duration.inSeconds).reduce((l1, l2) -> l1 + l2).get() / 3600;
+            final String polyline = result.routes[0].overviewPolyline.getEncodedPath();
+
+            List<RoutePlace> accommodations = getPlacesForLocation(places[places.length - 1]);
+
+            final Route resultRoute = RouteBuilder.newBuilder()
+                    .withOriginPlace(originName)
+                    .withDestinationPlace(destinationName)
+                    .withRoutePolyline(polyline)
+                    .withRouteLocations(Arrays.stream(places).collect(Collectors.toList()))
+                    .withAccommodations(accommodations)
+                    .withDuration(duration)
+                    .withDistance(distance)
+                    .build();
+
+            return resultRoute;
+        }
+
+        return null;
+    }
+
+    public List<RoutePlace> getPlacesForLocation(String location) {
+        NearbySearchRequest request = PlacesApi.nearbySearchQuery(
+                context,
+                new LatLng(
+                        Double.parseDouble(location.split(",")[1]),
+                        Double.parseDouble(location.split(",")[2])
+                )
+        );
+
+        request.radius(1500);
+        PlacesSearchResponse result = request.awaitIgnoreError();
+        return Arrays.stream(result.results).map(
+                    individualResult -> {
+                        return RoutePlaceBuilder.newBuilder()
+                                .withName(individualResult.name)
+                                .withCoordinates(new double[] {individualResult.geometry.location.lat, individualResult.geometry.location.lng})
+                                .withRating(individualResult.rating)
+                                .build();
+                    }
+                ).collect(Collectors.toList());
     }
 }

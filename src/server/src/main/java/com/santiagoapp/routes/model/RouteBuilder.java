@@ -11,6 +11,7 @@ public final class RouteBuilder {
     private List<RoutePlace> accommodations;
     private List<Route> routeStages;
     private List<String> routeLocations;
+    private String routePolyline;
 
     private RouteBuilder() {
     }
@@ -59,7 +60,12 @@ public final class RouteBuilder {
         return this;
     }
 
+    public RouteBuilder withRoutePolyline(String routePolyline) {
+        this.routePolyline = routePolyline;
+        return this;
+    }
+
     public Route build() {
-        return new Route(originPlace, destinationPlace, distance, duration, interestPlaces, accommodations, routeStages, routeLocations);
+        return new Route(originPlace, destinationPlace, distance, duration, interestPlaces, accommodations, routeStages, routeLocations, routePolyline);
     }
 }
