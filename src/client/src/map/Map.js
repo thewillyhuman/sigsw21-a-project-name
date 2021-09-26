@@ -1,11 +1,10 @@
-import React from "react";
+import React,{forwardRef,useImperativeHandle} from "react";
 import ReactDOMServer from 'react-dom/server';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRoute, faRoad, faMountain, faUser, faBed, faMonument, faStar } from '@fortawesome/free-solid-svg-icons';
 
 import styles from "./map_styles.json";
-import test_data from "./test_data.json";
 import { PointsLayer, PolyLineLayer, WMSLayer } from "./Layers";
 
 import "./map.sass";
@@ -30,31 +29,37 @@ let santiagoWMS, elevationWMS;
 let accommodationIcon, poiIcon, userIcon;
 
 
-function Map(props) {
-    let map;
+const Map = forwardRef((props,ref)=> {
+
+    useImperativeHandle(ref, () => ({
+
+        loadRoute(route) {
+            console.log('entra')
+            // creating WMS layers. order here is critical to determine the superposition of layers
+            elevationWMS = new WMSLayer(ELEVATIONS_WMS_ENDPOINT, 'EL.GridCoverage',
+                'Elevaciones', 'image/png', window.map, 0.775, true);
+            santiagoWMS = new WMSLayer(STJAMES_WMS_ENDPOINT, props.way,
+                props.way_style, 'image/png', window.map, 1.0, true);
+    
+            if (route == null) return;
+    
+            routeLayer = new PolyLineLayer(route.route_polyline, '#FBBF24', window.map, true);
+    
+            pointsOfInterestLayer = new PointsLayer(route.points_of_interest, poiIcon, window.map,
+                infoCallback,
+                true);
+    
+            accommodationsLayer = new PointsLayer(route.accommodations, accommodationIcon, window.map,
+                infoCallback, true);
+            
+            if (props.users) usersLayer = new PointsLayer(props.users, userIcon, window.map, null, true);
+            console.log('entra')
+        }
+    
+      }));
 
 
-    const loadRoute = function(route) {
-        // creating WMS layers. order here is critical to determine the superposition of layers
-        elevationWMS = new WMSLayer(ELEVATIONS_WMS_ENDPOINT, 'EL.GridCoverage',
-            'Elevaciones', 'image/png', map, 0.775, true);
-        santiagoWMS = new WMSLayer(STJAMES_WMS_ENDPOINT, props.way,
-            props.way_style, 'image/png', map, 1.0, true);
-
-        if (route == null) return;
-
-        routeLayer = new PolyLineLayer(route.route_polyline, '#FBBF24', map, true);
-
-        pointsOfInterestLayer = new PointsLayer(route.points_of_interest, poiIcon, map,
-            infoCallback,
-            true);
-
-        accommodationsLayer = new PointsLayer(route.accommodations, accommodationIcon, map,
-            infoCallback, true);
-        
-        if (props.users) usersLayer = new PointsLayer(props.users, userIcon, map, null, true);
-    };
-
+    
     /*
         Hides or shows a layer depending on the new state.
 
@@ -103,8 +108,8 @@ function Map(props) {
     */
     const initMap = function() {
         console.log('init_map');
-        console.log(test_data.route.route_stages[0]);
-        map = new window.google.maps.Map(document.getElementById("google-map"), {
+        //console.log(test_data.route.route_stages[0]);
+        window.map = new window.google.maps.Map(document.getElementById("google-map"), {
                 center: new window.google.maps.LatLng(MAP_CENTER[0], MAP_CENTER[1]), zoom: 7,
                 mapTypeId: window.google.maps.MapTypeId.ROADMAP,  zoomControl: true,
                 mapTypeControl: false, scaleControl: false, streetViewControl: false,
@@ -178,6 +183,6 @@ function Map(props) {
             </section>
         </HelmetProvider>
     );
-}
+});
 
 export default Map;

@@ -1,4 +1,4 @@
-import { useEffect,useState,useContext} from "react";
+import { useEffect,useState,useContext,useRef} from "react";
 import {Row,Col,Container,Accordion,useAccordionButton} from 'react-bootstrap';
 import Map from '../../map/Map';
 import '../../css/planificate.css'
@@ -10,6 +10,7 @@ import { scroll } from 'react-scroll';
 function RouteVisualizer(){
 
     const context = useContext(LandingContext);
+    const childRef = useRef();
 
     const handleBack = function(){
         let confirm = window.confirm('¿Quieres volver a planificar tu viaje?');
@@ -22,7 +23,7 @@ function RouteVisualizer(){
 
     function CustomToggle({ children, eventKey, route_stage}) {
         const decoratedOnClick = useAccordionButton(eventKey, () =>
-          console.log(route_stage),
+            childRef?.current?.loadRoute(route_stage)
         );
       
         return (
@@ -85,7 +86,7 @@ function RouteVisualizer(){
                     </Accordion>
              
                     <div className="map-panel">
-                        <Map way="caminos_andaluces,caminos_galicia,caminos_centro,camino_frances,caminos_norte" way_style="cs.andaluces,cs.galicia,cs.centro,cs.frances,cs.norte" />
+                        <Map ref={childRef} way="caminos_andaluces,caminos_galicia,caminos_centro,camino_frances,caminos_norte" way_style="cs.andaluces,cs.galicia,cs.centro,cs.frances,cs.norte" />
                     </div>
             </div>
       

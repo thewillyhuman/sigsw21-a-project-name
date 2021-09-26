@@ -22,10 +22,19 @@
     }
   }
 
-  #layer-buttons{
-    margin-top: 2vh;
-    right: 0;
+  #layer-buttons h3{
+    color:#ffff;
   }
+
+  #layer-buttons{
+    margin-top: 2vh !important;
+    right: 0 !important;
+  }
+
+  #layer-buttons li p{
+    vertical-align: middle !important;
+  }
+
 
 
 .route-acordion{
