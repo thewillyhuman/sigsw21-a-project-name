@@ -19,7 +19,7 @@ function Way(){
     }
 
     const handleClick = function(way){
-        context.setTransport(way);
+        context.setWay(way);
         window.removeEventListener("resize", ()=>context.scrollTo('planificate'));
         window.addEventListener("resize",()=>context.scrollTo('planificate'));
     }
@@ -47,7 +47,7 @@ function Way(){
             <Row>
             <Col>
                 <Link  to="planificate" spy={true} smooth={true} offset={50} duration={500} >
-                    <Card onClick={()=>handleClick('francés')} style={{ width: '18rem', height:'25rem'}}>
+                    <Card onClick={()=>handleClick('camino_frances')} style={{ width: '18rem', height:'25rem'}}>
                         <Card.Img variant="top" src={cFrances} />
                         <Card.Body>
                             <Card.Title>Camino Francés</Card.Title>
@@ -60,12 +60,12 @@ function Way(){
             </Col>
             <Col>
                 <Link  to="planificate" spy={true} smooth={true} offset={50} duration={500} >
-                    <Card onClick={()=>handleClick('primitivo')}style={{ width: '18rem',height:'25rem' }}>
+                    <Card onClick={()=>handleClick('camino_andaluz')}style={{ width: '18rem',height:'25rem' }}>
                         <Card.Img variant="top" src={cPrimitivo} />
                         <Card.Body>
-                            <Card.Title>Camino Primitivo</Card.Title>
+                            <Card.Title>Camino Andaluz</Card.Title>
                             <Card.Text>
-                            El Camino Primitivo de peregrinación a Compostela fue el utilizado por los primeros devotos, llegados del naciente reino asturiano.
+                            
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -73,13 +73,12 @@ function Way(){
             </Col>
             <Col>
                 <Link  to="planificate" spy={true} smooth={true} offset={50} duration={500} >
-                    <Card onClick={()=>handleClick('invierno')}style={{ width: '18rem', height:'25rem' }}>
+                    <Card onClick={()=>handleClick('camino_norte')}style={{ width: '18rem', height:'25rem' }}>
                         <Card.Img variant="top" src={cInvierno} />
                         <Card.Body>
-                            <Card.Title>Camino de Invierno</Card.Title>
+                            <Card.Title>Camino del Norte</Card.Title>
                             <Card.Text>
-                            El Camino de Invierno es la entrada natural a Galicia desde la meseta, un acceso ya usado por los romanos. 
-                         
+                          
                             </Card.Text>
                         </Card.Body>
                     </Card>
