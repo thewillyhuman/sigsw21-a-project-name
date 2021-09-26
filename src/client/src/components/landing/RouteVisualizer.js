@@ -1,6 +1,6 @@
 import { useEffect,useState,useContext} from "react";
 import {Row,Col,Container,Accordion,useAccordionButton} from 'react-bootstrap';
-import Map from '../map/Map';
+import Map from '../../map/Map';
 import '../../css/planificate.css'
 import {LandingContext} from '../LandingPage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
