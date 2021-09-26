@@ -10,7 +10,14 @@
     display: grid;
     grid-template-columns: 15% 85% !important;
     background-color: #16151A;
+    margin-top: -7px;
   }
+
+  #layer-buttons{
+    margin-top: 1vh;
+  }
+
+
 
   .route-acordion{
     background-color: #ffff;
@@ -18,9 +25,40 @@
     max-height: 100vh;
   }
 
+
   .route-acordion-item-hidden{
     border: none !important;
   }
+
+.route-acordion-item-hidden .accordion-button:focus {
+  border: none !important;
+  box-shadow: none !important;
+  cursor: default;
+}
+
+.route-acordion-item-hidden .accordion-button:active {
+  border: none !important;
+  box-shadow: none !important;
+  cursor: default;
+}
+.route-acordion-item-hidden .accordion-button:not(.collapsed){
+  border: none !important;
+  box-shadow: none !important;
+  background-color: #ffff;
+  cursor: default;
+}
+
+.route-acordion-item-hidden .accordion-button{
+  cursor: default;
+}
+
+.route-acordion-item-hidden .accordion-button:hover{
+  cursor: default;
+}
+
+
+
+
   .route-acordion-item-hidden button::after{
     background-image: none !important;
   }
