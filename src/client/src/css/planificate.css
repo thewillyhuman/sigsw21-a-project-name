@@ -31,8 +31,11 @@
     right: 0 !important;
   }
 
+
   #layer-buttons li p{
-    vertical-align: middle !important;
+    line-height: 2.1em;
+    height:100%;
+    margin: 2px;
   }
 
 
