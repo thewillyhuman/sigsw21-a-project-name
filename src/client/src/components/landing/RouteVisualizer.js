@@ -3,7 +3,9 @@ import {Row,Col,Container,Accordion,useAccordionButton} from 'react-bootstrap';
 import Map from '../map/Map';
 import '../../css/planificate.css'
 import {LandingContext} from '../LandingPage';
-import {scroller } from 'react-scroll'
+import {scroller } from 'react-scroll';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faClock,faRunning } from '@fortawesome/free-solid-svg-icons'
 
 function RouteVisualizer(){
 
@@ -35,10 +37,10 @@ function RouteVisualizer(){
                                     context.route?.route?.route_stages?.map((day,index)=>{
                                         return(
                                     <Accordion.Item  onClick={console.log('onblcikk')}  className="route-acordion-item" eventKey={index} key={index}>
-                                        <CustomToggle eventKey={index}>Día {index+1}</CustomToggle>
+                                        <CustomToggle eventKey={index}>Día {index+1} <FontAwesomeIcon icon={faRunning} /> 5Km  <FontAwesomeIcon icon={faClock} /> 3h</CustomToggle>
                                         <Accordion.Body className="route-acordion-body">
                                             <div className="days-panel">
-                                                <div className="place">     
+                                                <div className="place">
                                                     <div className="place-name">
                                                         <ul>
                                                             {day?.route_locations?.map((place,i)=>{

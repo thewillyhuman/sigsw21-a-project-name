@@ -139,7 +139,6 @@ height: 12px
   background-color: transparent !important;
 }
 
-
 .place{
   display: grid;
   grid-template-columns: 95% 5% ;
@@ -202,7 +201,6 @@ height: 12px
 .accordion-button:hover{
   color:#ffb732 !important;
   border: none !important;
-  font-size: 1.7em !important;
 }
 
 .accordion-button:focus{
@@ -214,4 +212,9 @@ height: 12px
 
 #accordion-button-0:focus{
   color:#ffb732 !important;
+}
+
+.accordion-button svg{
+  margin-left: 10px;
+  margin-right: 5px;
 }

@@ -57,7 +57,11 @@ function Transport(props){
                 <ul>
                     <Link  to="way" spy={true} smooth={true} offset={50} duration={500} >
                         <li onClick={()=>handleTransportClick(setWalkStyle,'walk')} onMouseEnter={handleWalk}><FontAwesomeIcon icon={faWalking} size="lg" style={walkStyle} /></li>
+                    </Link>
+                    <Link  to="way" spy={true} smooth={true} offset={50} duration={500} >
                         <li onClick={()=>handleTransportClick(setBicyStyle,'bicycle')} onMouseEnter={handleBicycle}><FontAwesomeIcon icon={faBicycle} size="lg" style={bicyStyle} /></li>
+                    </Link>
+                    <Link  to="way" spy={true} smooth={true} offset={50} duration={500} >
                         <li onClick={()=>handleTransportClick(setHorseStyle,'horse')} onMouseEnter={handleHorse}> <FontAwesomeIcon icon={faHorse} size="lg" style={horseStyle}/></li>
                     </Link>
                     <li id="bg" className="bg"style={style} ></li>                    
