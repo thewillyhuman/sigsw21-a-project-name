@@ -1,6 +1,6 @@
 import { useContext,useEffect,useState } from "react";
 import axios from 'axios';
-import {Row,Col,Form,Button} from 'react-bootstrap';
+import {Row,Col,Form,Button,Spinner} from 'react-bootstrap';
 import { scroller } from 'react-scroll';
 import {LandingContext} from '../LandingPage';
 import { useHistory } from "react-router-dom";
@@ -8,12 +8,13 @@ import { useHistory } from "react-router-dom";
 
 function Planificate(){
     
-    let history = useHistory();
     let sampleKm = 33;
     const context = useContext(LandingContext);
     const [days,setDays] = useState(10);
     const [km,setKm] = useState(sampleKm/10);
     const [validated, setValidated] = useState(false);
+    const [spinnerDisplay,setSpinnerDisplay] = useState('none')
+    const [btnDisplay,setBtnDisplay] = useState('inline')
 
     const handleSubmit = (event) => {
       const form = event.currentTarget;
@@ -24,8 +25,12 @@ function Planificate(){
       window.removeEventListener("resize", ()=>context.scrollTo('route-visualizer'));
       window.addEventListener("resize",()=>context.scrollTo('route-visualizer'));
 
-      if (form.checkValidity() === true)
+      if (form.checkValidity() === true){
+        setBtnDisplay('none');
+        setSpinnerDisplay('inline');
         getRoute();
+      }
+      
     };
 
     const getRoute = function(){
@@ -47,8 +52,10 @@ function Planificate(){
             if(this.readyState === 4) {
               console.log(JSON.parse(this.responseText));
               context.setRoute(JSON.parse(this.responseText));
-              context.scrollTo('route-visualizer');
-              document.getElementsByClassName('accordion-button')[0]?.focus();
+             setBtnDisplay('inline-block');
+             setSpinnerDisplay('none');
+             context.scrollTo('route-visualizer');
+             document.getElementsByClassName('accordion-button')[0]?.focus();
             }
           });
           
@@ -88,7 +95,10 @@ function Planificate(){
                 </Col>
             </Row>
             <Row>
-                <button className="planificatBtn">Planificar </button>
+              <div className="spinner-container" style={{display:spinnerDisplay}}>
+                <Spinner animation="border" variant="light"/>
+              </div>
+              <button className="planificatBtn"  style={{display:btnDisplay}}>Planificar </button>
             </Row>
             </Form>
     )

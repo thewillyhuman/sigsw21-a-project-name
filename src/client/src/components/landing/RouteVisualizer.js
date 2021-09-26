@@ -42,7 +42,7 @@ function RouteVisualizer(){
                                                     <div className="place-name">
                                                         <ul>
                                                             {day?.route_locations?.map((place,i)=>{
-                                                                return (<li key={i}>{place?.split(',')[0]}</li>)
+                                                                return (<li key={i}>{place?.split(',')[0]?.substring(6)}</li>)
                                                             })}
                                                         </ul>
                                                     </div>

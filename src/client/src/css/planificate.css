@@ -159,7 +159,6 @@ height: 12px
 }
 
 .place-name ul li:hover{
-  font-size: 1.3em;
   color:#ffb732;
   cursor: default;
 }
@@ -203,11 +202,16 @@ height: 12px
 .accordion-button:hover{
   color:#ffb732 !important;
   border: none !important;
+  font-size: 1.7em !important;
 }
 
 .accordion-button:focus{
-  font-size: 1.6em !important;
+  font-size: 1.7em !important;
   color:#ffb732 !important;
   border: none !important;
   box-shadow: none !important;
+}
+
+#accordion-button-0:focus{
+  color:#ffb732 !important;
 }
