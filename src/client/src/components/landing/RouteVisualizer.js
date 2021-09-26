@@ -15,6 +15,8 @@ function RouteVisualizer(){
         let confirm = window.confirm('¿Quieres volver a planificar tu viaje?');
         if(confirm){
             context.scrollTo('transport');
+            window.removeEventListener("resize", ()=>context.scrollTo('transport'));
+            window.addEventListener("resize",()=>context.scrollTo('transport'));
         }
     }
 

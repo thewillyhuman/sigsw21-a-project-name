@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import {Row,Col,Card,Form,Button} from 'react-bootstrap';
+import { useContext,useState} from "react";
+import {Row,Col,Card,Toast,ToastContainer,CloseButton } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleLeft} from '@fortawesome/free-regular-svg-icons'
 import { Link } from 'react-scroll';
@@ -11,6 +11,12 @@ import {LandingContext} from '../LandingPage';
 function Way(){
 
     const context = useContext(LandingContext);
+    const [showToast, setShowToast] = useState(true);
+
+    const toggleShowToast= () =>{
+     console.log('cerrar')
+        setShowToast(!showToast);
+    }
 
     const handleClick = function(way){
         context.setTransport(way);
@@ -24,7 +30,17 @@ function Way(){
             <Link  to="transport" spy={true} smooth={true} offset={50} duration={500} >
                 <FontAwesomeIcon icon={faArrowAltCircleLeft} size="3x"  style={iconStyle}/>
             </Link>
+            <ToastContainer  className="p-3 toast-cont">
+                <Toast show={showToast}>
+                <Toast.Header closeButton={false}>
+                    <strong className="me-auto">Información</strong>
+                    <CloseButton onClick={toggleShowToast}/>
+                </Toast.Header>
+                <Toast.Body>Solo el camino Francés es el pepino</Toast.Body>
+                </Toast>
+            </ToastContainer>   
         </div>
+      
     <div className="landing-config-way">
        
             <h1>Escoge un camino</h1>
@@ -49,7 +65,7 @@ function Way(){
                         <Card.Body>
                             <Card.Title>Camino Primitivo</Card.Title>
                             <Card.Text>
-                            El Camino Primitivo de peregrinación a Compostela fue el utilizado por los primeros devotos, llegados del naciente reino asturiano. Se trata, por lo tanto, del primer itinerario jacobeo
+                            El Camino Primitivo de peregrinación a Compostela fue el utilizado por los primeros devotos, llegados del naciente reino asturiano.
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -62,7 +78,8 @@ function Way(){
                         <Card.Body>
                             <Card.Title>Camino de Invierno</Card.Title>
                             <Card.Text>
-                            El Camino de Invierno es la entrada natural a Galicia desde la meseta, un acceso ya usado por los romanos. Pudo ser una alternativa en época invernal a la dura subida a las cumbres nevadas de O Cebreiro.
+                            El Camino de Invierno es la entrada natural a Galicia desde la meseta, un acceso ya usado por los romanos. 
+                         
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -70,6 +87,7 @@ function Way(){
             </Col>
             </Row>
         </div>
+
         </>
     )
 }
