@@ -4,13 +4,19 @@ import Map from '../map/Map';
 import '../../css/planificate.css'
 import {LandingContext} from '../LandingPage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClock,faRunning } from '@fortawesome/free-solid-svg-icons'
-import { faArrowAltCircleLeft} from '@fortawesome/free-regular-svg-icons'
-import { Link } from 'react-scroll';
+import { faClock,faRunning, faSlidersH} from '@fortawesome/free-solid-svg-icons'
+import { scroll } from 'react-scroll';
 
 function RouteVisualizer(){
 
     const context = useContext(LandingContext);
+
+    const handleBack = function(){
+        let confirm = window.confirm('¿Quieres volver a planificar tu viaje?');
+        if(confirm){
+            context.scrollTo('transport');
+        }
+    }
 
     function CustomToggle({ children, eventKey}) {
         const decoratedOnClick = useAccordionButton(eventKey, () =>
@@ -37,6 +43,7 @@ function RouteVisualizer(){
                     <Accordion flush defaultActiveKey={0} className="route-acordion" >
                     <div className="planning-title">
                         <h2>Planificación</h2>
+                        <FontAwesomeIcon icon={faSlidersH} size="2x"  style={iconStyle} onClick={handleBack}/>
                     </div>
                                 {
                                     context.route?.route?.route_stages?.map((day,index)=>{
@@ -86,5 +93,5 @@ function RouteVisualizer(){
 export default RouteVisualizer;
 
 var iconStyle={
-    color:'red'
+    color:'#16151A'
 }

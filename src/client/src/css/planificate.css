@@ -163,7 +163,7 @@ height: 12px
 }
 
 .place-day{
-  border-left: 1px solid #222;
+  border-left: 1px solid #ffb732;
   display: grid;
   grid-template-rows: 50%;
 }
@@ -171,7 +171,7 @@ height: 12px
 
 .place-day ul li{
   font-size: 1.2em;
-  color:#222;
+  color:#ffb732;
   display: list-item;
   margin: 0;
   font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -221,10 +221,16 @@ height: 12px
 
 .planning-title{
   display: grid;
+  grid-template-columns: 85% 15%;
   padding-left: 2vh;
+  padding-right: 2vh;
   padding-top: 2vh;
 }
 
 h2{
   font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.planning-title svg:hover{
+  cursor: pointer;
 }
