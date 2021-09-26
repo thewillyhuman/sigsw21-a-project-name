@@ -182,10 +182,9 @@
     },
     {
       "featureType": "road.highway",
-      "elementType": "geometry.stroke",
       "stylers": [
         {
-          "color": "#e9bc62"
+          "visibility": "off"
         }
       ]
     },
