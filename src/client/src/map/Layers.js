@@ -74,9 +74,39 @@ class WMSLayer {
         this.overlayWMS = new window.google.maps.ImageMapType(overlayOptions);
         this.overlayWMS.setOpacity(this.opacity);
 
-        console.log(this.map)
-        this.map?.overlayMapTypes.push(this.overlayWMS);
+        this.map.overlayMapTypes.push(this.overlayWMS);
     }
+
+    destroy() {
+        let index = this.map.overlayMapTypes.indexOf(this.overlayWMS);
+
+        if (index >= 0) this.map.overlayMapTypes.removeAt(index);
+    }
+}
+
+class GeoJSONLayer {
+    constructor(geojsonData, icon, map, defaultActive) {
+        this.data = geojsonData;
+        this.icon = icon;
+        this.map = map;
+        this.customLayer = null;
+        this.loadData();
+        
+        if (defaultActive) this.show();
+        else this.hide();
+    }
+
+    loadData() {
+        this.customLayer = new window.google.maps.Data();
+        this.customLayer.setStyle({ icon: this.icon });
+
+        this.customLayer.addGeoJson(this.data);
+        this.customLayer.setMap(this.map);
+    }
+
+    destroy = () => this.customLayer.setMap(null);
+    show = () => this.customLayer.setMap(this.map);
+    hide = () => this.customLayer.setMap(null);
 }
 
 class PointsLayer {
@@ -117,9 +147,13 @@ class PointsLayer {
         });
     }
 
+    destroy() {
+        this.markers.forEach(m => {
+            m.setMap(null);
+        });
+    }
+
     show = () => this.markers.forEach(m => m.setVisible(true));
-
-
     hide = () => this.markers.forEach(m => m.setVisible(false));
 }
 
@@ -150,9 +184,10 @@ class PolyLineLayer {
         this.polylineElement.setMap(this.map);
     }
 
+    destroy = () => this.polylineElement.setMap(null);
     show = () => this.polylineElement.set('strokeOpacity', 1.0);
     hide = () => this.polylineElement.set('strokeOpacity', 0);
 
 }
 
-export {WMSLayer, PointsLayer, PolyLineLayer};
+export {WMSLayer, PointsLayer, PolyLineLayer, GeoJSONLayer};

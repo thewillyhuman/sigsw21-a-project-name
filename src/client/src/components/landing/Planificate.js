@@ -41,7 +41,7 @@ function Planificate(){
         })
     
           var data = JSON.stringify({
-            "road_name": "camino_frances",
+            "road_name": "camino_norte",
             "transportMethod": "pie",
             "numberOfDays": days
           });
@@ -51,8 +51,7 @@ function Planificate(){
           
           xhr.addEventListener("readystatechange", function() {
             if(this.readyState === 4) {
-              console.log(JSON.parse(this.responseText));
-              context.setRoute(JSON.parse(this.responseText));
+             context.setRoute(JSON.parse(this.responseText));
              setBtnDisplay('inline-block');
              setSpinnerDisplay('none');
              context.scrollTo('route-visualizer');
