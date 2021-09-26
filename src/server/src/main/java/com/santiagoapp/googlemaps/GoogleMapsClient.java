@@ -1,7 +1,6 @@
 package com.santiagoapp.googlemaps;
 
 import com.google.maps.*;
-import com.google.maps.errors.ApiException;
 import com.google.maps.model.*;
 import com.santiagoapp.routes.Ways;
 import com.santiagoapp.routes.model.Route;
@@ -9,12 +8,8 @@ import com.santiagoapp.routes.model.RouteBuilder;
 import com.santiagoapp.routes.model.RoutePlace;
 import com.santiagoapp.routes.model.RoutePlaceBuilder;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * The Google Maps Client is the general abstraction of the maps provider for the application. In this case this class
@@ -77,7 +72,6 @@ public class GoogleMapsClient {
     }
 
     public String[] getPointsForRoad(String roadName) {
-        //Stream<String> lines = Arrays.stream(Ways.CAMINO_FRANCES.split("\n"));
         List<String> result = Arrays.stream(Ways.CAMINO_FRANCES.split("\n")).collect(Collectors.toList());
         String[] stringArray = result.toArray(new String[0]);
         return stringArray;
@@ -105,7 +99,13 @@ public class GoogleMapsClient {
             waypointsList[i] = new LatLng(latitude, longitude);
         }
         // Add the waypoints.
-        //directionsRequest.waypoints(waypointsList);
+        if(places.length >= 3) {
+            int from = 1;
+            int to = -1;
+            if(places.length >= 28) to = 26;
+            else to = places.length - 2;
+            directionsRequest.waypoints(Arrays.copyOfRange(places, from, to));
+        }
 
         // Execute the request.
         DirectionsResult result = directionsRequest.awaitIgnoreError();
@@ -145,7 +145,8 @@ public class GoogleMapsClient {
                 )
         );
 
-        request.radius(1500);
+        request.radius(5000);
+        request.type(PlaceType.LODGING);
         PlacesSearchResponse result = request.awaitIgnoreError();
         return Arrays.stream(result.results).map(
                     individualResult -> {
