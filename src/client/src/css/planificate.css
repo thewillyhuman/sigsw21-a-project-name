@@ -31,8 +31,11 @@
     right: 0 !important;
   }
 
+
   #layer-buttons li p{
-    vertical-align: middle !important;
+    line-height: 2.1em;
+    height:100%;
+    margin: 2px;
   }
 
 
@@ -141,15 +144,14 @@ height: 12px
 }
 
 .map-panel{
-  display: grid;
-  grid-template-columns: 98%;
-  justify-content: center;
+  display: inline;
 }
 
 #map-wrapper{
   width: 100% !important;
   height: 100%;
   background-color: transparent !important;
+  margin: 0 !important;
 }
 
 #google-map{
@@ -160,20 +162,30 @@ height: 12px
 .place{
   display: grid;
   grid-template-columns: 95% 5% ;
+  justify-content: center;
   text-align: left;
   width: 100% !important;
   overflow-x: hidden;
 }
 
+.place-name{
+  margin-left: -2vh;
+  margin-right: 1vh;
+}
+
 .place-name ul li{
   font-size: 1.2em;
   color:#222;
-  display: list-item;
+  display: block;
   margin: 0;
   list-style-type: none;
   font-family: 'Yanone Kaffeesatz', sans-serif;
- 
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
 }
+
 
 .place-name ul li:hover{
   color:#ffb732;

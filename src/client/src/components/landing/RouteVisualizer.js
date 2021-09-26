@@ -39,6 +39,11 @@ function RouteVisualizer(){
 
       }
 
+      useEffect(()=>{
+        if(context.route?.route?.route_stages[0])
+            childRef?.current?.loadRoute(context.route?.route?.route_stages[0]);
+      },context.route?.route?.route_stages[0])
+
     return(
        
         <div  className="planificate-body">
@@ -48,6 +53,7 @@ function RouteVisualizer(){
                         <h2>Planificación</h2>
                         <FontAwesomeIcon icon={faSlidersH} size="2x"  style={iconStyle} onClick={handleBack}/>
                     </div>
+
                                 {
                                     context.route?.route?.route_stages?.map((day,index)=>{
                                         return(
@@ -59,7 +65,7 @@ function RouteVisualizer(){
                                                     <div className="place-name">
                                                         <ul>
                                                             {day?.route_locations?.map((place,i)=>{
-                                                                return (<li key={i}>{place?.split(',')[0]?.substring(6)}</li>)
+                                                                return (<li key={i}>{place?.split(',')[0]}</li>)
                                                             })}
                                                         </ul>
                                                     </div>

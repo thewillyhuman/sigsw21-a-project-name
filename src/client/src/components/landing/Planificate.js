@@ -9,10 +9,8 @@ import {LandingContext} from '../LandingPage';
 
 function Planificate(){
     
-    let sampleKm = 33;
     const context = useContext(LandingContext);
     const [days,setDays] = useState(10);
-    const [km,setKm] = useState(sampleKm/10);
     const [validated, setValidated] = useState(false);
     const [spinnerDisplay,setSpinnerDisplay] = useState('none')
     const [btnDisplay,setBtnDisplay] = useState('inline-block')
@@ -36,13 +34,12 @@ function Planificate(){
 
     const getRoute = function(){
         context.setPlanning({
-            days:days,
-            km:km
+            days:days
         })
     
           var data = JSON.stringify({
-            "road_name": "camino_norte",
-            "transportMethod": "pie",
+            "road_name": context.way,
+            "transportMethod": context.transport,
             "numberOfDays": days
           });
           
@@ -51,7 +48,8 @@ function Planificate(){
           
           xhr.addEventListener("readystatechange", function() {
             if(this.readyState === 4) {
-             context.setRoute(JSON.parse(this.responseText));
+              console.log(JSON.parse(this.responseText));
+              context.setRoute(JSON.parse(this.responseText));
              setBtnDisplay('inline-block');
              setSpinnerDisplay('none');
              context.scrollTo('route-visualizer');
@@ -69,13 +67,6 @@ function Planificate(){
     const handleDays = function(e){
         let days = e.target.value;
         setDays(days);
-        setKm(Math.round(sampleKm/days * 100) / 100)
-    }
-
-    const handleKm = function(e){
-        let km = e.target.value;
-        setKm(km);
-        setDays(Math.round(sampleKm/km));
     }
 
 
@@ -94,10 +85,7 @@ function Planificate(){
                     <Form.Label>Días</Form.Label>
                     <Form.Control size="lg" type="number" min="1" value={days} onChange={handleDays} required/>
                 </Col>
-                <Col>
-                    <Form.Label>Km/Día</Form.Label>
-                    <Form.Control size="lg" type="number"  min="0.5" value={km} onChange={handleKm} required/>
-                </Col>
+         
             </Row>
             <Row>
               <div className="btn-spinner-cont">

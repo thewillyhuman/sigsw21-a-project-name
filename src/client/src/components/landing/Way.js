@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleLeft} from '@fortawesome/free-regular-svg-icons'
 import { Link } from 'react-scroll';
 import cFrances from '../../resoruces/camino_frances.jpg';
-import cPrimitivo from '../../resoruces/camino_primitivo.jpg';
-import cInvierno from '../../resoruces/camino_invierno.jpg';
+import cAndaluz from '../../resoruces/camino_andaluz.jpg';
+import cNorte from '../../resoruces/camino_norte.jpg';
 import {LandingContext} from '../LandingPage';
 
 function Way(){
@@ -19,7 +19,7 @@ function Way(){
     }
 
     const handleClick = function(way){
-        context.setTransport(way);
+        context.setWay(way);
         window.removeEventListener("resize", ()=>context.scrollTo('planificate'));
         window.addEventListener("resize",()=>context.scrollTo('planificate'));
     }
@@ -36,7 +36,7 @@ function Way(){
                     <strong className="me-auto">Información</strong>
                     <CloseButton onClick={toggleShowToast}/>
                 </Toast.Header>
-                <Toast.Body>Solo el camino Francés es el pepino</Toast.Body>
+                <Toast.Body>Recomendamos seleccionar el camino frances para disfrutar de todas las funcionalidades que ofrece la aplicación</Toast.Body>
                 </Toast>
             </ToastContainer>   
         </div>
@@ -47,7 +47,7 @@ function Way(){
             <Row>
             <Col>
                 <Link  to="planificate" spy={true} smooth={true} offset={50} duration={500} >
-                    <Card onClick={()=>handleClick('francés')} style={{ width: '18rem', height:'25rem'}}>
+                    <Card onClick={()=>handleClick('camino_frances')} style={{ width: '18rem', height:'25rem'}}>
                         <Card.Img variant="top" src={cFrances} />
                         <Card.Body>
                             <Card.Title>Camino Francés</Card.Title>
@@ -60,12 +60,12 @@ function Way(){
             </Col>
             <Col>
                 <Link  to="planificate" spy={true} smooth={true} offset={50} duration={500} >
-                    <Card onClick={()=>handleClick('primitivo')}style={{ width: '18rem',height:'25rem' }}>
-                        <Card.Img variant="top" src={cPrimitivo} />
+                    <Card onClick={()=>handleClick('camino_andaluz')}style={{ width: '18rem',height:'25rem' }}>
+                        <Card.Img variant="top" src={cAndaluz} />
                         <Card.Body>
-                            <Card.Title>Camino Primitivo</Card.Title>
+                            <Card.Title>Camino Andaluz</Card.Title>
                             <Card.Text>
-                            El Camino Primitivo de peregrinación a Compostela fue el utilizado por los primeros devotos, llegados del naciente reino asturiano.
+                            La orografía dominante entre Granada y Córdoba es de suaves colinas, con alguna excepción, y la característica paisajística más recurrente son las inmensas extensiones de olivares.
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -73,13 +73,12 @@ function Way(){
             </Col>
             <Col>
                 <Link  to="planificate" spy={true} smooth={true} offset={50} duration={500} >
-                    <Card onClick={()=>handleClick('invierno')}style={{ width: '18rem', height:'25rem' }}>
-                        <Card.Img variant="top" src={cInvierno} />
+                    <Card onClick={()=>handleClick('camino_norte')}style={{ width: '18rem', height:'25rem' }}>
+                        <Card.Img variant="top" src={cNorte} />
                         <Card.Body>
-                            <Card.Title>Camino de Invierno</Card.Title>
+                            <Card.Title>Camino del Norte</Card.Title>
                             <Card.Text>
-                            El Camino de Invierno es la entrada natural a Galicia desde la meseta, un acceso ya usado por los romanos. 
-                         
+                            El Camino del Norte recorre transcurre por zonas turísticas, y combina tramos altamente urbanizados con otros de gran belleza natural.
                             </Card.Text>
                         </Card.Body>
                     </Card>
