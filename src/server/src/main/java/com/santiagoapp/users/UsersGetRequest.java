@@ -2,19 +2,28 @@ package com.santiagoapp.users;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Arrays;
+import java.util.Objects;
 
 public class UsersGetRequest {
 
-    @JsonProperty("user_position")
-    private double[] position;
+    @JsonProperty("x_position")
+    private float xPosition;
 
-    public UsersGetRequest(double[] position) {
-        this.position = position;
+    @JsonProperty("y_position")
+    private float yPosition;
+
+
+    public UsersGetRequest(float xPosition, float yPosition) {
+        this.xPosition = xPosition;
+        this.yPosition = yPosition;
     }
 
-    public double[] getPosition() {
-        return position;
+    public float getxPosition() {
+        return xPosition;
+    }
+
+    public float getyPosition() {
+        return yPosition;
     }
 
     @Override
@@ -22,18 +31,19 @@ public class UsersGetRequest {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UsersGetRequest that = (UsersGetRequest) o;
-        return Arrays.equals(position, that.position);
+        return Float.compare(that.xPosition, xPosition) == 0 && Float.compare(that.yPosition, yPosition) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(position);
+        return Objects.hash(xPosition, yPosition);
     }
 
     @Override
     public String toString() {
         return "UsersGetRequest{" +
-                "position=" + Arrays.toString(position) +
+                "xPosition=" + xPosition +
+                ", yPosition=" + yPosition +
                 '}';
     }
 }

@@ -6,7 +6,8 @@ Roncesvalles  Navarre  Spain,43.0169504,-1.3035514
 31640 Burguete-Auritz  Navarre  Spain,42.99046680000001,-1.3354746
 31694 Espinal  Navarra  Spain,42.9787204,-1.367257
 31695 Viscarret-Guerendiain  Navarra  Spain,42.9673109,-1.4183667
-31697 Calle San Esteban 4F Erro Navarra,42.940578,-1.450244
+31696 Lintzoain  Navarra  Spain,42.9623303,-1.4378052
+31697 Erro  Navarra  Spain,42.9414094,-1.4707352
 31630 Zubiri  Navarre  Spain,42.9304266,-1.5046371
 31698 Ilárraz  Navarre  Spain,42.9109793,-1.5169908
 31698 Larrasoaña  Navarra  Spain,42.9011096,-1.5429509
@@ -25,6 +26,7 @@ Sierra del Perdón  31190  Navarra  Spain,42.7327778,-1.7152778
 31100 Puente La Reina – Gares  Navarre  Spain,42.6723037,-1.8135943
 31130 Mañeru  Navarre  Spain,42.6693018,-1.862321
 31131 Cirauqui  Navarre  Spain,42.6755802,-1.891076
+30800 Lorca  Murcia  Spain,37.6735925,-1.6968357
 31132 Villatuerta  Navarre  Spain,42.659795,-1.9918231
 31200 Estella  Navarre  Spain,42.6720856,-2.0324524
 Ayegui  Navarre  Spain,42.6570846,-2.0386075
@@ -58,11 +60,13 @@ Santo Domingo de la Calzada  La Rioja  Spain,42.4369439,-2.9550619
 09199 Atapuerca  Burgos  Spain,42.3766044,-3.5072946
 09192 Villalval  Burgos  Spain,42.3692231,-3.5526464
 09192 Cardeñuela Riopico  Burgos  Spain,42.3590405,-3.5591286
+09145 Orbaneja del Castillo  Burgos  Spain,42.835513,-3.793998
 09192 Villafría  Burgos  Spain,42.3659025,-3.6148151
 Burgos  Spain,42.3439925,-3.696906
 09130 Tardajos  Burgos  Spain,42.3489577,-3.8159239
 09130 Rabé de las Calzadas  Burgos  Spain,42.340357,-3.8343617
 09230 Hornillos del Camino  Burgos  Spain,42.3386283,-3.9264909
+Arroyo Penillas O de San Bol  09227  Burgos  Spain,42.28356309999999,-3.9857673
 09227 Hontanas  Burgos  Spain,42.3122534,-4.044638
 Convento de San Antón  09110 Castrojeriz  Burgos  Spain,42.2925125,-4.099158399999999
 09110 Castrojeriz  Burgos  Spain,42.2884823,-4.1424199
@@ -106,8 +110,10 @@ Astorga  León  Spain,42.4549303,-6.053251100000001
 24718 Valdeviejas  León  Spain,42.4617932,-6.0793798
 24718 Murias de Rechivaldo  León  Spain,42.46024370000001,-6.105658099999999
 24718 Santa Catalina de Somoza  León  Spain,42.4561128,-6.1599897
+P.º de la Castellana  200  28046 Madrid  Spain,40.4628633,-3.6887013
 24722 Rabanal del Camino  León  Spain,42.4811376,-6.2847357
 24722 Foncebadón  León  Spain,42.491686,-6.342881299999999
+24722 Santa Colomba de Somoza  León  Spain,42.4888635,-6.3614731
 24722 Manjarín  León  Spain,42.4898955,-6.3861101
 24413 El Acebo de San Miguel  León  Spain,42.4993083,-6.4580025
 24413 Riego de Ambrós  León  Spain,42.5219271,-6.479319599999999
@@ -129,16 +135,25 @@ C. la Dehesa  31  24411 Ponferrada  León  Spain,42.5734214,-6.641562899999999
 24526 La Faba  León  Spain,42.6850529,-7.009611
 24526 La Laguna  León  Spain,42.7010004,-7.0211783
 27671 O Cebreiro  Lugo  Spain,42.7078162,-7.043627
+23700 Linares  Jaén  Spain,38.09690980000001,-3.6369803
 LU-633  27671 Pedrafita do Cebreiro  Lugo  Spain,42.6986701,-7.084319499999999
 27671 Hospital  Lugo  Spain,42.7050527,-7.1006125
+49574 Padornelo  Zamora  Spain,42.0331797,-6.8361049
+Poio  Pontevedra  Spain,42.4341563,-8.657473999999999
+49510 Fonfría  Zamora  Spain,41.6361537,-6.1387814
+27335 Biduedo  Lugo  Spain,42.6336218,-7.376136
 27632 Fillobal  Lugo  Spain,42.7440495,-7.204707099999999
 Triacastela  Lugo  Spain,42.7634462,-7.2113605
 San Cristovo do Real  27633  Lugo  Spain,42.7395372,-7.277905499999999
 27620 Samos  Lugo  Spain,42.7308849,-7.3270157
+Calvor  27619  Lugo  Spain,42.7725414,-7.351024299999999
+Prado Novo 4  San Mamede do Camiño  27600 Sarria  Lugo  Spain,42.77347899999999,-7.370451999999999
 Sarria  Lugo  Spain,42.7600365,-7.4165053
 Barbadelo  27616  Lugo  Spain,42.7642842,-7.4536742
+Camino de Santiago 1 5kms después de Mercado da Serra  27616 Barbadelo  Lugo  Spain,42.7724653,-7.480033199999999
 27612 Morgade  Lugo  Spain,42.7820863,-7.521424499999999
 Ferreiros  Lugo  Spain,42.5915563,-7.379510700000001
+37214 La Peña  Salamanca  Spain,41.1737263,-6.5189754
 27611 Marcadoiro  Lugo  Spain,42.7895324,-7.570599499999999
 27611 Vilachá  Lugo  Spain,42.79537680000001,-7.6036281
 27170 Portomarín  Lugo  Spain,42.8074277,-7.615830099999999
@@ -150,16 +165,21 @@ Ventas de Narón  Lugo  Spain,42.8442835,-7.748630400000001
 27568 Ligonde  Lugo  Spain,42.8586546,-7.7800446
 27568 Airexe  Lugo  Spain,42.8642014,-7.787518200000001
 27216 Portos  Lugo  Spain,42.8733358,-7.8067152
+15881 Lestedo  A Coruña  Spain,42.7972751,-8.469101
 27200 Palas de Rei  Lugo  Spain,42.8734666,-7.868758799999999
+Camiño  27204  Lugo  Spain,42.8736767,-7.907957399999999
 27204 Ponte Campaña  Lugo  Spain,42.8784643,-7.914688899999999
+Ithaca  NY 14850  USA,42.4534492,-76.4735027
 O Coto  A Coruña  Spain,42.8846769,-7.958094399999998
 15809 O Leboreiro  A Coruña  Spain,42.8876221,-7.965756999999999
 15809 Furelos  A Coruña  Spain,42.9094875,-7.999141000000001
 Melide  A Coruña  Spain,42.9139507,-8.0146915
 15826 Boente  A Coruña  Spain,42.9160498,-8.0788032
+Castañeda  Cantabria  Spain,43.31016109999999,-3.9368439
 15819 Ribadiso  A Coruña  Spain,42.9382451,-8.1545114
 Arzúa  A Coruña  Spain,42.9296884,-8.1607836
 Burres (San Vicenzo)  Bebedeiro S/N  15819 Arzúa  La Coruña  Spain,42.9216667,-8.2069444
+36470 Salceda de Caselas  Pontevedra  Spain,42.0999333,-8.560051999999999
 15823 A Brea  A Coruña  Spain,42.9190744,-8.305080199999999
 15821 Santa Irene  A Coruña  Spain,42.9169645,-8.3319448
 15821 A Rúa  A Coruña  Spain,42.9145175,-8.350944199999999
@@ -167,5 +187,6 @@ Burres (San Vicenzo)  Bebedeiro S/N  15819 Arzúa  La Coruña  Spain,42.9216667,
 15821 O Amenal  A Coruña  Spain,42.9065146,-8.394095799999999
 15820 San Paio  A Coruña  Spain,42.9089758,-8.426304499999999
 15820 A Lavacolla  A Coruña  Spain,42.8991871,-8.4445271
+Pl. San Marcos  10  41003 Sevilla  Spain,37.3962965,-5.987595799999999
 Monte do Gozo  18  15820 Santiago de Compostela  La Coruña  Spain,42.88635800000001,-8.5011565
 Santiago de Compostela  A Coruña  Spain,42.8782132,-8.5448445
