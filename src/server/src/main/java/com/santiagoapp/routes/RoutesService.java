@@ -18,9 +18,9 @@ public class RoutesService {
 
     private Route chunker(int numberOfDays, String[] places) {
         List<Route> routeStages = new ArrayList<Route>();
-        int chunkSize = places.length / (numberOfDays);
+        int chunkSize = (int) Math.ceil( (float) places.length / (float) numberOfDays );
         for(int i=0;i<places.length; i+=chunkSize){
-           String [] placesSubset = Arrays.copyOfRange(places, i, Math.min(places.length, i+chunkSize));
+            String [] placesSubset = Arrays.copyOfRange(places, i, Math.min(places.length, i+chunkSize));
 
             Route stageRoute = new GoogleMapsClient().getRouteFor(placesSubset);
             routeStages.add(stageRoute);
