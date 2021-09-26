@@ -218,3 +218,13 @@ height: 12px
   margin-left: 10px;
   margin-right: 5px;
 }
+
+.planning-title{
+  display: grid;
+  padding-left: 2vh;
+  padding-top: 2vh;
+}
+
+h2{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}

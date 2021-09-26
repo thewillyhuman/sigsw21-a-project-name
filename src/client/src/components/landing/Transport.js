@@ -1,6 +1,6 @@
 import { useState,useContext } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHorse,faBicycle,faWalking, faArrowLeft} from '@fortawesome/free-solid-svg-icons'
+import { faHorse,faBicycle,faWalking} from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-scroll';
 import background from '../../resoruces/fondo.jpg';
 import senderismo from '../../resoruces/senderismo.jpg';

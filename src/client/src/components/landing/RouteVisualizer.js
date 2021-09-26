@@ -3,9 +3,10 @@ import {Row,Col,Container,Accordion,useAccordionButton} from 'react-bootstrap';
 import Map from '../map/Map';
 import '../../css/planificate.css'
 import {LandingContext} from '../LandingPage';
-import {scroller } from 'react-scroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock,faRunning } from '@fortawesome/free-solid-svg-icons'
+import { faArrowAltCircleLeft} from '@fortawesome/free-regular-svg-icons'
+import { Link } from 'react-scroll';
 
 function RouteVisualizer(){
 
@@ -30,14 +31,18 @@ function RouteVisualizer(){
       }
 
     return(
+       
         <div  className="planificate-body">
         
                     <Accordion flush defaultActiveKey={0} className="route-acordion" >
+                    <div className="planning-title">
+                        <h2>Planificación</h2>
+                    </div>
                                 {
                                     context.route?.route?.route_stages?.map((day,index)=>{
                                         return(
-                                    <Accordion.Item  onClick={console.log('onblcikk')}  className="route-acordion-item" eventKey={index} key={index}>
-                                        <CustomToggle eventKey={index}>Día {index+1} <FontAwesomeIcon icon={faRunning} /> {Math.round(day?.distance/1000)}Km  <FontAwesomeIcon icon={faClock} />  {day?.duration}h</CustomToggle>
+                                    <Accordion.Item  onClick={console.log('onblcikk')}  className="route-acordion-item" eventKey={index+1} key={index+1}>
+                                        <CustomToggle eventKey={index+1}>Día {index+1} <FontAwesomeIcon icon={faRunning} /> {Math.round(day?.distance/1000)}Km  <FontAwesomeIcon icon={faClock} />  {day?.duration}h</CustomToggle>
                                         <Accordion.Body className="route-acordion-body">
                                             <div className="days-panel">
                                                 <div className="place">
@@ -74,93 +79,12 @@ function RouteVisualizer(){
                         <Map route="camino_frances" route_style="cs.frances" />
                     </div>
             </div>
+      
     )
 }
 
 export default RouteVisualizer;
 
-/**
- *  <Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item>
-                                    <Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item>
-                                    <Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item>
-                                    <Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item>
- */
-
-
-/*
-
-
-              <Row>
-                            <Col>
-                                <div className="day-panel">
-                                    <div className="day-panel-sub">
-                                    <h2>Día 1 - Obreiro</h2> 
-                                        
-                                    </div>
-                                    
-                                </div>
-                            </Col>
-                        </Row>
-
-<div className="place-dot">
-                                <div className="dot-line">
-                                    <div className="dot">
-                                    </div>
-                                    
-                                </div>
-                            </div>*/
-
-/*
- <Container  className="planificate-body">
-            <Row>
-                <Col md>
-                    <div className="days-panel"><p>Days Panel</p></div>
-                </Col>
-                <Col>
-                    <Container   className="planificate-body-col2">
-                        <Row>
-                            <div className="info-day-panel"><p>Info Day Panel</p></div>
-                        </Row> 
-                        <Row>
-                            <div className="map-panel"><p>Map</p></div>
-                        </Row> 
-                    </Container>
-                </Col>
-            </Row> 
-        </Container>*/
+var iconStyle={
+    color:'red'
+}
