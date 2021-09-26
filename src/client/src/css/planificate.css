@@ -6,16 +6,31 @@
   }
   
   .planificate-body{
-    height: 53.5%;
+    height: 100% !important;
     display: grid;
-    margin-top: -0.3vh;
+    grid-template-columns: 15% 85% !important;
+    background-color: #16151A;
   }
 
-  .days-panel{
-    height: 100%;
-    padding-top: 10vh;
+  .route-acordion{
+    background-color: #ffff;
+    overflow-y: auto;
+    max-height: 100vh;
   }
-  
+
+  .route-acordion-item-hidden{
+    border: none !important;
+  }
+  .route-acordion-item-hidden button::after{
+    background-image: none !important;
+  }
+ 
+  .place{
+    max-height: 50vh;
+    overflow-y: auto;
+    
+  }
+
   .day-container{
     height: 100%;
     display: grid;
@@ -27,7 +42,7 @@
   
   .map-panel{
     display: grid;
-    justify-content: center;
+    grid-template-columns: 95% !important;
     align-items: center;
     height: 100%;
   }
@@ -37,46 +52,6 @@
     grid-template-columns: 100%;
   }
   
-.place{
-  display: grid;
-  grid-template-columns: 50% 50% ;
-  text-align: center;
-  grid-template-rows: 45% auto;
-}
-
-.place-name ul li{
-  font-size: 1.8em;
-  color:#ffff;
-  display: list-item;
-  margin: 0;
-  list-style-type: none;
-  margin-left: -4vh;
-}
-
-.place-name ul li:hover{
-  transform: scale(1.1);
-}
-
-.place-day{
-  border-left: 1px solid #ffff;
-  display: grid;
-  height: 100%;
-}
-
-
-.place-day ul li{
-  font-size: 1.8em;
-  color:#ffff;
-  display: list-item;
-  margin: 0;
-  
-}
-
-.place-day ul{
-  position: relative;
-  left:-10px;
-  content: '■';
-}
 
 .dot-line{
   background: #222;
@@ -109,7 +84,6 @@
 }
 
 #map-wrapper{
-  
   width: 100% !important;
   height: 100%;
   background-color: transparent !important;
@@ -120,3 +94,48 @@
   background-color: transparent !important;
 }
 
+
+.place{
+  display: grid;
+  grid-template-columns: 90% 10% ;
+  text-align: center;
+  width: 100% !important;
+}
+
+.trampisjiji{
+  height: 100%;
+  background-color: red;
+}
+
+.place-name ul li{
+  font-size: 1em;
+  color:#222;
+  display: list-item;
+  margin: 0;
+  list-style-type: none;
+ 
+}
+
+.place-day{
+  border-left: 1px solid #222;
+  display: grid;
+  grid-template-rows: 50%;
+}
+
+
+.place-day ul li{
+  font-size: 1.3em;
+  color:#222;
+  display: list-item;
+  margin: 0;
+}
+
+.place-day ul{
+  position: relative;
+  left:-15px;
+  content: '■';
+}
+
+.route-acordion-header button{
+  font-size: 0.7em !important;
+}

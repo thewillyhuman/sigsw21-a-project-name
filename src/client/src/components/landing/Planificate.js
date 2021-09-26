@@ -3,10 +3,12 @@ import axios from 'axios';
 import {Row,Col,Form,Button} from 'react-bootstrap';
 import { scroller } from 'react-scroll';
 import {LandingContext} from '../LandingPage';
+import { useHistory } from "react-router-dom";
 
 
 function Planificate(){
-
+    
+    let history = useHistory();
     let sampleKm = 33;
     const context = useContext(LandingContext);
     const [days,setDays] = useState(10);
@@ -35,7 +37,7 @@ function Planificate(){
           var data = JSON.stringify({
             "road_name": "a",
             "transportMethod": "pie",
-            "numberOfDays": 5
+            "numberOfDays": days
           });
           
           var xhr = new XMLHttpRequest();
@@ -46,6 +48,9 @@ function Planificate(){
               console.log(JSON.parse(this.responseText));
               context.setRoute(JSON.parse(this.responseText));
               context.scrollTo('route-visualizer');
+              
+              //history.push("/route/"+JSON.stringify(JSON.parse(this.responseText)));
+              //window.location.reload(); 
             }
           });
           

@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 
 import LandingPage from './components/LandingPage'
+import RouteVisualizer from "./components/landing/RouteVisualizer";
 import './App.css';
 
 function App() {
@@ -14,6 +15,9 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+          <Route path="/route/:planning">
+            <RouteVisualizer />
+          </Route>
           <Route path="/">
             <LandingPage />
           </Route>

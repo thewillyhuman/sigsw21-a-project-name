@@ -1,68 +1,97 @@
 import { useEffect,useState,useContext} from "react";
-import {Row,Col,Container} from 'react-bootstrap';
+import {Row,Col,Container,Accordion,useAccordionButton} from 'react-bootstrap';
 import Map from '../map/Map';
 import '../../css/planificate.css'
 import {LandingContext} from '../LandingPage';
+import {scroller } from 'react-scroll'
 
 function RouteVisualizer(){
-
 
     const context = useContext(LandingContext);
     const [days,setDays] = useState(null);
 
-    useEffect(()=>{
-        console.log(context.route)
-        setDays(context.route?.route?.route_stages)
-    },context.route)
-    
+    function CustomToggle({ children, eventKey }) {
+        const decoratedOnClick = useAccordionButton(eventKey, () =>
+          console.log('totally custom!'),
+        );
+      
+        return (
+          <button
+            type="button"
+            className="accordion-button collapsed"
+            style={{ width: '100%' }}
+            onClick={decoratedOnClick}
+          >
+            {children}
+          </button>
+        );
+      }
+
+
+
     return(
-        <Container fluid className="planificate-body">
-            <Row>
-                <Col md={3}>
-                    <div className="days-panel">
-                        <div className="place">
-                        {
-                            context.route?.route?.route_stages.map(day =>{
-                                return(
-                                    <>
-                                        <div className="place-name">
-                                            <ul>
-                                                <li>Ocebreiro</li>
-                                                <li>Liñares</li>
-                                                <li>Hospital</li>
-                                                <li>Padornelo</li>
-                                                <li>Fondría</li>
-                                            </ul>
-                                        </div>
-                                        <div className="place-day">
-                                            <ul>
-                                                <li>Dia 1</li>
-                                                <li></li>
-                                                <li></li>
-                                                <li></li>
-                                                <li></li>
-                                            </ul>
-                                        </div>
-                                    </>
-                                )
-                            })
-                        }
-                        </div>
+        <div  className="planificate-body">
+        
+                    <Accordion flush defaultActiveKey={0} className="route-acordion" >
+                                {
+                                    context.route?.route?.route_stages?.map((day,index)=>{
+                                        return(
+                                    <Accordion.Item  onClick={console.log('onblcikk')}  className="route-acordion-item" eventKey={index} key={index}>
+                                        <CustomToggle eventKey={index}>Day {index+1}</CustomToggle>
+                                        <Accordion.Body className="route-acordion-body">
+                                            <div className="days-panel">
+                                                <div className="place">     
+                                                    <div className="place-name">
+                                                        <ul>
+                                                            {day?.route_locations?.map((place,i)=>{
+                                                                return (<li key={i}>{place?.split(',')[0]}</li>)
+                                                            })}
+                                                        </ul>
+                                                    </div>
+                                                    <div className="place-day">
+                                                        <ul>
+                                                        {day?.route_locations?.map((place,i)=>{
+                                                                return (<li key={i}></li>)
+                                                            })}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </Accordion.Body>
+                                  </Accordion.Item>
+                        
+                                        )
+                                    })
+                                    
+                                }
+                                    
+                                    <Accordion.Item   className="route-acordion-item-hidden" disabled>
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item>
+                                    <Accordion.Item   className="route-acordion-item-hidden" disabled>
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" disabled>
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" disabled>
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" disabled>
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" disabled>
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" disabled>
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" disabled>
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" disabled>
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item>
+                                  
+                    </Accordion>
+             
+                    <div className="map-panel">
+                        <Map route="camino_frances" route_style="cs.frances" />
                     </div>
-                </Col>
-                <Col md>
-                    <div className="day-container">
-                        <Row>
-                            <Col>
-                                <div className="map-panel">
-                                    <Map route="camino_frances" route_style="cs.frances" />
-                                </div>
-                            </Col>
-                        </Row>
-                    </div>
-                </Col>
-            </Row> 
-        </Container>
+            </div>
     )
 }
 

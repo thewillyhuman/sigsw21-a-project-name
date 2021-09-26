@@ -21,8 +21,14 @@ body {
 }
 
 #root{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.cont{
   display: grid;  
-  grid-template-rows: repeat(4, 80%);
+  grid-template-rows: repeat(4, 100%);
 }
 
 .bg {

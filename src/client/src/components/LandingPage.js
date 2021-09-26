@@ -50,6 +50,7 @@ function LandingPage(){
           scrollTo:scrollTo,
           setRoute:setRoute
         }}>
+          <div className="cont">
         <Element name="transport" className="element">
             <Transport />
         </Element>
@@ -62,8 +63,7 @@ function LandingPage(){
         <Element name="route-visualizer" className="element">
             <RouteVisualizer />
         </Element>
-        
-
+        </div>
         </LandingContext.Provider>
     );
 }
