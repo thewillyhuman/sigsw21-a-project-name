@@ -6,7 +6,7 @@
   }
   
   .planificate-body{
-    height: 100vh !important;
+    height: 200vh !important;
     display: grid;
     grid-template-columns: 15% 85% !important;
     background-color: #16151A;
@@ -19,12 +19,12 @@
   }
 
 
-
-  .route-acordion{
-    background-color: #ffff;
-    overflow-y: auto;
-    max-height: 100vh;
-  }
+.route-acordion{
+  background-color: #ffff;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 100vh;
+}
 
 .route-acordion::-webkit-scrollbar{
 width: 8px;
@@ -92,7 +92,7 @@ height: 12px
     height: 100%;
   }
 
-  .days-panel {
+.days-panel {
     display: grid;
     grid-template-columns: 100%;
   }
@@ -142,18 +142,26 @@ height: 12px
 
 .place{
   display: grid;
-  grid-template-columns: 90% 10% ;
+  grid-template-columns: 95% 5% ;
   text-align: left;
   width: 100% !important;
+  overflow-x: hidden;
 }
 
 .place-name ul li{
-  font-size: 1em;
+  font-size: 1.2em;
   color:#222;
   display: list-item;
   margin: 0;
   list-style-type: none;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
  
+}
+
+.place-name ul li:hover{
+  font-size: 1.3em;
+  color:#ffb732;
+  cursor: default;
 }
 
 .place-day{
@@ -164,18 +172,47 @@ height: 12px
 
 
 .place-day ul li{
-  font-size: 1.3em;
+  font-size: 1.2em;
   color:#222;
   display: list-item;
   margin: 0;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
 .place-day ul{
   position: relative;
-  left:-15px;
+  left:-19px;
   content: '■';
 }
 
 .route-acordion-header button{
   font-size: 0.7em !important;
+}
+
+
+
+.route-acordion-body{
+  padding: 0px !important;
+}
+
+.accordion-button{
+  font-size: 1.5em !important;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.accordion-button:hover{
+  color:#ffb732 !important;
+  border: none !important;
+}
+
+.accordion-button:focus{
+  font-size: 1.6em !important;
+  color:#ffb732 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+div.collapse ~ .accordion-item {
+  color:#ffb732 !important;
+  background-color: red !important;
 }

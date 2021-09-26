@@ -8,11 +8,10 @@ import {scroller } from 'react-scroll'
 function RouteVisualizer(){
 
     const context = useContext(LandingContext);
-    const [days,setDays] = useState(null);
 
     function CustomToggle({ children, eventKey }) {
         const decoratedOnClick = useAccordionButton(eventKey, () =>
-          console.log('totally custom!'),
+          console.log('Hola Alejandro, espero que sepas lo que haces!'),
         );
       
         return (
@@ -37,7 +36,7 @@ function RouteVisualizer(){
                                     context.route?.route?.route_stages?.map((day,index)=>{
                                         return(
                                     <Accordion.Item  onClick={console.log('onblcikk')}  className="route-acordion-item" eventKey={index} key={index}>
-                                        <CustomToggle eventKey={index}>Day {index+1}</CustomToggle>
+                                        <CustomToggle eventKey={index}>Día {index+1}</CustomToggle>
                                         <Accordion.Body className="route-acordion-body">
                                             <div className="days-panel">
                                                 <div className="place">     

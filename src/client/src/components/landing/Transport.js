@@ -50,7 +50,7 @@ function Transport(props){
      }
 
     return(
-        <div className="landing">
+        <div className="transport">
             <h1>Planifica tu viaje</h1>
             <div className="opactity-bg"/>
             <div className="landing-transport">

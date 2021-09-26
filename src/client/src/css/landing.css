@@ -1,9 +1,10 @@
 
-.landing{
+.transport{
     height: 100%;
     display: grid;
     justify-content: center;
-    grid-template-rows: 10% 30%;
+    align-items: center;
+    grid-template-rows: 10% 15%;
     text-align: center;
     padding-top: 10vh;
   }
@@ -12,24 +13,24 @@
     display: grid;
     justify-content: center;
     align-items: center;
-    
   }
   
   .landing-config-way{
     height: 100%;
     display: grid;
     justify-content: center;
-    grid-template-rows: 12% auto;
+    grid-template-rows: 10% 15%;
     text-align: center;
-    padding-top: 15vh;
+    align-items: center;
   }
   
   .landing-config-time{
     height: 100%;
     display: grid;
     justify-content: center;
-    grid-template-rows: 15% 15% 5%;
+    grid-template-rows: 2% 15% 5%;
     text-align: center;
+    align-items: center;
     padding-top: 20vh;
   }
 
