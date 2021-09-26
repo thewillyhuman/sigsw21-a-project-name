@@ -86,7 +86,7 @@ public class GoogleMapsClient {
         return stringArray;
     }*/
 
-    public Route getRouteFor(final String[] places) {
+    public Route getRouteFor(final String[] places, TravelMode travelMode) {
         final String origin = places[0].split(",")[0];// + "," + places[0].split(",")[2];
         final String destination = places[places.length - 1].split(",")[0];// + "," + places[places.length - 1].split(",")[2];
 
@@ -102,7 +102,7 @@ public class GoogleMapsClient {
                 destination
         );
         // Configure the transport method and the alternative routes.
-        directionsRequest.mode(TravelMode.WALKING);
+        directionsRequest.mode(travelMode);
         //directionsRequest.alternatives(false);
 
         // For each intermediate place add a waypoint to the route.
