@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import {Row,Col,Card,Form,Button} from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowAltCircleLeft} from '@fortawesome/free-regular-svg-icons'
 import { Link } from 'react-scroll';
 import cFrances from '../../resoruces/camino_frances.jpg';
 import cPrimitivo from '../../resoruces/camino_primitivo.jpg';
@@ -17,7 +19,14 @@ function Way(){
     }
 
     return(
+        <>
+         <div className="goBack">
+            <Link  to="transport" spy={true} smooth={true} offset={50} duration={500} >
+                <FontAwesomeIcon icon={faArrowAltCircleLeft} size="3x"  style={iconStyle}/>
+            </Link>
+        </div>
     <div className="landing-config-way">
+       
             <h1>Escoge un camino</h1>
             <Row>
             <Col>
@@ -61,7 +70,12 @@ function Way(){
             </Col>
             </Row>
         </div>
+        </>
     )
 }
 
 export default Way;
+
+var iconStyle={
+    color:'white'
+}

@@ -1,9 +1,10 @@
 import { useContext,useEffect,useState } from "react";
 import axios from 'axios';
-import {Row,Col,Form,Button,Spinner} from 'react-bootstrap';
-import { scroller } from 'react-scroll';
+import {Row,Col,Form,Spinner} from 'react-bootstrap';
+import { Link } from 'react-scroll';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowAltCircleLeft} from '@fortawesome/free-regular-svg-icons'
 import {LandingContext} from '../LandingPage';
-import { useHistory } from "react-router-dom";
 
 
 function Planificate(){
@@ -14,7 +15,7 @@ function Planificate(){
     const [km,setKm] = useState(sampleKm/10);
     const [validated, setValidated] = useState(false);
     const [spinnerDisplay,setSpinnerDisplay] = useState('none')
-    const [btnDisplay,setBtnDisplay] = useState('inline')
+    const [btnDisplay,setBtnDisplay] = useState('inline-block')
 
     const handleSubmit = (event) => {
       const form = event.currentTarget;
@@ -81,9 +82,14 @@ function Planificate(){
 
 
     return(
+      <>
+      <div className="goBack">
+            <Link  to="way" spy={true} smooth={true} offset={50} duration={500} >
+                <FontAwesomeIcon icon={faArrowAltCircleLeft} size="3x"  style={iconStyle}/>
+            </Link>
+        </div>
        <Form className="landing-config-time" noValidate validated={validated} onSubmit={handleSubmit}>
             <h1>Planifica tu viaje</h1>
-      
             <Row>
                 <Col>
                     <Form.Label>Días</Form.Label>
@@ -95,13 +101,20 @@ function Planificate(){
                 </Col>
             </Row>
             <Row>
-              <div className="spinner-container" style={{display:spinnerDisplay}}>
-                <Spinner animation="border" variant="light"/>
+              <div className="btn-spinner-cont">
+                <div className="spinner-container" style={{display:spinnerDisplay}}>
+                  <Spinner animation="border" variant="light"/>
+                </div>
+                <button className="planificatBtn"  style={{display:btnDisplay}}>Planificar </button>
               </div>
-              <button className="planificatBtn"  style={{display:btnDisplay}}>Planificar </button>
             </Row>
             </Form>
+    </>
     )
 }
 
 export default Planificate;
+
+var iconStyle={
+  color:'white'
+}

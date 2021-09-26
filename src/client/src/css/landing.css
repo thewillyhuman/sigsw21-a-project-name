@@ -19,7 +19,7 @@
     height: 100%;
     display: grid;
     justify-content: center;
-    grid-template-rows: 10% 15%;
+    grid-template-rows: 3% 20% 15%;
     text-align: center;
     align-items: center;
   }
@@ -28,10 +28,15 @@
     height: 100%;
     display: grid;
     justify-content: center;
-    grid-template-rows: 2% 15% 5%;
+    grid-template-rows: 6% 8% 5%;
     text-align: center;
     align-items: center;
-    padding-top: 20vh;
+    padding-top: 10vh;
+  }
+
+  .btn-spinner-cont{
+    display: grid;
+    height: 5vh;
   }
 
   @media(max-width: 1000px){
@@ -148,3 +153,12 @@ div h1{
   transition: right 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
 }
 
+.goBack{
+  display: grid !important;
+  padding-left: 10vh;
+  margin-top: 9vh;
+}
+
+.goBack svg{
+  cursor:pointer !important
+}
