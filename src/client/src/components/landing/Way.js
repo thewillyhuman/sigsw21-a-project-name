@@ -36,7 +36,7 @@ function Way(){
                     <strong className="me-auto">Información</strong>
                     <CloseButton onClick={toggleShowToast}/>
                 </Toast.Header>
-                <Toast.Body>Solo el camino Francés es el pepino</Toast.Body>
+                <Toast.Body>Recomendamos seleccionar el camino frances para disfrutar de todas las funcionalidades que ofrece la aplicación</Toast.Body>
                 </Toast>
             </ToastContainer>   
         </div>

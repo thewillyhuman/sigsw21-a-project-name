@@ -193,6 +193,10 @@ const Map = forwardRef((props,ref)=> {
                     <img src="elevations.png" />
                 </div>
 
+                <div id="legends">
+                    <img src="leyendas.png" />
+                </div>
+
                 <Helmet>
                     <script
                         type="text/javascript"
