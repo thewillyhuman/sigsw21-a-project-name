@@ -26,43 +26,49 @@
     max-height: 100vh;
   }
 
+.route-acordion::-webkit-scrollbar{
+width: 8px;
+height: 12px
+}
 
-  .route-acordion-item-hidden{
-    border: none !important;
+.route-acordion::-webkit-scrollbar-track{
+  border-radius: 10px;
+  background: #eee;
+  box-shadow: 0 0 1px 1px #bbb, inset 0 0 7px rgba(0,0,0,0.3)
+}
+
+.route-acordion::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background: linear-gradient(left, #96A6BF, #63738C);
+  box-shadow: inset 0 0 1px 1px #5C6670;
+}
+
+.route-acordion::-webkit-scrollbar-thumb:hover{
+  background: linear-gradient(left, #8391A6, #536175);
+}
+
+.place::-webkit-scrollbar{
+  width: 8px;
+  height: 12px
+  }
+  
+  .place::-webkit-scrollbar-track{
+    border-radius: 10px;
+    background: #eee;
+    box-shadow: 0 0 1px 1px #bbb, inset 0 0 7px rgba(0,0,0,0.3)
+  }
+  
+  .place::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background: linear-gradient(left, #96A6BF, #63738C);
+    box-shadow: inset 0 0 1px 1px #5C6670;
+  }
+  
+  .place::-webkit-scrollbar-thumb:hover{
+    background: linear-gradient(left, #8391A6, #536175);
   }
 
-.route-acordion-item-hidden .accordion-button:focus {
-  border: none !important;
-  box-shadow: none !important;
-  cursor: default;
-}
 
-.route-acordion-item-hidden .accordion-button:active {
-  border: none !important;
-  box-shadow: none !important;
-  cursor: default;
-}
-.route-acordion-item-hidden .accordion-button:not(.collapsed){
-  border: none !important;
-  box-shadow: none !important;
-  background-color: #ffff;
-  cursor: default;
-}
-
-.route-acordion-item-hidden .accordion-button{
-  cursor: default;
-}
-
-.route-acordion-item-hidden .accordion-button:hover{
-  cursor: default;
-}
-
-
-
-
-  .route-acordion-item-hidden button::after{
-    background-image: none !important;
-  }
  
   .place{
     max-height: 50vh;
@@ -137,7 +143,7 @@
 .place{
   display: grid;
   grid-template-columns: 90% 10% ;
-  text-align: center;
+  text-align: left;
   width: 100% !important;
 }
 
