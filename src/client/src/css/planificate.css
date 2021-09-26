@@ -162,20 +162,30 @@ height: 12px
 .place{
   display: grid;
   grid-template-columns: 95% 5% ;
+  justify-content: center;
   text-align: left;
   width: 100% !important;
   overflow-x: hidden;
 }
 
+.place-name{
+  margin-left: -2vh;
+  margin-right: 1vh;
+}
+
 .place-name ul li{
   font-size: 1.2em;
   color:#222;
-  display: list-item;
+  display: block;
   margin: 0;
   list-style-type: none;
   font-family: 'Yanone Kaffeesatz', sans-serif;
- 
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  overflow: hidden;
 }
+
 
 .place-name ul li:hover{
   color:#ffb732;
