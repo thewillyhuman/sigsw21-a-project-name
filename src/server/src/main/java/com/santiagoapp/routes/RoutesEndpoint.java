@@ -15,7 +15,7 @@ public class RoutesEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public RoutesGetResponse getRoute(RoutesGetRequest request) {
-        Route route = service.getRoute(request.getRoadName(), request.getTransportMethod(), request.getNumberOfDays());
+        Route route = service.getRoute(request.getRoadName(), request.getNumberOfDays());
         RoutesGetResponse response = RoutesGetResponseBuilder.newBuilder()
                 .withRequest(request)
                 .withRoute(route)

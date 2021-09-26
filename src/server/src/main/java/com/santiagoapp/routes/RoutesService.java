@@ -11,16 +11,16 @@ import java.util.stream.Collectors;
 
 public class RoutesService {
 
-    public Route getRoute(String roadName, String transportMethod, int numberOfDays) {
+    public Route getRoute(String roadName, int numberOfDays) {
         String[] places = new GoogleMapsClient().getPointsForRoad(roadName);
         return chunker(numberOfDays, places);
     }
 
     private Route chunker(int numberOfDays, String[] places) {
         List<Route> routeStages = new ArrayList<Route>();
-        int chunkSize = places.length / (numberOfDays);
+        int chunkSize = (int) Math.ceil( (float) places.length / (float) numberOfDays );
         for(int i=0;i<places.length; i+=chunkSize){
-           String [] placesSubset = Arrays.copyOfRange(places, i, Math.min(places.length, i+chunkSize));
+            String [] placesSubset = Arrays.copyOfRange(places, i, Math.min(places.length, i+chunkSize));
 
             Route stageRoute = new GoogleMapsClient().getRouteFor(placesSubset);
             routeStages.add(stageRoute);
