@@ -6,15 +6,16 @@
   }
   
   .planificate-body{
-    height: 100% !important;
+    height: 100vh !important;
     display: grid;
     grid-template-columns: 15% 85% !important;
     background-color: #16151A;
-    margin-top: -7px;
+    margin-top: -2px;
   }
 
   #layer-buttons{
-    margin-top: 1vh;
+    margin-top: 2vh;
+    right: 0;
   }
 
 
@@ -138,11 +139,6 @@
   grid-template-columns: 90% 10% ;
   text-align: center;
   width: 100% !important;
-}
-
-.trampisjiji{
-  height: 100%;
-  background-color: red;
 }
 
 .place-name ul li{

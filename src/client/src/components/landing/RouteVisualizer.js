@@ -65,27 +65,9 @@ function RouteVisualizer(){
                                     
                                 }
                                     
-                                    <Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item>
-                                    <Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
-                                        <Accordion.Header></Accordion.Header>
-                                    </Accordion.Item>
-                                  
+                                    
+                                   
+
                     </Accordion>
              
                     <div className="map-panel">
@@ -96,6 +78,50 @@ function RouteVisualizer(){
 }
 
 export default RouteVisualizer;
+
+/**
+ *  <Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item>
+                                    <Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item>
+                                    <Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item>
+                                    <Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item><Accordion.Item   className="route-acordion-item-hidden" >
+                                        <Accordion.Header></Accordion.Header>
+                                    </Accordion.Item>
+ */
+
 
 /*
 

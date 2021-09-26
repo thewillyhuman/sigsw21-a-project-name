@@ -15,7 +15,7 @@ const GOOGLE_MAPS_ENDPOINT = process.env.REACT_APP_GOOGLE_MAPS_API_ENDPOINT;
 const ELEVATIONS_WMS_ENDPOINT = process.env.REACT_APP_ELEVACIONES_WMS_ENDPOINT;
 const STJAMES_WMS_ENDPOINT = process.env.REACT_APP_SANTIAGO_WMS_ENDPOINT;
 
-const MAP_CENTER = [33.160417, -3.998637];
+const MAP_CENTER = [40.160417, -3.998637];
 
 
 let helmetContext = {};
@@ -55,7 +55,7 @@ function Map(props) {
     */
     const initMap = function() {
         map = new window.google.maps.Map(document.getElementById("google-map"), {
-                center: new window.google.maps.LatLng(MAP_CENTER[0], MAP_CENTER[1]), zoom: 6.8,
+                center: new window.google.maps.LatLng(MAP_CENTER[0], MAP_CENTER[1]), zoom: 7,
                 mapTypeId: window.google.maps.MapTypeId.ROADMAP,  zoomControl: true,
                 mapTypeControl: false, scaleControl: false, streetViewControl: false,
                 rotateControl: false, fullscreenControl: false, draggable: true,
