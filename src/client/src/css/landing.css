@@ -53,6 +53,10 @@
     font-size: 3em;
     display: inline;
     margin: 10vh;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
 
 li:hover  {
