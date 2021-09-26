@@ -76,6 +76,12 @@ class WMSLayer {
 
         this.map.overlayMapTypes.push(this.overlayWMS);
     }
+
+    destroy() {
+        let index = this.map.overlayMapTypes.indexOf(this.overlayWMS);
+
+        if (index >= 0) this.map.overlayMapTypes.removeAt(index);
+    }
 }
 
 class GeoJSONLayer {
@@ -98,8 +104,8 @@ class GeoJSONLayer {
         this.customLayer.setMap(this.map);
     }
 
+    destroy = () => this.customLayer.setMap(null);
     show = () => this.customLayer.setMap(this.map);
-
     hide = () => this.customLayer.setMap(null);
 }
 
@@ -141,9 +147,13 @@ class PointsLayer {
         });
     }
 
+    destroy() {
+        this.markers.forEach(m => {
+            m.setMap(null);
+        });
+    }
+
     show = () => this.markers.forEach(m => m.setVisible(true));
-
-
     hide = () => this.markers.forEach(m => m.setVisible(false));
 }
 
@@ -174,6 +184,7 @@ class PolyLineLayer {
         this.polylineElement.setMap(this.map);
     }
 
+    destroy = () => this.polylineElement.setMap(null);
     show = () => this.polylineElement.set('strokeOpacity', 1.0);
     hide = () => this.polylineElement.set('strokeOpacity', 0);
 

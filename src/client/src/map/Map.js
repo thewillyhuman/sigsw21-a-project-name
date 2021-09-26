@@ -1,12 +1,11 @@
-import React from "react";
+import React,{forwardRef,useImperativeHandle} from "react";
 import ReactDOMServer from 'react-dom/server';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRoute, faRoad, faMountain, faUser, faBed, faMonument, faStar } from '@fortawesome/free-solid-svg-icons';
 
 import styles from "./map_styles.json";
-import test_data from "./test_data.json";
-import { GeoJSONLayer, PointsLayer, PolyLineLayer, WMSLayer } from "./Layers";
+import { PointsLayer, PolyLineLayer, WMSLayer, GeoJSONLayer } from "./Layers";
 
 import "./map.sass";
 
@@ -17,7 +16,7 @@ const GOOGLE_MAPS_ENDPOINT = process.env.REACT_APP_GOOGLE_MAPS_API_ENDPOINT;
 const ELEVATIONS_WMS_ENDPOINT = process.env.REACT_APP_ELEVACIONES_WMS_ENDPOINT;
 const STJAMES_WMS_ENDPOINT = process.env.REACT_APP_SANTIAGO_WMS_ENDPOINT;
 
-const MAP_CENTER = [36.160417, -1.998637];
+const MAP_CENTER = [40.160417, -3.998637];
 
 
 let helmetContext = {};
@@ -25,53 +24,67 @@ let helmetContext = {};
 // map layers
 let routeLayer, pointsOfInterestLayer, accommodationsLayer, usersLayer;
 let santiagoWMS, elevationWMS;
+let layers = [];
 
 // icons
 let accommodationIcon, poiIcon, userIcon;
 
 
-function Map(props) {
-    let map;
+const Map = forwardRef((props,ref)=> {
+
+    useImperativeHandle(ref, () => ({
+
+        loadRoute(route) {
+            // creating WMS layers. order here is critical to determine the superposition of layers
+            layers.forEach(l => {
+                if (l != null) l.destroy() 
+            });
+            layers = [];
+
+            elevationWMS = new WMSLayer(ELEVATIONS_WMS_ENDPOINT, 'EL.GridCoverage',
+                'Elevaciones', 'image/png', window.map, 0.775, true);
+            layers.push(elevationWMS);
+
+            santiagoWMS = new WMSLayer(STJAMES_WMS_ENDPOINT, props.way,
+                props.way_style, 'image/png', window.map, 1.0, true);
+            layers.push(santiagoWMS);
+    
+            if (route == null) return;
+    
+            routeLayer = new PolyLineLayer(route.route_polyline, '#FBBF24', window.map, true);
+            layers.push(routeLayer);
+    
+            pointsOfInterestLayer = new PointsLayer(route.points_of_interest, poiIcon, window.map,
+                infoCallback,
+                true);
+            layers.push(pointsOfInterestLayer);
+    
+            accommodationsLayer = new PointsLayer(route.accommodations, accommodationIcon, window.map,
+                infoCallback, true);
+            layers.push(accommodationsLayer);
+            
+            loadUsers(route);
+        }
+      }));
 
 
-    const loadRoute = function(route) {
-        // creating WMS layers. order here is critical to determine the superposition of layers
-        elevationWMS = new WMSLayer(ELEVATIONS_WMS_ENDPOINT, 'EL.GridCoverage',
-            'Elevaciones', 'image/png', map, 0, true);
-        santiagoWMS = new WMSLayer(STJAMES_WMS_ENDPOINT, props.way,
-            props.way_style, 'image/png', map, 1.0, true);
-
-        if (route == null) return;
-
-        routeLayer = new PolyLineLayer(route.route_polyline, '#FBBF24', map, true);
-
-        pointsOfInterestLayer = new PointsLayer(route.points_of_interest, poiIcon, map,
-            infoCallback,
-            true);
-
-        accommodationsLayer = new PointsLayer(route.accommodations, accommodationIcon, map,
-            infoCallback, true);
-        
-                
-        loadUsers(route);
-    };
-
-    const loadUsers = function(route) {
-        let data = JSON.stringify({"x_position": MAP_CENTER[0], "y_position": MAP_CENTER[1]});
-        
-        let xhr = new XMLHttpRequest();
-        xhr.withCredentials = true;
-        xhr.addEventListener("readystatechange", function() {
-            if(this.readyState === 4) {
-                usersLayer = new GeoJSONLayer(JSON.parse(this.responseText).user_locations, userIcon, map, false);
-            }
-        });
-        
-        xhr.open("POST", "http://santiagoapp.wcr.es:8080/users");
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(data);
-    }
-
+      const loadUsers = function(route) {
+          let data = JSON.stringify({"x_position": MAP_CENTER[0], "y_position": MAP_CENTER[1]});
+          
+          let xhr = new XMLHttpRequest();
+          xhr.withCredentials = true;
+          xhr.addEventListener("readystatechange", function() {
+              if(this.readyState === 4) {
+                  usersLayer = new GeoJSONLayer(JSON.parse(this.responseText).user_locations, userIcon, window.map, false);
+                  layers.push(usersLayer);
+              }
+          });
+          
+          xhr.open("POST", "http://santiagoapp.wcr.es:8080/users");
+          xhr.setRequestHeader("Content-Type", "application/json");
+          xhr.send(data);
+      }
+    
     /*
         Hides or shows a layer depending on the new state.
 
@@ -119,12 +132,12 @@ function Map(props) {
         with additional functionality are created.
     */
     const initMap = function() {
-        map = new window.google.maps.Map(document.getElementById("google-map"), {
+        window.map = new window.google.maps.Map(document.getElementById("google-map"), {
                 center: new window.google.maps.LatLng(MAP_CENTER[0], MAP_CENTER[1]), zoom: 7,
                 mapTypeId: window.google.maps.MapTypeId.ROADMAP,  zoomControl: true,
                 mapTypeControl: false, scaleControl: false, streetViewControl: false,
                 rotateControl: false, fullscreenControl: false, draggable: true,
-                gestureHandling: "cooperative"
+                gestureHandling: "cooperative", styles: styles
         });
 
         accommodationIcon = {url: "icons/accommodation.png", scaledSize: new window.google.maps.Size(50, 50)};
@@ -192,6 +205,6 @@ function Map(props) {
             </section>
         </HelmetProvider>
     );
-}
+});
 
 export default Map;
