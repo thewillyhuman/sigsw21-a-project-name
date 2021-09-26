@@ -1,26 +1,26 @@
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
+import LandingPage from './components/LandingPage'
+import RouteVisualizer from "./components/landing/RouteVisualizer";
 import './App.css';
-import Map from './map/Map';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload. We're live.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Map route="camino_frances" route_style="cs.frances" />
-      </header>
-    </div>
+    <Router>
+     
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/">
+            <LandingPage />
+          </Route>
+        </Switch>
+    </Router>
   );
 }
 
