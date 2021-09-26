@@ -78,6 +78,31 @@ class WMSLayer {
     }
 }
 
+class GeoJSONLayer {
+    constructor(geojsonData, icon, map, defaultActive) {
+        this.data = geojsonData;
+        this.icon = icon;
+        this.map = map;
+        this.customLayer = null;
+        this.loadData();
+        
+        if (defaultActive) this.show();
+        else this.hide();
+    }
+
+    loadData() {
+        this.customLayer = new window.google.maps.Data();
+        this.customLayer.setStyle({ icon: this.icon });
+
+        this.customLayer.addGeoJson(this.data);
+        this.customLayer.setMap(this.map);
+    }
+
+    show = () => this.customLayer.setMap(this.map);
+
+    hide = () => this.customLayer.setMap(null);
+}
+
 class PointsLayer {
     
     constructor(points, icon, map, contentCallback, defaultActive) {
@@ -154,4 +179,4 @@ class PolyLineLayer {
 
 }
 
-export {WMSLayer, PointsLayer, PolyLineLayer};
+export {WMSLayer, PointsLayer, PolyLineLayer, GeoJSONLayer};

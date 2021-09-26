@@ -6,7 +6,7 @@ import { faRoute, faRoad, faMountain, faUser, faBed, faMonument, faStar } from '
 
 import styles from "./map_styles.json";
 import test_data from "./test_data.json";
-import { PointsLayer, PolyLineLayer, WMSLayer } from "./Layers";
+import { GeoJSONLayer, PointsLayer, PolyLineLayer, WMSLayer } from "./Layers";
 
 import "./map.sass";
 
@@ -37,7 +37,7 @@ function Map(props) {
     const loadRoute = function(route) {
         // creating WMS layers. order here is critical to determine the superposition of layers
         elevationWMS = new WMSLayer(ELEVATIONS_WMS_ENDPOINT, 'EL.GridCoverage',
-            'Elevaciones', 'image/png', map, 0.775, true);
+            'Elevaciones', 'image/png', map, 0, true);
         santiagoWMS = new WMSLayer(STJAMES_WMS_ENDPOINT, props.way,
             props.way_style, 'image/png', map, 1.0, true);
 
@@ -52,8 +52,25 @@ function Map(props) {
         accommodationsLayer = new PointsLayer(route.accommodations, accommodationIcon, map,
             infoCallback, true);
         
-        if (props.users) usersLayer = new PointsLayer(props.users, userIcon, map, null, true);
+                
+        loadUsers(route);
     };
+
+    const loadUsers = function(route) {
+        let data = JSON.stringify({"x_position": MAP_CENTER[0], "y_position": MAP_CENTER[1]});
+        
+        let xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        xhr.addEventListener("readystatechange", function() {
+            if(this.readyState === 4) {
+                usersLayer = new GeoJSONLayer(JSON.parse(this.responseText).user_locations, userIcon, map, false);
+            }
+        });
+        
+        xhr.open("POST", "http://santiagoapp.wcr.es:8080/users");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(data);
+    }
 
     /*
         Hides or shows a layer depending on the new state.
@@ -102,8 +119,6 @@ function Map(props) {
         with additional functionality are created.
     */
     const initMap = function() {
-        console.log('init_map');
-        console.log(test_data.route.route_stages[0]);
         map = new window.google.maps.Map(document.getElementById("google-map"), {
                 center: new window.google.maps.LatLng(MAP_CENTER[0], MAP_CENTER[1]), zoom: 7,
                 mapTypeId: window.google.maps.MapTypeId.ROADMAP,  zoomControl: true,
@@ -114,8 +129,7 @@ function Map(props) {
 
         accommodationIcon = {url: "icons/accommodation.png", scaledSize: new window.google.maps.Size(50, 50)};
         poiIcon = {url: "icons/poi.png", scaledSize: new window.google.maps.Size(50, 50)};
-        userIcon = {url: "icons/user.png", scaledSize: new window.google.maps.Size(50, 50)};
-
+        userIcon = {url: "icons/user.png", scaledSize: new window.google.maps.Size(30, 30)};
     };
 
     // add the initMap function to window so it can be called after the google maps script is loaded

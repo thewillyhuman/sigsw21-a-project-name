@@ -1,5 +1,4 @@
-import { useContext,useEffect,useState } from "react";
-import axios from 'axios';
+import { useContext, useState } from "react";
 import {Row,Col,Form,Spinner} from 'react-bootstrap';
 import { Link } from 'react-scroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -38,7 +37,7 @@ function Planificate(){
         context.setPlanning({
             days:days,
             km:km
-        })
+        });
     
           var data = JSON.stringify({
             "road_name": "a",
@@ -51,12 +50,10 @@ function Planificate(){
           
           xhr.addEventListener("readystatechange", function() {
             if(this.readyState === 4) {
-              console.log(JSON.parse(this.responseText));
-              context.setRoute(JSON.parse(this.responseText));
-             setBtnDisplay('inline-block');
-             setSpinnerDisplay('none');
-             context.scrollTo('route-visualizer');
-             document.getElementsByClassName('accordion-button')[0]?.focus();
+              setBtnDisplay('inline-block');
+              setSpinnerDisplay('none');
+              context.scrollTo('route-visualizer');
+              document.getElementsByClassName('accordion-button')[0]?.focus();
             }
           });
           
