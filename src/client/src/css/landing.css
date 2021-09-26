@@ -19,11 +19,12 @@
     height: 100%;
     display: grid;
     justify-content: center;
-    grid-template-rows: 3% 20% 15%;
+    grid-template-rows: 3% 20% 5%;
     text-align: center;
     align-items: center;
   }
-  
+
+
   .landing-config-time{
     height: 100%;
     display: grid;
@@ -34,14 +35,16 @@
     padding-top: 10vh;
   }
 
+
+
   .btn-spinner-cont{
     display: grid;
     height: 5vh;
   }
 
-  @media(max-width: 1000px){
-    .landing-config-time{
-      grid-template-rows: 10% 10% 5% !important
+  @media(max-width: 1100px){
+    .card{
+      width: 80% !important;
     }
   }
 
@@ -155,8 +158,14 @@ div h1{
 
 .goBack{
   display: grid !important;
+  grid-template-columns: 80% 20%;
   padding-left: 10vh;
   margin-top: 9vh;
+ 
+}
+
+.toast-cont{
+  height: 7vh;
 }
 
 .goBack svg{

@@ -74,7 +74,8 @@ class WMSLayer {
         this.overlayWMS = new window.google.maps.ImageMapType(overlayOptions);
         this.overlayWMS.setOpacity(this.opacity);
 
-        this.map.overlayMapTypes.push(this.overlayWMS);
+        console.log(this.map)
+        this.map?.overlayMapTypes.push(this.overlayWMS);
     }
 }
 

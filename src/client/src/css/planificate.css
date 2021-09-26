@@ -13,10 +13,28 @@
     margin-top: -2px;
   }
 
-  #layer-buttons{
-    margin-top: 2vh;
-    right: 0;
+  @media(max-width: 1100px){
+    .planificate-body{
+      grid-template-columns: 20% 80% !important;
+    }
+    #layer-buttons{
+      right: 10vh !important;
+    }
   }
+
+  #layer-buttons h3{
+    color:#ffff;
+  }
+
+  #layer-buttons{
+    margin-top: 2vh !important;
+    right: 0 !important;
+  }
+
+  #layer-buttons li p{
+    vertical-align: middle !important;
+  }
+
 
 
 .route-acordion{
@@ -234,3 +252,4 @@ h2{
 .planning-title svg:hover{
   cursor: pointer;
 }
+
