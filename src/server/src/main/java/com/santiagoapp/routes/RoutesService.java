@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class RoutesService {
 
-    public Route getRoute(String roadName, String transportMethod, int numberOfDays) {
+    public Route getRoute(String roadName, int numberOfDays) {
         String[] places = new GoogleMapsClient().getPointsForRoad(roadName);
         return chunker(numberOfDays, places);
     }
