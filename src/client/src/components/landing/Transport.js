@@ -56,13 +56,13 @@ function Transport(props){
             <div className="landing-transport">
                 <ul>
                     <Link  to="way" spy={true} smooth={true} offset={50} duration={500} >
-                        <li onClick={()=>handleTransportClick(setWalkStyle,'walk')} onMouseEnter={handleWalk}><FontAwesomeIcon icon={faWalking} size="lg" style={walkStyle} /></li>
+                        <li onClick={()=>handleTransportClick(setWalkStyle,'walking')} onMouseEnter={handleWalk}><FontAwesomeIcon icon={faWalking} size="lg" style={walkStyle} /></li>
                     </Link>
                     <Link  to="way" spy={true} smooth={true} offset={50} duration={500} >
-                        <li onClick={()=>handleTransportClick(setBicyStyle,'bicycle')} onMouseEnter={handleBicycle}><FontAwesomeIcon icon={faBicycle} size="lg" style={bicyStyle} /></li>
+                        <li onClick={()=>handleTransportClick(setBicyStyle,'bicycling')} onMouseEnter={handleBicycle}><FontAwesomeIcon icon={faBicycle} size="lg" style={bicyStyle} /></li>
                     </Link>
                     <Link  to="way" spy={true} smooth={true} offset={50} duration={500} >
-                        <li onClick={()=>handleTransportClick(setHorseStyle,'horse')} onMouseEnter={handleHorse}> <FontAwesomeIcon icon={faHorse} size="lg" style={horseStyle}/></li>
+                        <li onClick={()=>handleTransportClick(setHorseStyle,'horsing')} onMouseEnter={handleHorse}> <FontAwesomeIcon icon={faHorse} size="lg" style={horseStyle}/></li>
                     </Link>
                     <li id="bg" className="bg"style={style} ></li>                    
                 </ul>

@@ -39,7 +39,7 @@ function Planificate(){
     
           var data = JSON.stringify({
             "road_name": context.way,
-            "transportMethod": "pie",
+            "transportMethod": context.transport,
             "numberOfDays": days
           });
           
