@@ -5,7 +5,6 @@ import {
 } from "react-router-dom";
 
 import LandingPage from './components/LandingPage'
-import RouteVisualizer from "./components/landing/RouteVisualizer";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
