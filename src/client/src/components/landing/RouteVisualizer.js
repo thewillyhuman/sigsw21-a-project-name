@@ -18,9 +18,9 @@ function RouteVisualizer(){
         }
     }
 
-    function CustomToggle({ children, eventKey}) {
+    function CustomToggle({ children, eventKey, route_stage}) {
         const decoratedOnClick = useAccordionButton(eventKey, () =>
-          console.log('Hola Alejandro, espero que sepas lo que haces!'),
+          console.log(route_stage),
         );
       
         return (
@@ -49,7 +49,7 @@ function RouteVisualizer(){
                                     context.route?.route?.route_stages?.map((day,index)=>{
                                         return(
                                     <Accordion.Item  onClick={console.log('onblcikk')}  className="route-acordion-item" eventKey={index+1} key={index+1}>
-                                        <CustomToggle eventKey={index+1}>Día {index+1} <FontAwesomeIcon icon={faRunning} /> {Math.round(day?.distance/1000)}Km  <FontAwesomeIcon icon={faClock} />  {day?.duration}h</CustomToggle>
+                                        <CustomToggle route_stage={day} eventKey={index+1}>Día {index+1} <FontAwesomeIcon icon={faRunning} /> {Math.round(day?.distance/1000)}Km  <FontAwesomeIcon icon={faClock} />  {day?.duration}h</CustomToggle>
                                         <Accordion.Body className="route-acordion-body">
                                             <div className="days-panel">
                                                 <div className="place">
@@ -83,7 +83,7 @@ function RouteVisualizer(){
                     </Accordion>
              
                     <div className="map-panel">
-                        <Map route="camino_frances" route_style="cs.frances" />
+                        <Map way="caminos_andaluces,caminos_galicia,caminos_centro,camino_frances,caminos_norte" way_style="cs.andaluces,cs.galicia,cs.centro,cs.frances,cs.norte" />
                     </div>
             </div>
       
