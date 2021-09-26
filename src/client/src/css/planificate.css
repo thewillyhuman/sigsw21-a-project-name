@@ -141,15 +141,14 @@ height: 12px
 }
 
 .map-panel{
-  display: grid;
-  grid-template-columns: 98%;
-  justify-content: center;
+  display: inline;
 }
 
 #map-wrapper{
   width: 100% !important;
   height: 100%;
   background-color: transparent !important;
+  margin: 0 !important;
 }
 
 #google-map{
