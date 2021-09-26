@@ -9,7 +9,7 @@ function RouteVisualizer(){
 
     const context = useContext(LandingContext);
 
-    function CustomToggle({ children, eventKey }) {
+    function CustomToggle({ children, eventKey}) {
         const decoratedOnClick = useAccordionButton(eventKey, () =>
           console.log('Hola Alejandro, espero que sepas lo que haces!'),
         );
@@ -24,9 +24,8 @@ function RouteVisualizer(){
             {children}
           </button>
         );
+
       }
-
-
 
     return(
         <div  className="planificate-body">

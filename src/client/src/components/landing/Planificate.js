@@ -1,4 +1,4 @@
-import { useContext,useState } from "react";
+import { useContext,useEffect,useState } from "react";
 import axios from 'axios';
 import {Row,Col,Form,Button} from 'react-bootstrap';
 import { scroller } from 'react-scroll';
@@ -48,9 +48,7 @@ function Planificate(){
               console.log(JSON.parse(this.responseText));
               context.setRoute(JSON.parse(this.responseText));
               context.scrollTo('route-visualizer');
-              
-              //history.push("/route/"+JSON.stringify(JSON.parse(this.responseText)));
-              //window.location.reload(); 
+              document.getElementsByClassName('accordion-button')[0]?.focus();
             }
           });
           
@@ -72,6 +70,7 @@ function Planificate(){
         setKm(km);
         setDays(Math.round(sampleKm/km));
     }
+
 
 
     return(

@@ -211,8 +211,3 @@ height: 12px
   border: none !important;
   box-shadow: none !important;
 }
-
-div.collapse ~ .accordion-item {
-  color:#ffb732 !important;
-  background-color: red !important;
-}
