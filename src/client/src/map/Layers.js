@@ -78,8 +78,80 @@ class WMSLayer {
     }
 }
 
-class PointsLayer {}
+class PointsLayer {
+    
+    constructor(points, icon, map, contentCallback, defaultActive) {
+        this.points = points;
+        this.icon = icon;
+        this.map = map;
+        this.contentCallback = contentCallback;
+        this.markers = [];
+        this.createMarkers();
 
-class PolyLineLayer {}
+        if (defaultActive) this.show();
+        else this.hide();
+    }
+
+    createMarkers() {
+        this.points.forEach(p => {
+            let newMarker = new window.google.maps.Marker({
+                position: new window.google.maps.LatLng(p.coordinates[0], p.coordinates[1]),
+                map: this.map,
+                icon: this.icon,
+                animation: window.google.maps.Animation.DROP
+            });
+
+            if (this.contentCallback) {
+
+                newMarker.addListener('click', () => {
+                    const infoWindow = new window.google.maps.InfoWindow({
+                        content: this.contentCallback(p)
+                    });
+                    
+                    infoWindow.open({anchor: newMarker, map: this.map, shouldFocus: false});
+                });
+            }
+
+            this.markers.push(newMarker);
+        });
+    }
+
+    show = () => this.markers.forEach(m => m.setVisible(true));
+
+
+    hide = () => this.markers.forEach(m => m.setVisible(false));
+}
+
+class PolyLineLayer {
+
+    constructor(polyline, color, map, defaultActive) {
+        this.polyline = polyline;
+        this.polylineElement = null;
+        this.map = map;
+        this.color = color;
+        this.createPolyline();
+
+        if (defaultActive) this.show();
+        else this.hide();
+    }
+
+    createPolyline() {
+        let path = window.google.maps.geometry.encoding.decodePath(this.polyline);
+
+        this.polylineElement = new window.google.maps.Polyline({
+            path: path,
+            geodesic: true, 
+            strokeColor: this.color,
+            strokeOpacity: 0,
+            strokeWeight: 8
+        });
+
+        this.polylineElement.setMap(this.map);
+    }
+
+    show = () => this.polylineElement.set('strokeOpacity', 1.0);
+    hide = () => this.polylineElement.set('strokeOpacity', 0);
+
+}
 
 export {WMSLayer, PointsLayer, PolyLineLayer};

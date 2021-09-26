@@ -21,6 +21,7 @@
         border-radius: 0.25rem
         background-color: #1F2937CA
         margin-left: 1rem
+        margin-top: 1rem
         padding: 0.5rem
         overflow-y: scroll
         max-height: 25%
@@ -39,15 +40,63 @@
             background-image:-webkit-linear-gradient(45deg,rgba(255,255,255,.3) 20%,transparent 20%,transparent 40%,rgba(255, 255, 255, 0.3) 40%,rgba(255,255,255,.3) 60%,transparent 60%,transparent 80%,rgba(255, 255, 255, 0.3) 80%)
             border-radius: 10px
         
-        li
-            display: flex
-            flex-direction: row
-            align-items: center
-            justify-content: flex-start
-            font-size: 1rem
-            margin: 0 
+        h3
+            text-decoration: underline
+            margin: 0.25rem auto
+        
+        ul
+            list-style: none
+            margin: 0
+            padding: 0
+    
+            li
+                display: flex
+                flex-direction: row
+                align-items: center
+                justify-content: flex-start
+                font-size: 1rem
 
-            svg
-                color: #A7F3D0
+                svg
+                    color: #A7F3D0
+                    font-size: 1.15rem
+                    margin-left: 0.25rem
+    
+    #terrain-legend
+        position: absolute
+        bottom: 0
+        left: 0
+        margin-left: 1rem
+        margin-bottom: 1rem
+        max-width: 30%
+        background-color: #F9FAFBA1
+        padding: 0.5rem 1rem
+
+        h3
+            text-align: left
+            text-decoration: none
+            color: #111827
+            padding-left: 0.225rem
+            margin: 0
+
+            span
                 font-size: 1.15rem
-                margin-left: 0.25rem
+        
+        img
+            max-width: 100%
+            margin-top: 0.5rem
+    
+    #layer-buttons, #terrain-legend
+        h3
+            font-size: 1.45rem
+
+.infowindow-content
+
+    h2, p
+        color: #111827
+    
+    svg.filled
+        color: #FBBF24
+    
+    img
+        max-width: 1000px
+        max-height: 600px
