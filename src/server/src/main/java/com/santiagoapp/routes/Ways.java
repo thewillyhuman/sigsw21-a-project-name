@@ -6,6 +6,7 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.List;
 
 public class Ways {
@@ -14,6 +15,18 @@ public class Ways {
         public static final String POINTS_FILE_NAME = "camino_frances.points";
         public static final String INTEREST_POINTS_FILE_NAME = "camino_frances_ip.points";
         public static final List<RoutePlace> INTEREST_POINTS = new GoogleMapsClient().getInterestPoints();
+    }
+
+    public static class CaminoAndaluz {
+        public static final String POINTS_FILE_NAME = "camino_andaluz.points";
+        public static final String INTEREST_POINTS_FILE_NAME = "";
+        public static final List<RoutePlace> INTEREST_POINTS = Collections.emptyList();
+    }
+
+    public static class CaminoGijon {
+        public static final String POINTS_FILE_NAME = "camino_gijon.points";
+        public static final String INTEREST_POINTS_FILE_NAME = "";
+        public static final List<RoutePlace> INTEREST_POINTS = Collections.emptyList();
     }
 
     public static String[] getLinesForFile(String fileName) {

@@ -12,12 +12,17 @@ import java.util.stream.Collectors;
 public class RoutesService {
 
     public Route getRoute(String roadName, int numberOfDays) {
-        //String[] places = new GoogleMapsClient().getPointsForRoad(roadName);
-        String[] places = Ways.getLinesForFile(Ways.CaminoFrances.POINTS_FILE_NAME);
-        return chunker(numberOfDays, places);
+        String[] places;
+        switch (roadName) {
+            case "camino_frances": places = Ways.getLinesForFile(Ways.CaminoFrances.POINTS_FILE_NAME); break;
+            case "camino_andaluz": places = Ways.getLinesForFile(Ways.CaminoAndaluz.POINTS_FILE_NAME); break;
+            case "camino_norte": places = Ways.getLinesForFile(Ways.CaminoGijon.POINTS_FILE_NAME); break;
+            default: return RouteBuilder.newBuilder().build();
+        }
+        return chunker(roadName, numberOfDays, places);
     }
 
-    private Route chunker(int numberOfDays, String[] places) {
+    private Route chunker(String roadName, int numberOfDays, String[] places) {
         List<Route> routeStages = new ArrayList<Route>();
         int chunkSize = (int) Math.ceil( (float) places.length / (float) numberOfDays );
         for(int i=0;i<places.length; i+=chunkSize){
@@ -27,13 +32,24 @@ public class RoutesService {
             routeStages.add(stageRoute);
         }
 
-        return RouteBuilder.newBuilder()
-                .withOriginPlace(places[0])
-                .withDestinationPlace(places[places.length - 1])
-                .withDistance(-1)
-                .withRouteLocations(Arrays.stream(places).collect(Collectors.toList()))
-                .withRouteStages(routeStages)
-                .withInterestPlaces(Ways.CaminoFrances.INTEREST_POINTS)
-                .build();
+        if (roadName.equalsIgnoreCase("camino_frances")) {
+            return RouteBuilder.newBuilder()
+                    .withOriginPlace(places[0])
+                    .withDestinationPlace(places[places.length - 1])
+                    .withDistance(-1)
+                    .withRouteLocations(Arrays.stream(places).collect(Collectors.toList()))
+                    .withRouteStages(routeStages)
+                    .withInterestPlaces(Ways.CaminoFrances.INTEREST_POINTS)
+                    .build();
+        } else {
+            return RouteBuilder.newBuilder()
+                    .withOriginPlace(places[0])
+                    .withDestinationPlace(places[places.length - 1])
+                    .withDistance(-1)
+                    .withRouteLocations(Arrays.stream(places).collect(Collectors.toList()))
+                    .withRouteStages(routeStages)
+                    .build();
+        }
+
     }
 }
