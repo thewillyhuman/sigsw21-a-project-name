@@ -40,7 +40,7 @@ function RouteVisualizer(){
        
         <div  className="planificate-body">
         
-                    <Accordion flush defaultActiveKey={0} className="route-acordion" >
+                    <Accordion flush defaultActiveKey={1} className="route-acordion" >
                     <div className="planning-title">
                         <h2>Planificación</h2>
                         <FontAwesomeIcon icon={faSlidersH} size="2x"  style={iconStyle} onClick={handleBack}/>
