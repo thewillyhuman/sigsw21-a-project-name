@@ -18,6 +18,12 @@ public class GeoJsonObject {
         return geoJsonObject;
     }
 
+    public static GeoJsonObject fromString(final String stringJSON) {
+        Gson gsonObject = new Gson();
+        GeoJsonObject geoJsonObject = gsonObject.fromJson(stringJSON, GeoJsonObject.class);
+        return geoJsonObject;
+    }
+
     public GeoJsonObject(String type, List<GeoJsonFeature> features) {
         this.type = type;
         this.features = features;

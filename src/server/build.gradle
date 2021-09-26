@@ -19,6 +19,8 @@ dependencies {
     // Google Maps
     implementation 'com.google.maps:google-maps-services:1.0.0'
     implementation 'org.slf4j:slf4j-simple:1.7.25'
+
+    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
 }
 
 group 'com.santiagoapp'

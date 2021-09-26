@@ -1,7 +1,6 @@
 package com.santiagoapp.routes;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jdk.jfr.Label;
 
 import java.util.Objects;
 
