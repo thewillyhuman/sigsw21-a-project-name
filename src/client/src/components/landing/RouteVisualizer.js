@@ -37,7 +37,7 @@ function RouteVisualizer(){
                                     context.route?.route?.route_stages?.map((day,index)=>{
                                         return(
                                     <Accordion.Item  onClick={console.log('onblcikk')}  className="route-acordion-item" eventKey={index} key={index}>
-                                        <CustomToggle eventKey={index}>Día {index+1} <FontAwesomeIcon icon={faRunning} /> 5Km  <FontAwesomeIcon icon={faClock} /> 3h</CustomToggle>
+                                        <CustomToggle eventKey={index}>Día {index+1} <FontAwesomeIcon icon={faRunning} /> {Math.round(day?.distance/1000)}Km  <FontAwesomeIcon icon={faClock} />  {day?.duration}h</CustomToggle>
                                         <Accordion.Body className="route-acordion-body">
                                             <div className="days-panel">
                                                 <div className="place">
