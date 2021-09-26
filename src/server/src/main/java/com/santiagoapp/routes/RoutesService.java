@@ -12,7 +12,8 @@ import java.util.stream.Collectors;
 public class RoutesService {
 
     public Route getRoute(String roadName, int numberOfDays) {
-        String[] places = new GoogleMapsClient().getPointsForRoad(roadName);
+        //String[] places = new GoogleMapsClient().getPointsForRoad(roadName);
+        String[] places = Ways.getLinesForFile(Ways.CaminoFrances.POINTS_FILE_NAME);
         return chunker(numberOfDays, places);
     }
 
@@ -32,6 +33,7 @@ public class RoutesService {
                 .withDistance(-1)
                 .withRouteLocations(Arrays.stream(places).collect(Collectors.toList()))
                 .withRouteStages(routeStages)
+                .withInterestPlaces(Ways.CaminoFrances.INTEREST_POINTS)
                 .build();
     }
 }
