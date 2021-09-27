@@ -1,6 +1,6 @@
 # SantiagoAPP Client
 El cliente de SantiagoApp se base en una página web donde el usuario es conducido a través de distintas pantallas en las que el usuario puede configurar su viaje del Camino de Santiago a su gusto.
-Este cliente ha sido desarrollado haciendo uso de la tecnología [React.js](https://es.reactjs.org/), una biblioteca de JavaScript para construir interfaces de usuario
+Este cliente ha sido desarrollado haciendo uso de la tecnología [React.js](https://es.reactjs.org/), una biblioteca de JavaScript para construir interfaces de usuario.
 
 ## Funcionalidades
 Las funcionalidades con las que cumple el cliente son las siguientes:
