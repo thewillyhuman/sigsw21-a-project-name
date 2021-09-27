@@ -1,6 +1,6 @@
 # Bienvenido al cliente de SantiagoAPP
 El cliente de SantiagoA se base en una página web donde el usuario es conducido a través de distintas pantallas en las que el usuario puede configurar su viaje del Camino de Santiago a su gusto.
-Este cliente ha sido desarrollado haciendo uso de la tecnología [React.js](https://es.reactjs.org/). 
+Este cliente ha sido desarrollado haciendo uso de la tecnología [React.js](https://es.reactjs.org/), una biblioteca de JavaScript para construir interfaces de usuario
 
 ## Funcionalidades
 Las funcionalidades con las que cumple el cliente son las siguientes:
@@ -21,30 +21,16 @@ Las funcionalidades con las que cumple el cliente son las siguientes:
 
 
 
-## Available Scripts
+## Scripts disponibles
 
-In the project directory, you can run:
+En el directorio del cliente, puedes ejecutar:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Ejecuta la aplicación en el modo de desarrollo.
+Abre [http://localhost:3000](http://localhost:3000) para verla en el navegador.
+La página se recargará si haces ediciones.
+También verás cualquier error de lint en la consola.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
