@@ -8,6 +8,17 @@ import '../css/landing.css';
 
 export const LandingContext = React.createContext();
 
+/**
+ * This React Component Hook represents the Landing page of the application (which is also the main one)
+ * It´s composed by four components:
+ * 
+ *  - Transport:      ->    Represents the component where the users can pick a transport method.
+ *  - Way:            ->    Represents the component where the users can pick a way. 
+ *  - Planificate     ->    Represents the component where the users can choose a number of days.
+ *  - RouteVisualizer ->    Represents the component where the users can see the planning of their trip.
+ * 
+ * @returns React Hook
+ */
 function LandingPage(){
 
     const [transport,setTransport] = useState('');
@@ -15,6 +26,10 @@ function LandingPage(){
     const [planning,setPlanning] = useState({});
     const [route,setRoute] = useState(null);
    
+    /**
+     * Scrolls to an specific element
+     * @param {String} element
+     */
     function scrollTo(to) {
         scroller.scrollTo(to, {
           duration: 100,

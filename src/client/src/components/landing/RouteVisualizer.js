@@ -6,11 +6,18 @@ import { faClock,faRunning, faSlidersH} from '@fortawesome/free-solid-svg-icons'
 import Map from '../map/Map';
 import '../../css/visualizer.css';
 
+/**
+ * Represents the component where the users can see the planning of their trip.
+ * @returns React Hook
+ */
 function RouteVisualizer(){
 
     const context = useContext(LandingContext);
-    const childRef = useRef();
+    const mapRef = useRef();
 
+    /**
+     * Restart the planning proccess from the beginning in case the user acepts the alert.
+     */
     const handleBack = function(){
         let confirm = window.confirm('¿Quieres volver a planificar tu viaje?');
         if(confirm){
@@ -20,9 +27,21 @@ function RouteVisualizer(){
         }
     }
 
+    /**
+     * React Hook compoent that represents a custom Header for the Bootrstrap Acordion.
+     * 
+     * @param {ReactComponentElement} children 
+     * @param {Object} enventKey
+     * @param {Object} route_stage
+     * @returns 
+     */
     function CustomToggle({ children, eventKey, route_stage}) {
+        
+        /**
+         * Calls the map to load an specific route
+         */
         const decoratedOnClick = useAccordionButton(eventKey, () =>
-            childRef?.current?.loadRoute(route_stage)
+            mapRef?.current?.loadRoute(route_stage)
         );
       
         return (
@@ -38,10 +57,13 @@ function RouteVisualizer(){
 
       }
 
-      useEffect(()=>{
-        if(context.route?.route?.route_stages[0])
-            childRef?.current?.loadRoute(context.route?.route?.route_stages[0]);
-      },context.route?.route?.route_stages[0])
+    /**
+     * Calls the map once there is a route to load the first stage of the route.
+     */
+    useEffect(()=>{
+    if(context.route?.route?.route_stages[0])
+        mapRef?.current?.loadRoute(context.route?.route?.route_stages[0]);
+    },context.route?.route?.route_stages[0])
 
     return(
         <div  className="visualizer-body">
@@ -84,7 +106,7 @@ function RouteVisualizer(){
                 }
             </Accordion>
             <div className="map-panel">
-                <Map    ref={childRef} 
+                <Map    ref={mapRef} 
                         way="caminos_andaluces,caminos_galicia,caminos_centro,camino_frances,caminos_norte" 
                         way_style="cs.andaluces,cs.galicia,cs.centro,cs.frances,cs.norte" 
                 />
