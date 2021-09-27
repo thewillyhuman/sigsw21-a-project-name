@@ -1,6 +1,25 @@
-# Getting Started with Create React App
+# Bienvenido al cliente de SantiagoAPP
+El cliente de SantiagoA se base en una página web donde el usuario es conducido a través de distintas pantallas en las que el usuario puede configurar su viaje del Camino de Santiago a su gusto.
+Este cliente ha sido desarrollado haciendo uso de la tecnología [React.js](https://es.reactjs.org/). 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Funcionalidades
+Las funcionalidades con las que cumple el cliente son las siguientes:
+- Configurar un método de transporte a elegir entre: caminando, en bicicleta o a caballo.
+- Escoger el camino que desee entre los disponibles: francés,andaluz o del norte.
+- Establecer un número de días para realizar el camino.
+- Visualizar la planificación generada en función de la configuración anterior:
+    -    Visualización y selección de cada uno de los días de la planificación.
+    -    Para cada uno de los días se muestra la distancia a recorrer así como el tiempo aproximado. Además también se pueden observar los pueblos más relevantes por los que pasa el camino en ese día.
+    -    Para cada día seleccionado se podrá visualizar en el mapa:
+          - Elevaciones
+          - Caminos
+          - Ruta del día
+          - Puntos de interés
+          - Alojamientos
+          - Usuarios cercanos
+
+
+
 
 ## Available Scripts
 
@@ -29,42 +48,3 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
