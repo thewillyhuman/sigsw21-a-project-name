@@ -40,6 +40,7 @@ const Map = forwardRef((props,ref)=> {
                 if (l != null) l.destroy() 
             });
             layers = [];
+            resetLayerCheckboxes();
 
             elevationWMS = new WMSLayer(ELEVATIONS_WMS_ENDPOINT, 'EL.GridCoverage',
                 'Elevaciones', 'image/png', window.map, 0.775, true);
@@ -68,7 +69,7 @@ const Map = forwardRef((props,ref)=> {
       }));
 
 
-      const loadUsers = function(route) {
+      const loadUsers = function(_) {
           let data = JSON.stringify({"x_position": MAP_CENTER[0], "y_position": MAP_CENTER[1]});
           
           let xhr = new XMLHttpRequest();
@@ -83,6 +84,15 @@ const Map = forwardRef((props,ref)=> {
           xhr.open("POST", "http://santiagoapp.wcr.es:8080/users");
           xhr.setRequestHeader("Content-Type", "application/json");
           xhr.send(data);
+      }
+
+      const resetLayerCheckboxes = function() {
+          document.getElementById('elevation-ckb').checked = true;
+          document.getElementById('way-ckb').checked = true;
+          document.getElementById('route-ckb').checked = true;
+          document.getElementById('poi-ckb').checked = true;
+          document.getElementById('accommodations-ckb').checked = true;
+          document.getElementById('users-ckb').checked = false;
       }
     
     /*
@@ -115,6 +125,11 @@ const Map = forwardRef((props,ref)=> {
             else ratingHTML += emptyStar;
         }
 
+        let statusHTML = "";
+        if (p.opening_hours) {
+            statusHTML = p.openNow ? `<p><span class='open'>ABIERTO</span></p>` : `<p><span class='closed'>CERRADO</span></p>`
+        }
+
         let accomodationImage = "";
         if (p.photos && p.photos.length > 0) {
             accomodationImage += `<img class="accommodation-img" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=800` + 
@@ -122,7 +137,7 @@ const Map = forwardRef((props,ref)=> {
         }
 
         return `<div class="infowindow-content"><h2 id="firstHeading" class="first-heading">${p.name}</h2>` +
-        `<div class="body-content"><p>Valoración: ${ratingHTML}</p>${accomodationImage}</div>`;
+        `<div class="body-content"><p>Valoración: ${ratingHTML}</p>${statusHTML}${accomodationImage}</div>`;
     }
 
     /*
@@ -176,7 +191,7 @@ const Map = forwardRef((props,ref)=> {
                             <FontAwesomeIcon icon={faMonument} />
                         </li>
                         <li>
-                            <input id="accomodations-ckb" type="checkbox" defaultChecked={true} onChange={(e) => onLayerChange(accommodationsLayer, e)}></input>
+                            <input id="accommodations-ckb" type="checkbox" defaultChecked={true} onChange={(e) => onLayerChange(accommodationsLayer, e)}></input>
                             <p>Alojamientos</p>
                             <FontAwesomeIcon icon={faBed} />
                         </li>
