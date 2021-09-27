@@ -21,6 +21,12 @@ export const LandingContext = React.createContext();
  */
 function LandingPage(){
 
+  if (window.performance) {
+    if (performance.navigation.type == 0) {
+      scrollTo('transport')
+    } 
+  }
+
     const [transport,setTransport] = useState('');
     const [way,setWay] = useState('');
     const [planning,setPlanning] = useState({});
@@ -40,6 +46,12 @@ function LandingPage(){
     
 
     useEffect(()=>{
+        window.addEventListener('beforeunload', ()=> console.log('beforeunload'));
+        window.addEventListener('load', ()=> console.log('load'));
+        if (window.performance) {
+          console.log('udpdateeee')
+          scrollTo('transport')
+        }
         scrollSpy.update();
     },[])
     
