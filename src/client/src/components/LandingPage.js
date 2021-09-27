@@ -1,10 +1,10 @@
+import React , { useEffect,useState} from "react";
 import Transport from './landing/Transport';
 import Way from './landing/Way';
 import RouteVisualizer from './landing/RouteVisualizer';
 import Planificate from './landing/Planificate';
-import { Element, Events, scrollSpy, scroller } from 'react-scroll'
+import { Element, scrollSpy, scroller } from 'react-scroll'
 import '../css/landing.css';
-import React , { useEffect,useState} from "react";
 
 export const LandingContext = React.createContext();
 
@@ -62,7 +62,3 @@ function LandingPage(){
 }
 
 export default LandingPage;
-
-
-/*
-<FontAwesomeIcon icon={faArrowLeft} size="3x" id="backArrow"/>   */

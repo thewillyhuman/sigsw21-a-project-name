@@ -1,9 +1,8 @@
 import { useContext,useEffect,useState } from "react";
-import axios from 'axios';
 import {Row,Col,Form,Spinner} from 'react-bootstrap';
 import { Link } from 'react-scroll';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowAltCircleLeft} from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowAltCircleLeft} from '@fortawesome/free-regular-svg-icons';
 import {LandingContext} from '../LandingPage';
 
 
@@ -48,12 +47,11 @@ function Planificate(){
           
           xhr.addEventListener("readystatechange", function() {
             if(this.readyState === 4) {
-              console.log(JSON.parse(this.responseText));
               context.setRoute(JSON.parse(this.responseText));
-             setBtnDisplay('inline-block');
-             setSpinnerDisplay('none');
-             context.scrollTo('route-visualizer');
-             document.getElementsByClassName('accordion-button')[0]?.focus();
+              setBtnDisplay('inline-block');
+              setSpinnerDisplay('none');
+              context.scrollTo('route-visualizer');
+              document.getElementsByClassName('accordion-button')[0]?.focus();
             }
           });
           
@@ -62,13 +60,6 @@ function Planificate(){
           
           xhr.send(data);
     }
-
-
-    const handleDays = function(e){
-        let days = e.target.value;
-        setDays(days);
-    }
-
 
 
     return(
@@ -83,9 +74,8 @@ function Planificate(){
             <Row>
                 <Col>
                     <Form.Label>Días</Form.Label>
-                    <Form.Control size="lg" type="number" min="1" value={days} onChange={handleDays} required/>
+                    <Form.Control size="lg" type="number" min="1" value={days} onChange={(e)=>setDays(e.target.value)} required/>
                 </Col>
-         
             </Row>
             <Row>
               <div className="btn-spinner-cont">
@@ -95,7 +85,7 @@ function Planificate(){
                 <button className="planificatBtn"  style={{display:btnDisplay}}>Planificar </button>
               </div>
             </Row>
-            </Form>
+        </Form>
     </>
     )
 }

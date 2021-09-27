@@ -2,15 +2,14 @@ import { useState,useContext } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHorse,faBicycle,faWalking} from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-scroll';
+import {LandingContext} from '../LandingPage';
 import background from '../../assets/fondo.jpg';
 import senderismo from '../../assets/senderismo.jpg';
 import bici from '../../assets/bici.jpg';
 import horse from '../../assets/horse.jpg';
-import {LandingContext} from '../LandingPage';
 
-function Transport(props){
+function Transport(){
 
-    const {scroll} = props;
     const context = useContext(LandingContext);
     const [style,setStyle] = useState(styles);
     const [walkStyle,setWalkStyle] = useState(iconStyle);
@@ -18,21 +17,15 @@ function Transport(props){
     const [horseStyle,setHorseStyle] = useState(iconStyle);
 
     function handleWalk() {
-        setStyle({
-            backgroundImage: `url(${senderismo})`
-        })
+        setStyle({backgroundImage: `url(${senderismo})`})
     }
 
     function handleBicycle() {
-        setStyle({
-            backgroundImage: `url(${bici})`
-        })
+        setStyle({backgroundImage: `url(${bici})`})
     }
 
     function handleHorse() {
-        setStyle({
-            backgroundImage: `url(${horse})`
-        })
+        setStyle({backgroundImage: `url(${horse})`})
     }
 
     function handleTransportClick(callback,transport){
