@@ -21,7 +21,6 @@ function Planificate(){
      * Handles everything for the user expirence on submit:
      *    - Field validation
      *    - Loading Spinner
-     *    - Event listener for the resize event in order to guide the user to the corresponding component.
      *    - Stops the propagation for not refreshing the page
      * 
      * In case the validation is ok, it calls getRoute function to comunicate with the server.
@@ -34,9 +33,7 @@ function Planificate(){
       event.stopPropagation();
 
       setValidated(true);
-      window.removeEventListener("resize", ()=>context.scrollTo('route-visualizer'));
-      window.addEventListener("resize",()=>context.scrollTo('route-visualizer'));
-
+  
       if (form.checkValidity() === true){
         setBtnDisplay('none');
         setSpinnerDisplay('inline');
@@ -54,6 +51,8 @@ function Planificate(){
      *      - number_of_days
      * 
      * Once the server has responded it scrolls to the next stage.
+     * Also sets an event listener for the resize event in order to guide the user 
+     * to the corresponding component.
      */
     const getRoute = function(){
         context.setPlanning({
@@ -77,6 +76,8 @@ function Planificate(){
               context.scrollTo('route-visualizer');
               console.log(document.getElementsByClassName('accordion-button'))
               document.getElementsByClassName('accordion-button')[0]?.focus();
+              window.removeEventListener("resize", ()=>context.scrollTo('route-visualizer'));
+              window.addEventListener("resize",()=>context.scrollTo('route-visualizer'));
             }
           });
           

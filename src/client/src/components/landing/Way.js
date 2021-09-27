@@ -8,16 +8,26 @@ import cAndaluz from '../../assets/camino_andaluz.jpg';
 import cNorte from '../../assets/camino_norte.jpg';
 import {LandingContext} from '../LandingPage';
 
+/**
+ * Represents the component where the users can pick a way. 
+ * @returns React Hook
+ */
 function Way(){
 
     const context = useContext(LandingContext);
     const [showToast, setShowToast] = useState(true);
 
+    /**
+     * Collapses the info toast
+     */
     const toggleShowToast= () =>{
-     console.log('cerrar')
         setShowToast(!showToast);
     }
 
+    /**
+     * Sets the way in the Landing context.
+     * @param {String} way 
+     */
     const handleClick = function(way){
         context.setWay(way);
         window.removeEventListener("resize", ()=>context.scrollTo('planificate'));
