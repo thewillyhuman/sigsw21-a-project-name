@@ -3,9 +3,9 @@ import {Row,Col,Card,Toast,ToastContainer,CloseButton } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleLeft} from '@fortawesome/free-regular-svg-icons'
 import { Link } from 'react-scroll';
-import cFrances from '../../resoruces/camino_frances.jpg';
-import cAndaluz from '../../resoruces/camino_andaluz.jpg';
-import cNorte from '../../resoruces/camino_norte.jpg';
+import cFrances from '../../assets/camino_frances.jpg';
+import cAndaluz from '../../assets/camino_andaluz.jpg';
+import cNorte from '../../assets/camino_norte.jpg';
 import {LandingContext} from '../LandingPage';
 
 function Way(){

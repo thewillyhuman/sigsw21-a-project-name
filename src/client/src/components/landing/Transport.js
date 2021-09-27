@@ -2,10 +2,10 @@ import { useState,useContext } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHorse,faBicycle,faWalking} from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-scroll';
-import background from '../../resoruces/fondo.jpg';
-import senderismo from '../../resoruces/senderismo.jpg';
-import bici from '../../resoruces/bici.jpg';
-import horse from '../../resoruces/horse.jpg';
+import background from '../../assets/fondo.jpg';
+import senderismo from '../../assets/senderismo.jpg';
+import bici from '../../assets/bici.jpg';
+import horse from '../../assets/horse.jpg';
 import {LandingContext} from '../LandingPage';
 
 function Transport(props){
