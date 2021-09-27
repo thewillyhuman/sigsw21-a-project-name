@@ -1,6 +1,6 @@
 # Bienvenido a SantiagoAPP
 
-SantiagoApp es una aplicación web que te permite planificar tus rutas para realizar el camino de Santiago. Actualemnte se encuentra implementado como prototipo, es decir las funcionalidades de las que dispone están reducidas.
+SantiagoApp es una aplicación web que te permite planificar tus rutas para realizar el camino de Santiago. Actualmente se encuentra implementado como prototipo, es decir las funcionalidades de las que dispone están reducidas.
 
 
 ## Estructura del repositorio
