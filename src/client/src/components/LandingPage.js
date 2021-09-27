@@ -21,12 +21,6 @@ export const LandingContext = React.createContext();
  */
 function LandingPage(){
 
-  if (window.performance) {
-    if (performance.navigation.type == 0) {
-      scrollTo('transport')
-    } 
-  }
-
     const [transport,setTransport] = useState('');
     const [way,setWay] = useState('');
     const [planning,setPlanning] = useState({});
@@ -43,15 +37,17 @@ function LandingPage(){
           smooth: 'easeInOutQuart'
         })
       }
+
+    // This handles the refresh (F5) of the page.
+    // Scrolls to the beginning of the page in case the user refresh the page
+    if (window.performance) {
+      if (performance.navigation.type == 0) {
+        scrollTo('transport')
+      } 
+    }
     
 
     useEffect(()=>{
-        window.addEventListener('beforeunload', ()=> console.log('beforeunload'));
-        window.addEventListener('load', ()=> console.log('load'));
-        if (window.performance) {
-          console.log('udpdateeee')
-          scrollTo('transport')
-        }
         scrollSpy.update();
     },[])
     
