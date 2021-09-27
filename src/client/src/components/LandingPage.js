@@ -37,6 +37,14 @@ function LandingPage(){
           smooth: 'easeInOutQuart'
         })
       }
+
+    // This handles the refresh (F5) of the page.
+    // Scrolls to the beginning of the page in case the user refresh the page
+    if (window.performance) {
+      if (performance.navigation.type == 0) {
+        scrollTo('transport')
+      } 
+    }
     
 
     useEffect(()=>{

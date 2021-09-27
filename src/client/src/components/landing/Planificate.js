@@ -29,9 +29,9 @@ function Planificate(){
      */
     const handleSubmit = (event) => {
       const form = event.currentTarget;
-      event.preventDefault();
       event.stopPropagation();
-
+      event.preventDefault();
+  
       setValidated(true);
   
       if (form.checkValidity() === true){
@@ -74,7 +74,6 @@ function Planificate(){
               setBtnDisplay('inline-block');
               setSpinnerDisplay('none');
               context.scrollTo('route-visualizer');
-              console.log(document.getElementsByClassName('accordion-button'))
               document.getElementsByClassName('accordion-button')[0]?.focus();
               window.removeEventListener("resize", ()=>context.scrollTo('route-visualizer'));
               window.addEventListener("resize",()=>context.scrollTo('route-visualizer'));
