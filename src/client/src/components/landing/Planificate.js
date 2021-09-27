@@ -33,6 +33,10 @@ function Planificate(){
       event.preventDefault();
   
       setValidated(true);
+      
+      if(context.transport == '' || context.way ==''){
+        context.scrollTo('transport')  
+      }
   
       if (form.checkValidity() === true){
         setBtnDisplay('none');
@@ -55,6 +59,7 @@ function Planificate(){
      * to the corresponding component.
      */
     const getRoute = function(){
+      
         context.setPlanning({
             days:days
         })
@@ -70,13 +75,13 @@ function Planificate(){
           
           xhr.addEventListener("readystatechange", function() {
             if(this.readyState === 4) {
-              context.setRoute(JSON.parse(this.responseText));
+              context?.setRoute(JSON.parse(this.responseText));
               setBtnDisplay('inline-block');
               setSpinnerDisplay('none');
-              context.scrollTo('route-visualizer');
+              context?.scrollTo('route-visualizer');
               document.getElementsByClassName('accordion-button')[0]?.focus();
-              window.removeEventListener("resize", ()=>context.scrollTo('route-visualizer'));
-              window.addEventListener("resize",()=>context.scrollTo('route-visualizer'));
+              window.removeEventListener("resize", ()=>context?.scrollTo('route-visualizer'));
+              window.addEventListener("resize",()=>context?.scrollTo('route-visualizer'));
             }
           });
           
