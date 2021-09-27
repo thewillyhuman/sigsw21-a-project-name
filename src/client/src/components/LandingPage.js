@@ -43,7 +43,7 @@ function LandingPage(){
     },[])
 
     // This handles the refresh (F5) of the page.
-        // Scrolls to the beginning of the page in case the user refresh the page
+    // Scrolls to the beginning of the page in case the user refresh the page
     window.onload = function(){
       window.scroll(0, -1000);   
     }
