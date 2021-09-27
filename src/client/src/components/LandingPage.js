@@ -38,16 +38,18 @@ function LandingPage(){
         })
       }
 
-    // This handles the refresh (F5) of the page.
-    // Scrolls to the beginning of the page in case the user refresh the page
-    if (window.performance) {
-      if (performance.navigation.type == 0) {
-        scrollTo('transport')
-      } 
-    }
-    
+  
 
-    useEffect(()=>{
+      useEffect(()=>{
+        // This handles the refresh (F5) of the page.
+        // Scrolls to the beginning of the page in case the user refresh the page
+        window.addEventListener('beforeunload', ()=> console.log('beforeunload'));
+        window.addEventListener('load', ()=> console.log('load'));
+        if (window.performance) {
+          if (performance.navigation.type == 1) {
+              scrollTo('transport')
+          }
+        }
         scrollSpy.update();
     },[])
     
