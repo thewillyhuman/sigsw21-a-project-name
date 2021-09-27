@@ -3,21 +3,31 @@ import {Row,Col,Card,Toast,ToastContainer,CloseButton } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleLeft} from '@fortawesome/free-regular-svg-icons'
 import { Link } from 'react-scroll';
-import cFrances from '../../resoruces/camino_frances.jpg';
-import cAndaluz from '../../resoruces/camino_andaluz.jpg';
-import cNorte from '../../resoruces/camino_norte.jpg';
+import cFrances from '../../assets/camino_frances.jpg';
+import cAndaluz from '../../assets/camino_andaluz.jpg';
+import cNorte from '../../assets/camino_norte.jpg';
 import {LandingContext} from '../LandingPage';
 
+/**
+ * Represents the component where the users can pick a way. 
+ * @returns React Hook
+ */
 function Way(){
 
     const context = useContext(LandingContext);
     const [showToast, setShowToast] = useState(true);
 
+    /**
+     * Collapses the info toast
+     */
     const toggleShowToast= () =>{
-     console.log('cerrar')
         setShowToast(!showToast);
     }
 
+    /**
+     * Sets the way in the Landing context.
+     * @param {String} way 
+     */
     const handleClick = function(way){
         context.setWay(way);
         window.removeEventListener("resize", ()=>context.scrollTo('planificate'));
