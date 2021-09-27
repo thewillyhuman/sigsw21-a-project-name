@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Bienvenido a SantiagoAPP
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SantiagoApp es una aplicación web que te permite planificar tus rutas para realizar el camino de Santiago. Actualemnte se encuentra implementado como prototipo, es decir las funcionalidades de las que dispone están reducidas.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Estructura del repositorio
 
-### `npm start`
+El repositorio se encuentra dividido en tres apartados:
+- `/docs`: Aquí encontramos la documentación que se adjunta al proyecto.
+- `/hack`: Esta carpeta contiene los scripts y configuraciones de despligue.
+- `/release`: Esta carpeta contiene los archivos de despligue estables.
+- `/src`: Aquí encontramos el código fuente estructurado según el componente. Por ejemplo
+    - `/src/server`: Código fuente del servidor.
+    - `/src/script`: Código fuente de los scripts de python empleados.
+    - `/src/client`: Código fuente del cliente web.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Como desplegar
 
-### `npm test`
+Para desplegar hemos utilizado la tecnología Docker, de forma que sea lo más simple posible llevar la implementación a producción sin preocuparnos de las dependencias que pueda tener cada módulo.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```shell
+docker pull thewillyhuman/santiagoapp-server;
+docker pull mistermboy/santiagoapp-client;
 
-### `npm run build`
+docker run -d -p 8080:8080 thewillyhuman/santiagoapp-server;
+docker run -d -p 80:3000 mistermboy/santiagoapp-client;
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Una vez ejecutados los comandos anteriores podemos probar el servidor con el siguiente comando:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```shell
+curl -w "\n" --header "Content-Type: application/json" --data '{ "road_name": "camino_andaluz", "transport_method":"pie", "number_of_days":5}' --request POST http://santiagoapp.wcr.es:8080/routes
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Documentación de cada módulo
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Para obtener la documentación más detallada sobre cada uno de los módulos que componen el sistema hemos incluido un fichero `README.md` dentro de cada módulo que contiene esta información.
