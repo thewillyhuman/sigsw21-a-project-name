@@ -61,9 +61,10 @@ function RouteVisualizer(){
      * Calls the map once there is a route to load the first stage of the route.
      */
     useEffect(()=>{
-    if(context?.route?.route?.route_stages[0])
-        mapRef?.current?.loadRoute(context.route?.route?.route_stages[0]);
-    },context?.route?.route?.route_stages[0])
+    if(context?.route?.route?.route_stages?.length>0)
+        if(context?.route?.route?.route_stages[0])
+             mapRef?.current?.loadRoute(context.route?.route?.route_stages[0]);
+    },context?.route)
 
     return(
         <div  className="visualizer-body">

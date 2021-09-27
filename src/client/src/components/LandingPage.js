@@ -38,22 +38,16 @@ function LandingPage(){
         })
       }
 
-  
-
       useEffect(()=>{
-        // This handles the refresh (F5) of the page.
-        // Scrolls to the beginning of the page in case the user refresh the page
-        window.addEventListener('beforeunload', ()=> console.log('beforeunload'));
-        window.addEventListener('load', ()=> console.log('load'));
-        if (window.performance) {
-          if (performance.navigation.type == 1) {
-              scrollTo('transport')
-          }
-        }
         scrollSpy.update();
     },[])
-    
 
+    // This handles the refresh (F5) of the page.
+        // Scrolls to the beginning of the page in case the user refresh the page
+    window.onload = function(){
+      window.scroll(0, -1000);   
+    }
+    
     return (
     <LandingContext.Provider
         value={

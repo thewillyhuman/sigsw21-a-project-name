@@ -33,6 +33,10 @@ function Planificate(){
       event.preventDefault();
   
       setValidated(true);
+      
+      if(context.transport == '' || context.way ==''){
+        context.scrollTo('transport')  
+      }
   
       if (form.checkValidity() === true){
         setBtnDisplay('none');
@@ -55,6 +59,7 @@ function Planificate(){
      * to the corresponding component.
      */
     const getRoute = function(){
+      
         context.setPlanning({
             days:days
         })
