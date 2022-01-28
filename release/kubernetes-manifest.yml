@@ -1,0 +1,100 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: santiagoapp-back
+spec:
+  selector:
+    matchLabels:
+      app: santiagoapp-back
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: santiagoapp-back
+    spec:
+      containers:
+      - name: santiagoapp-server
+        image: thewilly/santiagoapp-server
+        ports:
+        - containerPort: 8080
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: santiagoapp-front
+spec:
+  selector:
+    matchLabels:
+      app: santiagoapp-front
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: santiagoapp-front
+    spec:
+      containers:
+      - name: santiagoapp-client
+        image: mistermboy/santiagoapp-client
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: santiagoapp-back-service
+spec:
+  selector:
+    app: santiagoapp-back
+  ports:
+    - protocol: TCP
+      port: 8080
+      name: web
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: santiagoapp-front-service
+spec:
+  selector:
+    app: santiagoapp-front
+  ports:
+    - protocol: TCP
+      port: 3000
+      name: web
+  type: NodePort
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: santiagoapp-back-ingress
+spec:
+  rules:
+  - host: "api.santiagoapp.local"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: santiagoapp-back-service
+            port:
+              number: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: santiagoapp-front-ingress
+spec:
+  rules:
+  - host: "santiagoapp.local"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: santiagoapp-front-service
+            port:
+              number: 3000
