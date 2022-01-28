@@ -81,7 +81,7 @@ const Map = forwardRef((props,ref)=> {
               }
           });
           
-          xhr.open("POST", "http://santiagoapp.wcr.es:8080/users");
+          xhr.open("POST", "http://api.santiagoapp.wcr.es/users");
           xhr.setRequestHeader("Content-Type", "application/json");
           xhr.send(data);
       }
