@@ -85,7 +85,7 @@ function Planificate(){
             }
           });
           
-          xhr.open("POST", "http://santiagoapp.wcr.es:8080/routes");
+          xhr.open("POST", "http://api.santiagoapp.wcr.es/routes");
           xhr.setRequestHeader("Content-Type", "application/json");
           
           xhr.send(data);
